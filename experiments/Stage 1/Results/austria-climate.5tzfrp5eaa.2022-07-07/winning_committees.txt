@@ -1,0 +1,13 @@
+==================================================
+           WINNING COMMITTEES BY METHOD           
+==================================================
+
+--- PAV (1 winning committee(s) found) ---
+  Committee 1: [38, 45, 57, 74, 75, 76, 78, 95, 165, 173]
+
+--- SeqPhragmen (1 winning committee(s) found) ---
+  Committee 1: [38, 45, 57, 74, 75, 76, 78, 95, 165, 173]
+
+--- MES (1 winning committee(s) found) ---
+  Committee 1: [38, 45, 57, 73, 75, 76, 78, 95, 165, 173]
+

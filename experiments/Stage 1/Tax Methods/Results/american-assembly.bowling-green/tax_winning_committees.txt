@@ -1,0 +1,12 @@
+==================================================
+        WINNING COMMITTEES - TAX METHODS          
+==================================================
+
+--- TaxPhragmen ---
+  Committee size: 4
+  Selected candidates: [21, 47, 82, 83]
+
+--- TaxMES ---
+  Committee size: 4
+  Selected candidates: [10, 21, 47, 83]
+

@@ -1,6 +1,6 @@
 import os
-import pandas as pd
 from traditional_methods import *
+import traceback
 
 #Folder Configuration
 data_folder = r"C:\Users\paulc\Documents\bachelor-thesis\data\raw\openData-master"
@@ -33,17 +33,23 @@ def run_batch_processing():
 
         #Processing Pipeline
         try:
-            profile, df_raw = load_profiles(input_file)
-            results = run_methods(profile, committee_size)
+            #Load and map IDs for non-consecutive
+            profile, df_raw, reverse_map = load_profiles(input_file)
+            results_mapped = run_methods(profile, committee_size)
 
-            #Frequency Matrix
-            matrix = create_frequency_matrix(results, profile.num_cand)
+            #Map back
+            results = {}
+            for rule, committees in results_mapped.items():
+                results[rule] = [[reverse_map[c] for c in comm] for comm in committees]
 
             #Output paths
             csv_path = os.path.join(result_path, "frequency_matrix.csv")
             vis_path = os.path.join(result_path, "heatmap.png")
-            txt.path = os.path.join(result_path, "winning_committees.txt")
+            txt_path = os.path.join(result_path, "winning_committees.txt")
             committiees_csv = os.path.join(result_path, "winning_committees_list.csv")
+
+            # Frequency Matrix
+            matrix = create_frequency_matrix(results, sorted(reverse_map.values()))
 
             #Visualize and Save
             visualize_and_save(matrix, csv_path, vis_path)
@@ -53,8 +59,9 @@ def run_batch_processing():
             print_winning_committees(results)
             print(f"Successfully processed {dataset_folder}")
 
-        except  Exception as e:
+        except Exception as e:
             print(f"Error processing {dataset_folder}: {e}")
+            traceback.print_exc()
 
 
 if __name__ == "__main__":

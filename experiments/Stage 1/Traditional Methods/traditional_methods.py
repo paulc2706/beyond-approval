@@ -4,7 +4,7 @@ import numpy as np
 import seaborn as sns
 from abcvoting import abcrules
 from abcvoting.preferences import Profile
-from pyparsing import results
+
 
 
 #Load the votes
@@ -12,6 +12,13 @@ def load_profiles(file_path):
     df_votes = pd.read_csv(file_path)
 
     candidate_cols = [col for col in df_votes.columns if col.isdigit()]
+
+    #Map IDs for voting rules
+    sorted_ids = sorted([int(c) for c in candidate_cols])
+    id_map = {old_id: new_id for new_id, old_id in enumerate(sorted_ids)}
+
+    #Create the reverse map
+    reverse_map = {new_id: old_id for old_id, new_id in id_map.items()}
 
     #Create Approval and Disapproval profiles
     approval_sets = []
@@ -24,10 +31,12 @@ def load_profiles(file_path):
         for  c_id in candidate_cols:
             vote_value = row[c_id]
 
+            mapped_id = id_map[int(c_id)]
+
             if vote_value == 1:
-                approved_candidates.append(int(c_id))
+                approved_candidates.append(mapped_id)
             elif vote_value == -1:
-                disapproved_candidates.append(int(c_id))
+                disapproved_candidates.append(mapped_id)
 
         approval_sets.append(approved_candidates)
         disapproval_sets.append(disapproved_candidates)
@@ -38,7 +47,7 @@ def load_profiles(file_path):
 
     print(f"Loaded profile with {len(profile)} voters and {profile.num_cand} candidates.)")
 
-    return profile, df_votes
+    return profile, df_votes, reverse_map
 
 
 
@@ -63,8 +72,8 @@ def run_methods(profile, committee_size):
 
     return results
 
-def create_frequency_matrix(results, num_candidates):
-    matrix = pd.DataFrame(0.0, index=range(num_candidates), columns=results.keys())
+def create_frequency_matrix(results, original_id_list):
+    matrix = pd.DataFrame(0.0, index=original_id_list, columns=results.keys())
 
     for rule, committees in results.items():
         num_ties  = len(committees)

@@ -1,0 +1,4 @@
+Rule,Committee_Index,Committee_Size,Selected_Candidates
+PAV,1,10,"[15, 20, 48, 49, 53, 54, 55, 66, 78, 93]"
+SeqPhragmen,1,10,"[20, 26, 48, 49, 53, 54, 55, 66, 93, 136]"
+MES,1,10,"[15, 20, 26, 48, 49, 53, 54, 55, 66, 93]"
