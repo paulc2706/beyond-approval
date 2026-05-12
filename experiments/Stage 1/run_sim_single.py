@@ -1,4 +1,4 @@
-from try_1 import *
+from traditional_methods import *
 
 input_data = r"C:\Users\paulc\Documents\bachelor-thesis\data\raw\openData-master\15-per-hour-seattle\participants-votes.csv"
 output_data = "./results_traditional.csv"
