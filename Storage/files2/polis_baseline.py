@@ -325,7 +325,7 @@ def parse_args():
         description="Run PAV / Phragmén / MES on a pol.is conversation export"
     )
     p.add_argument(
-        "--data-dir", type=Path, default=Path(r"C:\Users\paulc\Documents\bachelor-thesis\data\raw\openData-master\15-per-hour-seattle"),
+        "--data-dir", type=Path, default=Path(r"/data/raw/openData-master/15-per-hour-seattle"),
         help="Directory containing comments.csv, participants-votes.csv, summary.csv"
     )
     p.add_argument(
