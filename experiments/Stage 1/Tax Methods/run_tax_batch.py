@@ -8,7 +8,7 @@ from traditional_methods import load_profiles
 from tax_methods import *
 
 data_folder = r"C:\Users\paulc\Documents\bachelor-thesis\data\raw\openData-master"
-output_folder = "./Results/"
+output_folder = r"C:\Users\paulc\Documents\bachelor-thesis\experiments\Results"
 committee_size = 10
 
 def run_batch_processing():
@@ -63,4 +63,3 @@ def run_batch_processing():
 if __name__ == "__main__":
     run_batch_processing()
 
-    

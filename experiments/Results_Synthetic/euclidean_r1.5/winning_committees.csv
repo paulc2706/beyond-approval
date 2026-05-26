@@ -1,0 +1,7 @@
+Method,Rule,Committee_Index,Committee_Size,Selected_Candidates,dataset,Model,radius,p_disapprove,num_voters,num_candidates
+Traditional,PAV,1,10,"[1, 2, 3, 7, 9, 10, 11, 12, 17, 18]",euclidean_r1.5,Euclidean2D,1.5,0.1,100,20
+Traditional,PAV,2,10,"[2, 3, 5, 7, 9, 10, 11, 12, 17, 18]",euclidean_r1.5,Euclidean2D,1.5,0.1,100,20
+Traditional,SeqPhragmen,1,10,"[2, 5, 7, 9, 10, 11, 12, 13, 17, 18]",euclidean_r1.5,Euclidean2D,1.5,0.1,100,20
+Traditional,MES,1,10,"[2, 5, 7, 9, 10, 11, 12, 13, 17, 18]",euclidean_r1.5,Euclidean2D,1.5,0.1,100,20
+Tax,TaxPhragmen,1,1,[17],euclidean_r1.5,Euclidean2D,1.5,0.1,100,20
+Tax,TaxMES,1,1,[17],euclidean_r1.5,Euclidean2D,1.5,0.1,100,20

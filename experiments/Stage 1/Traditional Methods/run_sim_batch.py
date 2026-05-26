@@ -4,7 +4,7 @@ import traceback
 
 #Folder Configuration
 data_folder = r"C:\Users\paulc\Documents\bachelor-thesis\data\raw\openData-master"
-output_folder = "./Results/"
+output_folder = r"C:\Users\paulc\Documents\bachelor-thesis\experiments\Results"
 
 #Committee size
 committee_size = 10

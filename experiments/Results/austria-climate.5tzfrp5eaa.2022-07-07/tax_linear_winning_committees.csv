@@ -1,0 +1,13 @@
+Rule,Weight,Committee_Size,Selected_Candidates
+TaxPhragmen,0.0,5,"[45, 57, 75, 78, 165]"
+TaxPhragmen,0.5,0,[]
+TaxPhragmen,1.0,0,[]
+TaxPhragmen,2.0,0,[]
+TaxPhragmen,5.0,0,[]
+TaxPhragmen,10.0,0,[]
+Tax_MES,0.0,5,"[38, 45, 57, 78, 165]"
+Tax_MES,0.5,0,[]
+Tax_MES,1.0,0,[]
+Tax_MES,2.0,0,[]
+Tax_MES,5.0,0,[]
+Tax_MES,10.0,0,[]

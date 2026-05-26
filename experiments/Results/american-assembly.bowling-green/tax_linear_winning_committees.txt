@@ -1,0 +1,61 @@
+==================================================
+   WINNING COMMITTEES - LINEAR TAX SWEEP          
+   cost = 1 + weight * disapproval_score          
+==================================================
+
+================================================
+  TaxPhragmen
+================================================
+
+  weight=0:
+    Committee size: 5
+    Selected candidates: [10, 21, 30, 47, 83]
+
+  weight=0.5:
+    Committee size: 0
+    Selected candidates: []
+
+  weight=1.0:
+    Committee size: 0
+    Selected candidates: []
+
+  weight=2.0:
+    Committee size: 0
+    Selected candidates: []
+
+  weight=5.0:
+    Committee size: 0
+    Selected candidates: []
+
+  weight=10.0:
+    Committee size: 0
+    Selected candidates: []
+
+================================================
+  Tax_MES
+================================================
+
+  weight=0:
+    Committee size: 5
+    Selected candidates: [10, 21, 30, 47, 83]
+
+  weight=0.5:
+    Committee size: 0
+    Selected candidates: []
+
+  weight=1.0:
+    Committee size: 0
+    Selected candidates: []
+
+  weight=2.0:
+    Committee size: 0
+    Selected candidates: []
+
+  weight=5.0:
+    Committee size: 0
+    Selected candidates: []
+
+  weight=10.0:
+    Committee size: 0
+    Selected candidates: []
+
