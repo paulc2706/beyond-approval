@@ -1,0 +1,6 @@
+Method,Rule,Committee_Index,Committee_Size,Selected_Candidates,dataset,Model,p,p_disapprove,num_voters,num_candidates
+Traditional,PAV,1,10,"[0, 2, 3, 5, 7, 8, 9, 11, 14, 18]",impartial_p0.1,Impartial,0.1,0.05,100,20
+Traditional,SeqPhragmen,1,10,"[0, 2, 3, 5, 7, 8, 9, 11, 14, 18]",impartial_p0.1,Impartial,0.1,0.05,100,20
+Traditional,MES,1,10,"[0, 2, 3, 5, 7, 8, 9, 11, 14, 18]",impartial_p0.1,Impartial,0.1,0.05,100,20
+Tax,TaxPhragmen,1,1,[14],impartial_p0.1,Impartial,0.1,0.05,100,20
+Tax,TaxMES,1,1,[14],impartial_p0.1,Impartial,0.1,0.05,100,20

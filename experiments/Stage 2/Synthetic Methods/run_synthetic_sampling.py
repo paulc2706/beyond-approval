@@ -9,11 +9,11 @@ output_folder = r"C:\Users\paulc\Documents\bachelor-thesis\data\raw\Synthetic Da
 
 NUM_Voters = 100
 NUM_Candidates = 20
-P_Disapprove = 0.1
+P_Disapprove = 0.2
 
 P_Values = [0.1, 0.15, 0.3, 0.5, 0.7]
 PHI_Values = [0.25, 0.5, 0.75, 1]
-Euclidean_Radius = 4
+Euclidean_Radius = [1.5, 2, 3, 4]
 SEED = 42
 
 def generate_resampling_datasets():
@@ -64,25 +64,26 @@ def generate_impartial_datasets():
             traceback.print_exc()
 
 def generate_euclidean_dataset():
-    label = f"euclidean_r{Euclidean_Radius}"
-    print(f"\n{"=" * 50}")
-    print(f"Generating: {label}")
+    for radius in Euclidean_Radius:
+        label = f"euclidean_r{radius}"
+        print(f"\n{"=" * 50}")
+        print(f"Generating: {label}")
 
-    try:
-        _, _, votes = sample_euclidean_threshold(NUM_Voters, NUM_Candidates, radius=Euclidean_Radius, p_disapprove=P_Disapprove, seed=SEED)
-        params = {
-            "Model": "Euclidean2D",
-            "radius": Euclidean_Radius,
-            "p_disapprove": P_Disapprove,
-            "num_voters": NUM_Voters,
-            "num_candidates": NUM_Candidates,
-        }
-        output_path = os.path.join(output_folder, label)
-        save_synthetic_dataset(votes, params, output_path)
+        try:
+            _, _, votes = sample_euclidean_threshold(NUM_Voters, NUM_Candidates, radius=radius, p_disapprove=P_Disapprove, seed=SEED)
+            params = {
+                "Model": "Euclidean2D",
+                "radius": radius,
+                "p_disapprove": P_Disapprove,
+                "num_voters": NUM_Voters,
+                "num_candidates": NUM_Candidates,
+            }
+            output_path = os.path.join(output_folder, label)
+            save_synthetic_dataset(votes, params, output_path)
 
-    except Exception as e:
-        print(f"Error generating: {label}: {e}")
-        traceback.print_exc()
+        except Exception as e:
+            print(f"Error generating: {label}: {e}")
+            traceback.print_exc()
 
 if __name__ == "__main__":
     generate_resampling_datasets()

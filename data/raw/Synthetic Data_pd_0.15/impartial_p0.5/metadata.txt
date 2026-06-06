@@ -1,0 +1,7 @@
+Synthetic Dataset Parameters
+========================================
+Model: Impartial
+p: 0.5
+p_disapprove: 0.15
+num_voters: 100
+num_candidates: 20

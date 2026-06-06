@@ -1,0 +1,22 @@
+==================================================
+     WINNING COMMITTEES - SYNTHETIC DATA          
+==================================================
+
+Parameters: {'dataset': 'impartial_p0.1', 'Model': 'Impartial', 'p': '0.1', 'p_disapprove': '0.05', 'num_voters': '100', 'num_candidates': '20'}
+
+--- Traditional Methods ---
+
+PAV:
+  Committee 1: [0, 2, 3, 5, 7, 8, 9, 11, 14, 18]
+
+SeqPhragmen:
+  Committee 1: [0, 2, 3, 5, 7, 8, 9, 11, 14, 18]
+
+MES:
+  Committee 1: [0, 2, 3, 5, 7, 8, 9, 11, 14, 18]
+
+--- Tax Methods ---
+
+TaxPhragmen: [14]
+
+TaxMES: [14]

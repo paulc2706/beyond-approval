@@ -1,0 +1,22 @@
+==================================================
+     WINNING COMMITTEES - SYNTHETIC DATA          
+==================================================
+
+Parameters: {'dataset': 'euclidean_r2', 'Model': 'Euclidean2D', 'radius': '2', 'p_disapprove': '0.05', 'num_voters': '100', 'num_candidates': '20'}
+
+--- Traditional Methods ---
+
+PAV:
+  Committee 1: [1, 6, 7, 9, 10, 11, 12, 17, 18, 19]
+
+SeqPhragmen:
+  Committee 1: [1, 6, 7, 9, 10, 11, 12, 17, 18, 19]
+
+MES:
+  Committee 1: [1, 6, 7, 9, 10, 11, 12, 17, 18, 19]
+
+--- Tax Methods ---
+
+TaxPhragmen: [7, 10, 17, 18]
+
+TaxMES: [7, 10, 17, 18]

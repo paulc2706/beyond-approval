@@ -1,0 +1,7 @@
+Synthetic Dataset Parameters
+========================================
+Model: Euclidean2D
+radius: 1.5
+p_disapprove: 0.2
+num_voters: 100
+num_candidates: 20

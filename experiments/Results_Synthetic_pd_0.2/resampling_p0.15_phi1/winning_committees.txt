@@ -1,0 +1,22 @@
+==================================================
+     WINNING COMMITTEES - SYNTHETIC DATA          
+==================================================
+
+Parameters: {'dataset': 'resampling_p0.15_phi1', 'Model': 'Resampling', 'p': '0.15', 'phi': '1', 'p_disapprove': '0.2', 'num_voters': '100', 'num_candidates': '20'}
+
+--- Traditional Methods ---
+
+PAV:
+  Committee 1: [0, 2, 5, 8, 9, 11, 13, 14, 16, 18]
+
+SeqPhragmen:
+  Committee 1: [0, 2, 3, 5, 8, 9, 13, 14, 16, 18]
+
+MES:
+  Committee 1: [0, 2, 5, 8, 9, 11, 13, 14, 16, 18]
+
+--- Tax Methods ---
+
+TaxPhragmen: []
+
+TaxMES: []

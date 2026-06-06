@@ -1,0 +1,8 @@
+Synthetic Dataset Parameters
+========================================
+Model: Resampling
+p: 0.15
+phi: 0.5
+p_disapprove: 0.2
+num_voters: 100
+num_candidates: 20
