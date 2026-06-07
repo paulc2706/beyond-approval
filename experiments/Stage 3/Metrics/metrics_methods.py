@@ -2,6 +2,9 @@ import numpy as np
 import pandas as pd
 from itertools import combinations
 
+from networkx.algorithms import flow
+
+
 #Metric functions for analyzing trichotomous votes
 
 
@@ -42,8 +45,10 @@ def compute_cross_hamming(traditional_dict, tax_dict):
     ]
     results = {}
     for trad, tax in pairs:
-        if trad in traditional_dict: and tax in tax_dict:
-        results[f"{trad}_vs_{tax}"] = hamming_distance(traditional_dict[trad], tax_dict[tax])
+        if trad in traditional_dict and tax in tax_dict:
+            results[f"{trad}_vs_{tax}"] = hamming_distance(
+                traditional_dict[trad], tax_dict[tax]
+            )
 
     return results
 
@@ -86,7 +91,47 @@ def net_score_summary(net_scores, elected_committee):
 #Voter utility
 
 def compute_voter_utilities(vote_matrix, elected_committee, net_scores):
-    pass
+    #Per Voter Utility: sum of net scores of elected candidates the voter approved - sum of net scores of elected candidates the voter disapproved.
+    elected_set = [c for c in elected_committee if c in vote_matrix.columns]
+    if not elected_set:
+        n = len(vote_matrix)
+        return pd.Series(np.zeros(n), index=vote_matrix.index)
+
+    votes_on_elected = vote_matrix[elected_set]
+    weights = net_scores[elected_set].values
+
+    # utility[v] = sum over elected c of: vote[v,c] * net_score[c]
+    utilities = votes_on_elected.values @ weights
+    return pd.Series(utilities, index=vote_matrix.index)
+
+def voter_utility_metrics(utilities):
+    #Aggreate voter utility statistics
+    n = len(utilities)
+    result = {
+        "mean_utility": round(float(utilities.mean()), 4),
+        "median_utility": round(float(utilities.median()), 4),
+        "n_zero_or_negative": int((utilities <= 0).sum()),
+        "frac_zero_or_negative": round(float((utilities <= 0).mean()), 4),
+        "n_negative": int((utilities < 0).sum()),
+        "frac_negative": round(float((utilities < 0).mean()), 4),
+        "gini_coefficient": round(_gini(utilities.values), 4),
+    }
+
+    return result
+
+def _gini(values):
+    #Gini coefficient for an array of values
+    arr = np.array(values, dtype=float)
+    shift = arr.min()
+    if shift < 0:
+        arr = arr - shift
+    if arr.sum() == 0:
+        return 0.0
+    arr = np.sort(arr)
+    n = len(arr)
+    index = np.arange(1, n+1)
+
+    return float((2 * (index * arr).sum()) / (n * arr.sum()) - (n + 1) / n)
 
 #Disapproval Metrics
 
