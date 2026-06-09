@@ -3,13 +3,12 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
+from matplotlib.colors import LinearSegmentedColormap
+from matplotlib.patches import Patch, Ellipse
 import seaborn as sns
-from fontTools.subset import subset
-from matplotlib.pyplot import title
-from scipy.spatial.transform import rotation
+
 
 #This file generates all metric visualizations for real-world and synthetic datasets
-
 #Configuration
 
 root_dir = r"C:\Users\paulc\Documents\bachelor-thesis"
@@ -95,7 +94,7 @@ fig, axes = plt.subplots(1, 2, figsize=(14, 5))
 for ax, col, title in zip(axes, ["elected_mean_net_score", "best_non_elected_score"], ["Mean Net Score - Elected Candidates", "Best Non-Elected Candidate Net Score"]):
     sub = rw.dropna(subset=[col])
     sub["rule"] = pd.Categorical(sub["rule"], categories=rule_order, ordered=True)
-    sns.boxplot(data=sub, x="rule", y=col, palette=rule_colors, ax=ax, order=rule_order)
+    sns.boxplot(data=sub, x="rule", y=col, hue="rule", palette=rule_colors, ax=ax, order=rule_order, legend=False)
     ax.set_title(title)
     ax.set_xlabel("Rule")
     ax.set_ylabel("Net Score")
@@ -158,7 +157,7 @@ save(fig, "rw5_trad_hamming.png")
 fig, ax = plt.subplots(figsize=(9, 5))
 sub = rw.dropna(subset=["avg_elected_disapprovals_per_voter"])
 sub["rule"] = pd.Categorical(sub["rule"], categories=rule_order, ordered=True)
-sns.boxplot(data=sub, x="rule", y="avg_elected_disapprovals_per_voter", palette=rule_colors, ax=ax, order=rule_order)
+sns.boxplot(data=sub, x="rule", y="avg_elected_disapprovals_per_voter", hue="rule", palette=rule_colors, ax=ax, order=rule_order, legend=False)
 ax.set_title("Disapproval Avoidance - Real World Datasets\n(Average Elected Candidates Disapproved per Voter)")
 ax.set_xlabel("Rule")
 ax.set_ylabel("Average Disapproved Elected Candidates per Voter")
@@ -170,13 +169,110 @@ save(fig, "rw6_disapproval_avoidance.png")
 fig, ax = plt.subplots(figsize=(9, 5))
 sub = rw.dropna(subset=["frac_negative"])
 sub["rule"] = pd.Categorical(sub["rule"], categories=rule_order, ordered=True)
-sns.boxplot(data=sub, x="rule", y="frac_negative", palette=rule_colors, ax=ax, order=rule_order)
+sns.boxplot(data=sub, x="rule", y="frac_negative", hue="rule", palette=rule_colors, ax=ax, order=rule_order, legend=False)
 ax.set_title("Fraction of Voters with Negative Utility - Real-World Data")
 ax.set_xlabel("Rule")
 ax.set_ylabel("Fraction of Voters")
 ax.yaxis.set_major_formatter(ticker.PercentFormatter(xmax=1))
 ax.set_xticklabels(ax.get_xticklabels(), rotation=30, ha="right")
 save(fig, "rw7_negative_utility.png")
+
+
+#8 Hamming heatmap
+hmap_rules = ["PAV", "SeqPhragmen", "MES", "TaxPhragmen", "TaxMES"]
+hmap_cmap = LinearSegmentedColormap.from_list("hamming", ["#ffffff", "#90CAF9", "#1565C0"], N=256)
+rw8_dir = os.path.join(plots_dir, "rw8_heatmaps")
+os.makedirs(rw8_dir, exist_ok=True)
+
+def build_mean_hamming(df_subset):
+    #Builds a 5x5 mean Hamming matrix from a metrics DataFrame
+    hmethods = {"Hamming_traditional", "Hamming_Traditional", "Cross-Hamming", "Cross_Hamming"}
+    hdf = df_subset[df_subset["method"].isin(hmethods)].dropna(subset=["hamming_distance"])
+    accum = {(a, b): [] for a in hmap_rules for b in hmap_rules}
+    for _, row in hdf.iterrows():
+        pair = row["rule"]; dist = row["hamming_distance"]
+        if "_vs_" not in pair:
+            continue
+        a, b = pair.split("_vs_", 1)
+        if a in hmap_rules and b in hmap_rules:
+            accum[(a, b)].append(dist)
+            accum[(b, a)].append(dist)
+    arr = np.full((len(hmap_rules), len(hmap_rules)), np.nan)
+    np.fill_diagonal(arr, 0.0)
+    mat = pd.DataFrame(arr, index=hmap_rules, columns=hmap_rules)
+    for (a, b), vals in accum.items():
+        if vals:
+            mat.loc[a, b] = np.mean(vals)
+
+    return mat
+
+def save_heatmap(mat, title, fname, directory=None):
+    fig, ax = plt.subplots(figsize=(6, 5))
+    sns.heatmap(
+        mat.astype(float), ax=ax, cmap=hmap_cmap,
+        annot=True, fmt=".1f", linewidths=0.5, linecolor="#e0e0e0",
+        vmin=0, cbar_kws={"label": "Hamming Distance"}, square=True,
+    )
+    ax.add_patch(plt.Rectangle((0, 0), 3, 3, fill=False, edgecolor="#4CAF50", lw=2, clip_on=False))
+    ax.add_patch(plt.Rectangle((3, 3), 2, 2, fill=False, edgecolor="#F44336", lw=2, clip_on=False))
+    ax.set_title(title, fontsize=10, pad=10)
+    ax.tick_params(axis="x", rotation=30)
+    ax.tick_params(axis="y", rotation=0)
+    ax.legend(
+        handles=[
+            Patch(facecolor="none", edgecolor="#4CAF50", lw=2, label="Within Traditional"),
+            Patch(facecolor="none", edgecolor="#F44336", lw=2, label="Within Tax"),
+        ],
+        loc="upper right", bbox_to_anchor=(1.0, -0.12), ncol=2, fontsize=8, frameon=False,
+    )
+    out_dir = directory if directory is not None else plots_dir
+    path = os.path.join(out_dir, fname)
+    fig.savefig(path, dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    print(f"  Saved: {fname}")
+
+#Per dataset heatmaps
+for ds in sorted(rw_all["dataset"].dropna().unique()):
+    mat = build_mean_hamming(rw_all[rw_all["dataset"] == ds])
+    slug = ds[:30].replace("/", "-").replace(" ", "-")
+    save_heatmap(mat, f"Hamming distances - {shorten(ds)}", f"rw8_hamming_{slug}.png", directory=rw8_dir)
+
+#Summary heatmap (mean across all datasets)
+save_heatmap(build_mean_hamming(rw_all), "Mean Hamming Distances - all_real_world datasets", "rw8_hamming_MEAN.png")
+
+
+#9 Committee size vs disapproval avoidance scatter
+fig, ax = plt.subplots(figsize=(8, 6))
+sc = rw[["rule", "dataset_short", "committee_size", "avg_elected_disapprovals_per_voter"]].dropna()
+for rule in rule_order:
+    sub = sc[sc["rule"] == rule]
+    ax.scatter(sub["committee_size"], sub["avg_elected_disapprovals_per_voter"],label=rule, color=rule_colors[rule], s=70, alpha=0.85, edgecolors="white", linewidths=0.5, zorder=3)
+#Cluster mean diamonds
+for rule in rule_order:
+    sub = sc[sc["rule"] == rule]
+    ax.scatter(sub["committee_size"].mean(), sub["avg_elected_disapprovals_per_voter"].mean(), color=rule_colors[rule], s=200, marker="D", edgecolors="black", linewidths=1.0, zorder=5)
+#Cluster Ellipses
+for cdf, label, col in [
+    (sc[sc["rule"].isin(trad_rules)], "Traditional rules", "#2196F3"),
+    (sc[sc["rule"].isin(tax_rules)],  "Tax rules",         "#F44336"),
+]:
+    cx = cdf["committee_size"].mean()
+    cy = cdf["avg_elected_disapprovals_per_voter"].mean()
+    sx = cdf["committee_size"].std() * 2 + 0.5
+    sy = cdf["avg_elected_disapprovals_per_voter"].std() * 1.5 + 0.05
+    ax.add_patch(Ellipse((cx, cy), width=sx * 2, height=sy * 2, facecolor=col, alpha=0.07,
+                         edgecolor=col, linestyle="--", linewidth=1.2, zorder=1))
+    text_x = cx - 1.5 if col == "#2196F3" else cx
+    ax.text(text_x, cy + sy + 0.03, label, ha="center", va="bottom", fontsize=9, color=col, style="italic")
+ax.axvline(x=10, color="gray", linestyle=":", linewidth=1, alpha=0.6)
+ax.text(10.05, ax.get_ylim()[1] * 0.98, "k = 10", fontsize=8, color="gray", va="top")
+ax.set_xlabel("Committee Size", fontsize=11)
+ax.set_ylabel("Average Disapprovals per voter in elected committees", fontsize=11)
+ax.set_title("Committee size vs disapproval avoidance - real world datasets", fontsize=11)
+ax.legend(title="Rule", bbox_to_anchor=(1.01, 1), loc="upper left", fontsize=9)
+ax.set_xlim(left=0)
+ax.set_ylim(bottom=0)
+save(fig, "rw9_size_vs_avoidance.png")
 
 
 
@@ -269,7 +365,7 @@ fig, axes5 = plt.subplots(1, len(pd_values), figsize=(4 * len(pd_values), 5), sh
 for ax, p in zip(axes5, pd_values):
     sub = syn[syn["p_disapprove"] == p].dropna(subset=["mean_utility"])
     sub["rule"] = pd.Categorical(sub["rule"], categories=rule_order, ordered=True)
-    sns.boxplot(data=sub, x="rule", y="mean_utility", palette=rule_colors, ax=ax, order=rule_order)
+    sns.boxplot(data=sub, x="rule", y="mean_utility", hue="rule", palette=rule_colors, ax=ax, order=rule_order, legend=False)
     ax.set_title(f"pd={p}")
     ax.set_xlabel("")
     ax.set_ylabel("Mean Voter Utility" if ax == axes5[0] else "")
@@ -345,6 +441,62 @@ fig.legend(handles=handles, title="Rule", bbox_to_anchor=(1.01, 0.5), loc="cente
 fig.suptitle("Mean Elected Net Score vs. p_disapprove by Model - Synthetic Data", fontsize=13)
 save(fig, "syn9_net_score_vs_pd_by_model.png")
 
+
+#10 Hamming heatmaps faceted by p-disapprove
+p_vals = sorted(syn_all["p_disapprove"].dropna().unique())
+syn_mats = {}
+all_vals = []
+for p in p_vals:
+    m = build_mean_hamming(syn_all[syn_all["p_disapprove"] == p])
+    syn_mats[p] = m
+    all_vals.extend(m.values[~np.isnan(m.values) & (m.values > 0)])
+vmax = max(all_vals) if all_vals else 10
+
+fig, axes = plt.subplots(1, len(p_vals), figsize=(5 * len(p_vals), 5), sharey=True)
+for ax, p in zip(axes, p_vals):
+    m = syn_mats[p]
+    sns.heatmap(
+        m.astype(float), ax = ax, cmap=hmap_cmap,
+        annot=True, fmt=".1f", linewidths=0.5, linecolor="#e0e0e0",
+        vmin = 0, vmax = vmax,
+        cbar=(p == p_vals[-1]), cbar_kws={"label": "Mean Hamming Distance"},
+        square=True,
+    )
+    ax.add_patch(plt.Rectangle((0, 0), 3, 3, fill=False, edgecolor="#4CAF50", lw=2, clip_on=False))
+    ax.add_patch(plt.Rectangle((3, 3), 2, 2, fill=False, edgecolor="#F44336", lw=2, clip_on=False))
+    ax.set_title(f"p_d = {p}", fontsize=10)
+    ax.tick_params(axis="x", rotation=30)
+    ax.tick_params(axis="y", rotation=0)
+    if ax != axes[0]:
+        ax.set_ylabel("")
+fig.suptitle("Mean Hamming distances by p_disapprove - Synthetic Data", fontsize=12, y=1.02)
+fig.legend(
+    handles=[
+        Patch(facecolor="none", edgecolor="#4CAF50", lw=2, label="Within Traditional"),
+        Patch(facecolor="none", edgecolor="#F44336", lw=2, label="Within Tax"),
+    ],
+    loc="lower center", ncol=2, fontsize=9, frameon=False, bbox_to_anchor=(0.5, -0.05),
+)
+save(fig, "syn10_hamming_heatmaps_by_p.png")
+
+
+#11 Committee Size vs disapproval avoidance, faceted by p_disapprove
+sc_s = syn[["rule", "dataset", "p_disapprove", "committee_size", "avg_elected_disapprovals_per_voter"]].dropna()
+fig, axes = plt.subplots(1, len(p_vals), figsize=(4 * len(p_vals), 5), sharey=True, sharex=True)
+for ax, p in zip(axes, p_vals):
+    sub = sc_s[sc_s["p_disapprove"] == p]
+    for rule in rule_order:
+        r = sub[sub["rule"] == rule]
+        ax.scatter(r["committee_size"], r["avg_elected_disapprovals_per_voter"], label=rule, color=rule_colors[rule], s=55, alpha=0.8, edgecolors="white", linewidths=0.4)
+    ax.set_title(f"p_d = {p}", fontsize=10)
+    ax.set_xlabel("Committee Size", fontsize=9)
+    ax.axvline(x= 10, color="gray", linestyle=":", linewidth=0.8, alpha=0.5)
+axes[0].set_ylabel("Average Elected Disapprovals per Voter", fontsize=9)
+handles, labels = axes[0].get_legend_handles_labels()
+fig.legend(handles, labels, title="Rule", bbox_to_anchor=(1.01, 0.9), loc="upper left", fontsize=9)
+fig.suptitle("Committee Size vs Disapproval Avoidance - Synthetic Data", fontsize=12)
+plt.tight_layout()
+save(fig, "syn11_size_vs_avoidance_by_p.png")
 
 
 print(f"\nAll plots saved to: {plots_dir}")

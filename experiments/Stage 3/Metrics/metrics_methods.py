@@ -37,20 +37,25 @@ def compute_hamming_matrix(committees_dict):
 
 
 def compute_cross_hamming(traditional_dict, tax_dict):
-    #Hamming distances between natural counterpart methods
+    #Hamming distances between all traditional-tax pairs and within tax pairs
     pairs = [
         ("PAV", "TaxMES"),
+        ("PAV", "TaxPhragmen"),
         ("SeqPhragmen", "TaxPhragmen"),
+        ("SeqPhragmen", "TaxMES"),
         ("MES", "TaxMES"),
+        ("MES", "TaxPhragmen"),
+        ("TaxPhragmen", "TaxMES"),  # within-tax
     ]
     results = {}
-    for trad, tax in pairs:
-        if trad in traditional_dict and tax in tax_dict:
-            results[f"{trad}_vs_{tax}"] = hamming_distance(
-                traditional_dict[trad], tax_dict[tax]
-            )
+    for a, b in pairs:
+        a_committee = traditional_dict.get(a) or tax_dict.get(a)
+        b_committee = traditional_dict.get(b) or tax_dict.get(b)
+        if a_committee is not None and b_committee is not None:
+            results[f"{a}_vs_{b}"] = hamming_distance(a_committee, b_committee)
 
     return results
+
 
 #Net Score
 

@@ -1,0 +1,1201 @@
+======================================================================
+METRICS OVERVIEW — REAL-WORLD DATASETS
+Datasets: 20 | Rules: 5 | Total rows: 100
+======================================================================
+
+--- Per-rule summary (mean ± std | min | median | max) ---
+
+Rule: PAV  (n=20 datasets)
+--------------------------------------------------
+  committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+  elected_mean_net_score                     mean=438.7000  std=662.2115  min=13.9000  median=235.0500  max=3062.5000
+  elected_min_net_score                      mean=189.9000  std=354.9488  min=-212.0000  median=91.0000  max=1482.0000
+  elected_max_net_score                      mean=608.9000  std=916.6022  min=20.0000  median=297.0000  max=4156.0000
+  non_elected_mean_net_score                 mean=32.7203  std=28.5528  min=-8.6500  median=28.0401  max=80.7219
+  best_non_elected_score                     mean=507.9000  std=737.4835  min=14.0000  median=240.5000  max=3300.0000
+  mean_utility                               mean=1656.9413  std=3388.2379  min=41.1239  median=1062.4046  max=15869.0964
+  median_utility                             mean=1597.6500  std=3759.1044  min=0.0000  median=737.2500  max=17437.0000
+  frac_zero_or_negative                      mean=0.2654  std=0.1297  min=0.0385  median=0.2656  max=0.5192
+  frac_negative                              mean=0.0808  std=0.0622  min=0.0000  median=0.0641  max=0.2432
+  gini_coefficient                           mean=0.1873  std=0.0540  min=0.1049  median=0.1749  max=0.2982
+  avg_disapprovals_per_voter                 mean=12.0889  std=6.7945  min=2.7198  median=9.9707  max=25.8838
+  avg_elected_disapprovals_per_voter         mean=0.7872  std=0.3740  min=0.2455  median=0.7678  max=1.7658
+
+Rule: SeqPhragmen  (n=20 datasets)
+--------------------------------------------------
+  committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+  elected_mean_net_score                     mean=426.9550  std=616.0759  min=14.7000  median=233.1000  max=2837.7000
+  elected_min_net_score                      mean=156.5000  std=247.6406  min=-212.0000  median=91.0000  max=857.0000
+  elected_max_net_score                      mean=608.9000  std=916.6022  min=20.0000  median=297.0000  max=4156.0000
+  non_elected_mean_net_score                 mean=32.8813  std=28.4664  min=-6.3000  median=28.0984  max=80.7219
+  best_non_elected_score                     mean=509.7500  std=736.4086  min=14.0000  median=244.5000  max=3300.0000
+  mean_utility                               mean=1586.4826  std=3076.3430  min=41.1239  median=1052.3664  max=14452.8814
+  median_utility                             mean=1527.5000  std=3435.9781  min=0.0000  median=722.7500  max=15982.0000
+  frac_zero_or_negative                      mean=0.2646  std=0.1316  min=0.0385  median=0.2736  max=0.5252
+  frac_negative                              mean=0.0799  std=0.0626  min=0.0000  median=0.0558  max=0.2432
+  gini_coefficient                           mean=0.1886  std=0.0567  min=0.0897  median=0.1746  max=0.2982
+  avg_disapprovals_per_voter                 mean=12.0889  std=6.7945  min=2.7198  median=9.9707  max=25.8838
+  avg_elected_disapprovals_per_voter         mean=0.8004  std=0.3672  min=0.2455  median=0.8643  max=1.7658
+
+Rule: MES  (n=20 datasets)
+--------------------------------------------------
+  committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+  elected_mean_net_score                     mean=430.6900  std=637.7996  min=14.8000  median=236.8000  max=2943.2000
+  elected_min_net_score                      mean=156.4000  std=247.7058  min=-212.0000  median=91.0000  max=857.0000
+  elected_max_net_score                      mean=608.9000  std=916.6022  min=20.0000  median=297.0000  max=4156.0000
+  non_elected_mean_net_score                 mean=32.8660  std=28.4451  min=-6.3000  median=28.0814  max=80.7219
+  best_non_elected_score                     mean=512.1500  std=736.5387  min=14.0000  median=240.0000  max=3300.0000
+  mean_utility                               mean=1623.6857  std=3267.4630  min=41.5959  median=1055.7364  max=15317.6492
+  median_utility                             mean=1567.8750  std=3598.5239  min=0.0000  median=722.7500  max=16712.0000
+  frac_zero_or_negative                      mean=0.2673  std=0.1327  min=0.0385  median=0.2772  max=0.5252
+  frac_negative                              mean=0.0816  std=0.0657  min=0.0000  median=0.0580  max=0.2463
+  gini_coefficient                           mean=0.1928  std=0.0609  min=0.0897  median=0.1771  max=0.3216
+  avg_disapprovals_per_voter                 mean=12.0889  std=6.7945  min=2.7198  median=9.9707  max=25.8838
+  avg_elected_disapprovals_per_voter         mean=0.7997  std=0.3762  min=0.2455  median=0.8464  max=1.7654
+
+Rule: TaxPhragmen  (n=20 datasets)
+--------------------------------------------------
+  committee_size                             mean=4.7500  std=1.8028  min=1.0000  median=5.0000  max=8.0000
+  elected_mean_net_score                     mean=554.0320  std=789.3551  min=17.2500  median=264.2500  max=3536.8333
+  elected_min_net_score                      mean=500.9000  std=700.0110  min=14.0000  median=233.0000  max=3105.0000
+  elected_max_net_score                      mean=609.9000  std=917.0483  min=20.0000  median=297.0000  max=4156.0000
+  non_elected_mean_net_score                 mean=35.9601  std=29.0800  min=-3.8372  median=31.6068  max=86.7927
+  best_non_elected_score                     mean=516.2500  std=746.6484  min=14.0000  median=242.0000  max=3356.0000
+  mean_utility                               mean=1150.8621  std=2585.8001  min=17.5251  median=738.4378  max=12054.2107
+  median_utility                             mean=1136.5500  std=2940.0612  min=0.0000  median=565.0000  max=13527.0000
+  frac_zero_or_negative                      mean=0.3534  std=0.2093  min=0.0385  median=0.3290  max=0.8285
+  frac_negative                              mean=0.0463  std=0.0284  min=0.0000  median=0.0385  max=0.0951
+  gini_coefficient                           mean=0.1933  std=0.0533  min=0.1358  median=0.1785  max=0.3265
+  avg_disapprovals_per_voter                 mean=12.0889  std=6.7945  min=2.7198  median=9.9707  max=25.8838
+  avg_elected_disapprovals_per_voter         mean=0.2018  std=0.1024  min=0.0379  median=0.1885  max=0.4231
+
+Rule: TaxMES  (n=20 datasets)
+--------------------------------------------------
+  committee_size                             mean=4.5500  std=1.8202  min=1.0000  median=4.5000  max=7.0000
+  elected_mean_net_score                     mean=560.2210  std=800.1554  min=17.7143  median=266.1667  max=3578.6667
+  elected_min_net_score                      mean=518.8000  std=745.8782  min=15.0000  median=233.5000  max=3314.0000
+  elected_max_net_score                      mean=609.9000  std=917.0483  min=20.0000  median=297.0000  max=4156.0000
+  non_elected_mean_net_score                 mean=36.1213  std=29.2477  min=-3.6744  median=31.5911  max=88.8196
+  best_non_elected_score                     mean=518.2500  std=742.1585  min=14.0000  median=239.5000  max=3300.0000
+  mean_utility                               mean=1138.4479  std=2647.5823  min=17.5251  median=611.5154  max=12312.0754
+  median_utility                             mean=1110.2750  std=3006.3483  min=0.0000  median=492.5000  max=13778.0000
+  frac_zero_or_negative                      mean=0.3625  std=0.2142  min=0.0385  median=0.3403  max=0.8285
+  frac_negative                              mean=0.0457  std=0.0306  min=0.0000  median=0.0403  max=0.1036
+  gini_coefficient                           mean=0.1942  std=0.0522  min=0.1356  median=0.1777  max=0.3248
+  avg_disapprovals_per_voter                 mean=12.0889  std=6.7945  min=2.7198  median=9.9707  max=25.8838
+  avg_elected_disapprovals_per_voter         mean=0.2002  std=0.1123  min=0.0379  median=0.1867  max=0.4231
+
+
+--- Per-dataset summary (all rules combined) ---
+
+Dataset: 15-per-hour-seattle
+--------------------------------------------------
+  committee_size                             mean=6.8000  min=2.0000  max=10.0000
+  elected_mean_net_score                     mean=42.5800  min=34.5000  max=54.5000
+  elected_min_net_score                      mean=26.4000  min=8.0000  max=54.0000
+  elected_max_net_score                      mean=55.0000  min=55.0000  max=55.0000
+  non_elected_mean_net_score                 mean=3.7381  min=1.9773  max=6.2885
+  best_non_elected_score                     mean=35.4000  min=31.0000  max=42.0000
+  mean_utility                               mean=31.7788  min=17.5251  max=41.5959
+  median_utility                             mean=12.0000  min=0.0000  max=22.0000
+  frac_zero_or_negative                      mean=0.5186  min=0.4159  max=0.6637
+  frac_negative                              mean=0.1310  min=0.0914  max=0.1652
+  gini_coefficient                           mean=0.1605  min=0.1361  max=0.1876
+  avg_disapprovals_per_voter                 mean=2.7198  min=2.7198  max=2.7198
+  avg_elected_disapprovals_per_voter         mean=0.5705  min=0.1475  max=0.8584
+
+Dataset: american-assembly.bowling-green
+--------------------------------------------------
+  committee_size                             mean=7.6000  min=4.0000  max=10.0000
+  elected_mean_net_score                     mean=527.6800  min=481.8000  max=607.0000
+  elected_min_net_score                      mean=328.0000  min=188.0000  max=580.0000
+  elected_max_net_score                      mean=636.0000  min=636.0000  max=636.0000
+  non_elected_mean_net_score                 mean=75.7053  min=74.8160  max=77.0863
+  best_non_elected_score                     mean=580.0000  min=580.0000  max=580.0000
+  mean_utility                               mean=1023.4570  min=682.4431  max=1235.9655
+  median_utility                             mean=672.4000  min=496.0000  max=762.0000
+  frac_zero_or_negative                      mean=0.3837  min=0.3432  max=0.4530
+  frac_negative                              mean=0.0639  min=0.0315  max=0.0812
+  gini_coefficient                           mean=0.1685  min=0.1503  max=0.1802
+  avg_disapprovals_per_voter                 mean=19.0286  min=19.0286  max=19.0286
+  avg_elected_disapprovals_per_voter         mean=0.5148  min=0.1029  max=0.7661
+
+Dataset: austria-climate.2vkxcncppn.2022-07-07
+--------------------------------------------------
+  committee_size                             mean=7.6000  min=4.0000  max=10.0000
+  elected_mean_net_score                     mean=561.6800  min=543.4000  max=588.2500
+  elected_min_net_score                      mean=481.4000  min=431.0000  max=557.0000
+  elected_max_net_score                      mean=604.0000  min=604.0000  max=604.0000
+  non_elected_mean_net_score                 mean=43.4234  min=42.3090  max=45.0705
+  best_non_elected_score                     mean=588.4000  min=584.0000  max=597.0000
+  mean_utility                               mean=1337.1937  min=786.2978  max=1714.0199
+  median_utility                             mean=1159.6000  min=595.0000  max=1536.0000
+  frac_zero_or_negative                      mean=0.3080  min=0.2745  max=0.3599
+  frac_negative                              mean=0.1093  min=0.0888  max=0.1190
+  gini_coefficient                           mean=0.1746  min=0.1675  max=0.1893
+  avg_disapprovals_per_voter                 mean=13.3274  min=13.3274  max=13.3274
+  avg_elected_disapprovals_per_voter         mean=0.6487  min=0.2956  max=0.8702
+
+Dataset: austria-climate.5twd2jsnkf.2022-08-08
+--------------------------------------------------
+  committee_size                             mean=8.0000  min=5.0000  max=10.0000
+  elected_mean_net_score                     mean=408.6600  min=391.9000  max=431.4000
+  elected_min_net_score                      mean=334.6000  min=293.0000  max=397.0000
+  elected_max_net_score                      mean=467.0000  min=467.0000  max=467.0000
+  non_elected_mean_net_score                 mean=50.0992  min=48.8164  max=51.9323
+  best_non_elected_score                     mean=427.2000  min=419.0000  max=431.0000
+  mean_utility                               mean=1181.4663  min=819.0896  max=1442.2769
+  median_utility                             mean=850.5000  min=487.0000  max=1091.0000
+  frac_zero_or_negative                      mean=0.2812  min=0.2491  max=0.3324
+  frac_negative                              mean=0.0799  min=0.0466  max=0.1013
+  gini_coefficient                           mean=0.1716  min=0.1679  max=0.1747
+  avg_disapprovals_per_voter                 mean=8.2643  min=8.2643  max=8.2643
+  avg_elected_disapprovals_per_voter         mean=0.4769  min=0.1855  max=0.6837
+
+Dataset: austria-climate.5tzfrp5eaa.2022-07-07
+--------------------------------------------------
+  committee_size                             mean=7.2000  min=3.0000  max=10.0000
+  elected_mean_net_score                     mean=534.1200  min=362.6000  max=788.0000
+  elected_min_net_score                      mean=234.8000  min=-122.0000  max=770.0000
+  elected_max_net_score                      mean=799.0000  min=799.0000  max=799.0000
+  non_elected_mean_net_score                 mean=31.8680  min=31.6635  max=32.1667
+  best_non_elected_score                     mean=763.4000  min=716.0000  max=795.0000
+  mean_utility                               mean=648.7409  min=593.0382  max=687.4055
+  median_utility                             mean=262.8000  min=0.0000  max=438.0000
+  frac_zero_or_negative                      mean=0.4657  min=0.4118  max=0.5439
+  frac_negative                              mean=0.1743  min=0.0694  max=0.2463
+  gini_coefficient                           mean=0.1933  min=0.1739  max=0.2064
+  avg_disapprovals_per_voter                 mean=25.8838  min=25.8838  max=25.8838
+  avg_elected_disapprovals_per_voter         mean=1.1143  min=0.1372  max=1.7658
+
+Dataset: austria-climate.7z7ejpbmv5.2022-08-08
+--------------------------------------------------
+  committee_size                             mean=7.8000  min=4.0000  max=10.0000
+  elected_mean_net_score                     mean=456.7800  min=399.2000  max=522.5000
+  elected_min_net_score                      mean=253.0000  min=95.0000  max=510.0000
+  elected_max_net_score                      mean=550.0000  min=550.0000  max=550.0000
+  non_elected_mean_net_score                 mean=40.5912  min=39.3777  max=42.5486
+  best_non_elected_score                     mean=476.8000  min=458.0000  max=518.0000
+  mean_utility                               mean=1082.4412  min=727.2575  max=1314.8709
+  median_utility                             mean=839.6000  min=550.0000  max=1060.0000
+  frac_zero_or_negative                      mean=0.3013  min=0.2741  max=0.3473
+  frac_negative                              mean=0.1234  min=0.0951  max=0.1524
+  gini_coefficient                           mean=0.1720  min=0.1651  max=0.1770
+  avg_disapprovals_per_voter                 mean=9.7325  min=9.7325  max=9.7325
+  avg_elected_disapprovals_per_voter         mean=0.8137  min=0.2941  max=1.2395
+
+Dataset: austria-climate.9xnndurbfm.2022-07-07
+--------------------------------------------------
+  committee_size                             mean=7.6000  min=4.0000  max=10.0000
+  elected_mean_net_score                     mean=854.6600  min=794.6000  max=946.7500
+  elected_min_net_score                      mean=648.4000  min=532.0000  max=823.0000
+  elected_max_net_score                      mean=996.0000  min=988.0000  max=1008.0000
+  non_elected_mean_net_score                 mean=81.7392  min=80.7219  max=83.2707
+  best_non_elected_score                     mean=996.8000  min=972.0000  max=1008.0000
+  mean_utility                               mean=1477.3037  min=988.7171  max=1800.1372
+  median_utility                             mean=1144.6000  min=823.0000  max=1359.0000
+  frac_zero_or_negative                      mean=0.3417  min=0.3034  max=0.4098
+  frac_negative                              mean=0.1074  min=0.0794  max=0.1228
+  gini_coefficient                           mean=0.1541  min=0.1518  max=0.1629
+  avg_disapprovals_per_voter                 mean=10.5940  min=10.5940  max=10.5940
+  avg_elected_disapprovals_per_voter         mean=0.6245  min=0.2414  max=0.8731
+
+Dataset: bg2050-volunteers
+--------------------------------------------------
+  committee_size                             mean=7.0000  min=2.0000  max=10.0000
+  elected_mean_net_score                     mean=1095.0333  min=836.0000  max=1503.5000
+  elected_min_net_score                      mean=440.8000  min=-212.0000  max=1456.0000
+  elected_max_net_score                      mean=1551.0000  min=1551.0000  max=1551.0000
+  non_elected_mean_net_score                 mean=61.1692  min=60.9419  max=61.5996
+  best_non_elected_score                     mean=1244.4000  min=1193.0000  max=1384.0000
+  mean_utility                               mean=1068.5283  min=573.8698  max=1317.3363
+  median_utility                             mean=384.0000  min=0.0000  max=640.0000
+  frac_zero_or_negative                      mean=0.4901  min=0.4120  max=0.6434
+  frac_negative                              mean=0.1131  min=0.0586  max=0.1435
+  gini_coefficient                           mean=0.1253  min=0.1148  max=0.1434
+  avg_disapprovals_per_voter                 mean=15.0724  min=15.0724  max=15.0724
+  avg_elected_disapprovals_per_voter         mean=0.6616  min=0.0921  max=1.0197
+
+Dataset: brexit-consensus
+--------------------------------------------------
+  committee_size                             mean=8.8000  min=7.0000  max=10.0000
+  elected_mean_net_score                     mean=112.0943  min=98.5000  max=128.2857
+  elected_min_net_score                      mean=29.2000  min=-21.0000  max=80.0000
+  elected_max_net_score                      mean=152.0000  min=152.0000  max=152.0000
+  non_elected_mean_net_score                 mean=-5.7523  min=-8.6500  max=-3.6744
+  best_non_elected_score                     mean=70.6000  min=54.0000  max=80.0000
+  mean_utility                               mean=607.0804  min=577.5147  max=641.0147
+  median_utility                             mean=684.4000  min=643.5000  max=712.5000
+  frac_zero_or_negative                      mean=0.0715  min=0.0686  max=0.0735
+  frac_negative                              mean=0.0186  min=0.0147  max=0.0196
+  gini_coefficient                           mean=0.1746  min=0.1625  max=0.1795
+  avg_disapprovals_per_voter                 mean=9.5686  min=9.5686  max=9.5686
+  avg_elected_disapprovals_per_voter         mean=0.7088  min=0.2451  max=1.0735
+
+Dataset: canadian-electoral-reform
+--------------------------------------------------
+  committee_size                             mean=7.2000  min=3.0000  max=10.0000
+  elected_mean_net_score                     mean=107.4400  min=102.4000  max=115.0000
+  elected_min_net_score                      mean=92.0000  min=80.0000  max=110.0000
+  elected_max_net_score                      mean=123.0000  min=123.0000  max=123.0000
+  non_elected_mean_net_score                 mean=21.6806  min=20.4268  max=23.5614
+  best_non_elected_score                     mean=103.2000  min=100.0000  max=108.0000
+  mean_utility                               mean=177.7705  min=88.7790  max=237.0982
+  median_utility                             mean=64.2000  min=0.0000  max=107.0000
+  frac_zero_or_negative                      mean=0.4509  min=0.3750  max=0.5647
+  frac_negative                              mean=0.0259  min=0.0179  max=0.0312
+  gini_coefficient                           mean=0.2995  min=0.2982  max=0.3015
+  avg_disapprovals_per_voter                 mean=6.3192  min=6.3192  max=6.3192
+  avg_elected_disapprovals_per_voter         mean=0.1625  min=0.0379  max=0.2455
+
+Dataset: football-concussions
+--------------------------------------------------
+  committee_size                             mean=6.4000  min=1.0000  max=10.0000
+  elected_mean_net_score                     mean=138.5600  min=101.3000  max=190.0000
+  elected_min_net_score                      mean=70.6000  min=-9.0000  max=190.0000
+  elected_max_net_score                      mean=190.0000  min=190.0000  max=190.0000
+  non_elected_mean_net_score                 mean=5.8385  min=4.5417  max=7.4747
+  best_non_elected_score                     mean=153.8000  min=123.0000  max=182.0000
+  mean_utility                               mean=67.8244  min=24.2771  max=103.3141
+  median_utility                             mean=0.0000  min=0.0000  max=0.0000
+  frac_zero_or_negative                      mean=0.6453  min=0.5192  max=0.8285
+  frac_negative                              mean=0.1052  min=0.0437  max=0.1513
+  gini_coefficient                           mean=0.1221  min=0.0897  max=0.1630
+  avg_disapprovals_per_voter                 mean=2.8426  min=2.8426  max=2.8426
+  avg_elected_disapprovals_per_voter         mean=0.4230  min=0.0437  max=0.6947
+
+Dataset: london.youth.policing
+--------------------------------------------------
+  committee_size                             mean=9.0000  min=7.0000  max=10.0000
+  elected_mean_net_score                     mean=15.6729  min=13.9000  max=17.7143
+  elected_min_net_score                      mean=7.6000  min=2.0000  max=15.0000
+  elected_max_net_score                      mean=20.0000  min=20.0000  max=20.0000
+  non_elected_mean_net_score                 mean=2.2439  min=2.0000  max=2.6207
+  best_non_elected_score                     mean=14.0000  min=14.0000  max=14.0000
+  mean_utility                               mean=91.1539  min=85.3846  max=95.5385
+  median_utility                             mean=108.6000  min=99.0000  max=115.5000
+  frac_zero_or_negative                      mean=0.0385  min=0.0385  max=0.0385
+  frac_negative                              mean=0.0385  min=0.0385  max=0.0385
+  gini_coefficient                           mean=0.2249  min=0.2216  max=0.2277
+  avg_disapprovals_per_voter                 mean=7.3846  min=7.3846  max=7.3846
+  avg_elected_disapprovals_per_voter         mean=0.9154  min=0.4231  max=1.3846
+
+Dataset: march-on.operation-marchin-orders
+--------------------------------------------------
+  committee_size                             mean=8.4000  min=6.0000  max=10.0000
+  elected_mean_net_score                     mean=3191.7800  min=2837.7000  max=3578.6667
+  elected_min_net_score                      mean=1923.0000  min=857.0000  max=3314.0000
+  elected_max_net_score                      mean=4156.0000  min=4156.0000  max=4156.0000
+  non_elected_mean_net_score                 mean=76.4374  min=74.4505  max=78.6761
+  best_non_elected_score                     mean=3311.2000  min=3300.0000  max=3356.0000
+  mean_utility                               mean=14001.1826  min=12054.2107  max=15869.0964
+  median_utility                             mean=15487.2000  min=13527.0000  max=17437.0000
+  frac_zero_or_negative                      mean=0.1640  min=0.1587  max=0.1713
+  frac_negative                              mean=0.0232  min=0.0215  max=0.0259
+  gini_coefficient                           mean=0.1327  min=0.1288  max=0.1358
+  avg_disapprovals_per_voter                 mean=22.4336  min=22.4336  max=22.4336
+  avg_elected_disapprovals_per_voter         mean=0.6159  min=0.2519  max=0.9707
+
+Dataset: scoop-hivemind.affordable-housing
+--------------------------------------------------
+  committee_size                             mean=8.0000  min=5.0000  max=10.0000
+  elected_mean_net_score                     mean=154.4400  min=146.4000  max=163.4000
+  elected_min_net_score                      mean=128.2000  min=105.0000  max=151.0000
+  elected_max_net_score                      mean=179.0000  min=179.0000  max=179.0000
+  non_elected_mean_net_score                 mean=14.4579  min=12.8839  max=16.7188
+  best_non_elected_score                     mean=140.4000  min=129.0000  max=154.0000
+  mean_utility                               mean=493.8320  min=351.6089  max=595.1837
+  median_utility                             mean=413.2000  min=320.0000  max=479.0000
+  frac_zero_or_negative                      mean=0.2940  min=0.2572  max=0.3333
+  frac_negative                              mean=0.0373  min=0.0341  max=0.0394
+  gini_coefficient                           mean=0.2342  min=0.2110  max=0.2531
+  avg_disapprovals_per_voter                 mean=11.9396  min=11.9396  max=11.9396
+  avg_elected_disapprovals_per_voter         mean=0.3827  min=0.1890  max=0.5276
+
+Dataset: scoop-hivemind.biodiversity
+--------------------------------------------------
+  committee_size                             mean=8.4000  min=6.0000  max=10.0000
+  elected_mean_net_score                     mean=276.3933  min=267.7000  max=288.0000
+  elected_min_net_score                      mean=246.4000  min=235.0000  max=264.0000
+  elected_max_net_score                      mean=306.0000  min=306.0000  max=306.0000
+  non_elected_mean_net_score                 mean=37.4614  min=36.2270  max=39.1299
+  best_non_elected_score                     mean=283.2000  min=277.0000  max=286.0000
+  mean_utility                               mean=1189.4623  min=906.8340  max=1414.0821
+  median_utility                             mean=1353.3000  min=1127.5000  max=1630.0000
+  frac_zero_or_negative                      mean=0.2247  min=0.1978  max=0.2631
+  frac_negative                              mean=0.0176  min=0.0112  max=0.0224
+  gini_coefficient                           mean=0.3007  min=0.2652  max=0.3265
+  avg_disapprovals_per_voter                 mean=10.2090  min=10.2090  max=10.2090
+  avg_elected_disapprovals_per_voter         mean=0.2630  min=0.0914  max=0.3955
+
+Dataset: scoop-hivemind.freshwater
+--------------------------------------------------
+  committee_size                             mean=8.8000  min=7.0000  max=10.0000
+  elected_mean_net_score                     mean=78.1514  min=76.3000  max=81.2857
+  elected_min_net_score                      mean=65.4000  min=57.0000  max=80.0000
+  elected_max_net_score                      mean=83.0000  min=83.0000  max=83.0000
+  non_elected_mean_net_score                 mean=10.0553  min=9.1286  max=11.4795
+  best_non_elected_score                     mean=77.8000  min=77.0000  max=81.0000
+  mean_utility                               mean=458.8616  min=388.6838  max=503.4103
+  median_utility                             mean=568.2000  min=483.0000  max=623.0000
+  frac_zero_or_negative                      mean=0.1043  min=0.0940  max=0.1197
+  frac_negative                              mean=0.0000  min=0.0000  max=0.0000
+  gini_coefficient                           mean=0.2895  min=0.2821  max=0.2942
+  avg_disapprovals_per_voter                 mean=9.2393  min=9.2393  max=9.2393
+  avg_elected_disapprovals_per_voter         mean=0.3162  min=0.1880  max=0.4017
+
+Dataset: scoop-hivemind.taxes
+--------------------------------------------------
+  committee_size                             mean=8.4000  min=6.0000  max=10.0000
+  elected_mean_net_score                     mean=185.2400  min=172.0000  max=203.5000
+  elected_min_net_score                      mean=123.4000  min=87.0000  max=178.0000
+  elected_max_net_score                      mean=232.0000  min=232.0000  max=232.0000
+  non_elected_mean_net_score                 mean=3.6591  min=2.2101  max=5.7746
+  best_non_elected_score                     mean=171.6000  min=170.0000  max=178.0000
+  mean_utility                               mean=876.5677  min=751.3982  max=965.4431
+  median_utility                             mean=1156.0000  min=1030.0000  max=1279.0000
+  frac_zero_or_negative                      mean=0.1988  min=0.1766  max=0.2216
+  frac_negative                              mean=0.0575  min=0.0299  max=0.0898
+  gini_coefficient                           mean=0.1736  min=0.1667  max=0.1798
+  avg_disapprovals_per_voter                 mean=19.5689  min=19.5689  max=19.5689
+  avg_elected_disapprovals_per_voter         mean=0.7132  min=0.2305  max=1.0988
+
+Dataset: scoop-hivemind.ubi
+--------------------------------------------------
+  committee_size                             mean=8.4000  min=6.0000  max=10.0000
+  elected_mean_net_score                     mean=137.0600  min=135.1000  max=139.6667
+  elected_min_net_score                      mean=128.6000  min=125.0000  max=135.0000
+  elected_max_net_score                      mean=145.0000  min=145.0000  max=145.0000
+  non_elected_mean_net_score                 mean=27.0992  min=24.4167  max=31.0469
+  best_non_elected_score                     mean=132.6000  min=128.0000  max=135.0000
+  mean_utility                               mean=671.0573  min=498.2564  max=789.5983
+  median_utility                             mean=935.0000  min=700.0000  max=1096.5000
+  frac_zero_or_negative                      mean=0.2145  min=0.1923  max=0.2436
+  frac_negative                              mean=0.0376  min=0.0342  max=0.0427
+  gini_coefficient                           mean=0.1920  min=0.1749  max=0.2036
+  avg_disapprovals_per_voter                 mean=7.5171  min=7.5171  max=7.5171
+  avg_elected_disapprovals_per_voter         mean=0.2701  min=0.1709  max=0.3419
+
+Dataset: ssis.land-bank-farmland.2rumnecbeh.2021-08-01
+--------------------------------------------------
+  committee_size                             mean=8.4000  min=6.0000  max=10.0000
+  elected_mean_net_score                     mean=217.7533  min=198.5000  max=244.3333
+  elected_min_net_score                      mean=72.8000  min=-14.0000  max=203.0000
+  elected_max_net_score                      mean=288.0000  min=288.0000  max=288.0000
+  non_elected_mean_net_score                 mean=20.2315  min=19.5124  max=21.1847
+  best_non_elected_score                     mean=199.4000  min=195.0000  max=203.0000
+  mean_utility                               mean=1054.1827  min=904.9703  max=1175.6535
+  median_utility                             mean=1177.8000  min=1042.0000  max=1274.0000
+  frac_zero_or_negative                      mean=0.1366  min=0.1312  max=0.1386
+  frac_negative                              mean=0.0441  min=0.0421  max=0.0470
+  gini_coefficient                           mean=0.2015  min=0.1784  max=0.2322
+  avg_disapprovals_per_voter                 mean=23.9406  min=23.9406  max=23.9406
+  avg_elected_disapprovals_per_voter         mean=0.7049  min=0.3193  max=0.9926
+
+Dataset: vtaiwan.uberx
+--------------------------------------------------
+  committee_size                             mean=7.4000  min=3.0000  max=10.0000
+  elected_mean_net_score                     mean=546.6133  min=500.8000  max=634.6667
+  elected_min_net_score                      mean=455.4000  min=399.0000  max=600.0000
+  elected_max_net_score                      mean=654.0000  min=654.0000  max=654.0000
+  non_elected_mean_net_score                 mean=80.4498  min=75.5455  max=88.8196
+  best_non_elected_score                     mean=487.0000  min=487.0000  max=487.0000
+  mean_utility                               mean=1085.7934  min=629.9927  max=1349.6814
+  median_utility                             mean=486.0000  min=0.0000  max=650.0000
+  frac_zero_or_negative                      mean=0.4199  min=0.3670  max=0.5169
+  frac_negative                              mean=0.0292  min=0.0219  max=0.0328
+  gini_coefficient                           mean=0.1596  min=0.1579  max=0.1650
+  avg_disapprovals_per_voter                 mean=6.1916  min=6.1916  max=6.1916
+  avg_elected_disapprovals_per_voter         mean=0.2568  min=0.0437  max=0.3811
+
+--- Hamming distance summary (real-world) ---
+
+  MES_vs_TaxMES                              mean=6.1500  std=2.2979  min=3.0000  median=6.0000  max=11.0000
+  MES_vs_TaxPhragmen                         mean=6.2500  std=2.0566  min=3.0000  median=6.0000  max=11.0000
+  PAV_vs_MES                                 mean=1.6000  std=1.3633  min=0.0000  median=2.0000  max=4.0000
+  PAV_vs_SeqPhragmen                         mean=1.2000  std=1.3333  min=0.0000  median=1.0000  max=4.0000
+  PAV_vs_TaxMES                              mean=6.1500  std=2.2082  min=3.0000  median=6.0000  max=11.0000
+  PAV_vs_TaxPhragmen                         mean=6.0500  std=2.1195  min=3.0000  median=6.0000  max=11.0000
+  SeqPhragmen_vs_MES                         mean=1.2000  std=1.3333  min=0.0000  median=1.0000  max=4.0000
+  SeqPhragmen_vs_TaxMES                      mean=6.2500  std=2.1526  min=3.0000  median=6.0000  max=11.0000
+  SeqPhragmen_vs_TaxPhragmen                 mean=6.1500  std=2.0664  min=3.0000  median=6.0000  max=11.0000
+  TaxPhragmen_vs_TaxMES                      mean=1.1000  std=0.8933  min=0.0000  median=1.0000  max=2.0000
+
+
+======================================================================
+METRICS OVERVIEW — SYNTHETIC DATASETS
+Datasets: 30 | p_disapprove levels: 5 | Rules: 5 | Total rows: 730
+======================================================================
+
+--- Per-rule summary across all p_disapprove and datasets ---
+
+Rule: PAV  (n=146)
+--------------------------------------------------
+  committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+  elected_mean_net_score                     mean=37.1699  std=28.9611  min=-7.0000  median=31.2000  max=93.4000
+  elected_min_net_score                      mean=26.3630  std=33.0191  min=-21.0000  median=14.5000  max=91.0000
+  elected_max_net_score                      mean=53.2740  std=27.2666  min=1.0000  median=55.5000  max=98.0000
+  non_elected_mean_net_score                 mean=16.7116  std=22.9867  min=-18.9000  median=9.8000  max=67.7000
+  best_non_elected_score                     mean=25.8425  std=27.9849  min=-13.0000  median=16.0000  max=91.0000
+  mean_utility                               mean=242.6252  std=252.3435  min=0.9600  median=138.7450  max=872.6800
+  median_utility                             mean=248.7329  std=257.2132  min=0.0000  median=153.5000  max=843.0000
+  frac_zero_or_negative                      mean=0.1039  std=0.1319  min=0.0000  median=0.0400  max=0.5200
+  frac_negative                              mean=0.0736  std=0.1048  min=0.0000  median=0.0200  max=0.3900
+  gini_coefficient                           mean=0.1858  std=0.0700  min=0.0395  median=0.1895  max=0.3612
+  avg_disapprovals_per_voter                 mean=1.3734  std=1.0987  min=0.0200  median=1.0150  max=3.7500
+  avg_elected_disapprovals_per_voter         mean=0.5865  std=0.5156  min=0.0000  median=0.4250  max=1.9000
+
+Rule: SeqPhragmen  (n=146)
+--------------------------------------------------
+  committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+  elected_mean_net_score                     mean=37.1534  std=28.9218  min=-7.0000  median=31.2500  max=93.3000
+  elected_min_net_score                      mean=26.2808  std=32.8545  min=-21.0000  median=14.0000  max=91.0000
+  elected_max_net_score                      mean=53.2740  std=27.2666  min=1.0000  median=55.5000  max=98.0000
+  non_elected_mean_net_score                 mean=16.7281  std=23.0324  min=-19.3000  median=10.0000  max=67.8000
+  best_non_elected_score                     mean=25.7671  std=28.2423  min=-15.0000  median=16.0000  max=92.0000
+  mean_utility                               mean=242.2779  std=252.1037  min=1.0900  median=138.7450  max=870.8500
+  median_utility                             mean=247.9726  std=256.7662  min=0.0000  median=153.5000  max=842.0000
+  frac_zero_or_negative                      mean=0.1067  std=0.1362  min=0.0000  median=0.0400  max=0.5400
+  frac_negative                              mean=0.0740  std=0.1086  min=0.0000  median=0.0150  max=0.4200
+  gini_coefficient                           mean=0.1876  std=0.0718  min=0.0398  median=0.1943  max=0.3698
+  avg_disapprovals_per_voter                 mean=1.3734  std=1.0987  min=0.0200  median=1.0150  max=3.7500
+  avg_elected_disapprovals_per_voter         mean=0.5844  std=0.5130  min=0.0000  median=0.4200  max=1.8200
+
+Rule: MES  (n=146)
+--------------------------------------------------
+  committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+  elected_mean_net_score                     mean=37.1267  std=28.9292  min=-7.0000  median=30.9500  max=93.4000
+  elected_min_net_score                      mean=25.9178  std=32.6430  min=-21.0000  median=14.0000  max=91.0000
+  elected_max_net_score                      mean=53.2740  std=27.2666  min=1.0000  median=55.5000  max=98.0000
+  non_elected_mean_net_score                 mean=16.7548  std=23.0354  min=-19.3000  median=9.8500  max=67.7000
+  best_non_elected_score                     mean=25.7945  std=27.9928  min=-15.0000  median=16.0000  max=91.0000
+  mean_utility                               mean=242.2353  std=251.9347  min=0.9600  median=139.3850  max=872.6800
+  median_utility                             mean=247.8288  std=256.4653  min=0.0000  median=153.5000  max=843.0000
+  frac_zero_or_negative                      mean=0.1047  std=0.1323  min=0.0000  median=0.0450  max=0.5200
+  frac_negative                              mean=0.0733  std=0.1053  min=0.0000  median=0.0150  max=0.3900
+  gini_coefficient                           mean=0.1846  std=0.0707  min=0.0390  median=0.1885  max=0.3612
+  avg_disapprovals_per_voter                 mean=1.3734  std=1.0987  min=0.0200  median=1.0150  max=3.7500
+  avg_elected_disapprovals_per_voter         mean=0.5868  std=0.5166  min=0.0000  median=0.4250  max=1.9000
+
+Rule: TaxPhragmen  (n=146)
+--------------------------------------------------
+  committee_size                             mean=5.3493  std=3.0071  min=0.0000  median=6.0000  max=9.0000
+  elected_mean_net_score                     mean=51.7372  std=24.5795  min=10.0000  median=51.0000  max=93.5556
+  elected_min_net_score                      mean=47.3504  std=24.8068  min=10.0000  median=44.0000  max=91.0000
+  elected_max_net_score                      mean=56.4307  std=25.0842  min=10.0000  median=57.0000  max=98.0000
+  non_elected_mean_net_score                 mean=18.9273  std=22.7682  min=-17.5556  median=12.5333  max=68.4545
+  best_non_elected_score                     mean=32.5959  std=29.3217  min=-9.0000  median=20.0000  max=92.0000
+  mean_utility                               mean=215.7620  std=231.4197  min=0.0000  median=118.0450  max=788.0400
+  median_utility                             mean=223.7021  std=239.7320  min=0.0000  median=145.7500  max=842.0000
+  frac_zero_or_negative                      mean=0.2139  std=0.3013  min=0.0000  median=0.0650  max=1.0000
+  frac_negative                              mean=0.0360  std=0.0545  min=0.0000  median=0.0100  max=0.2300
+  gini_coefficient                           mean=0.1727  std=0.0882  min=0.0000  median=0.1817  max=0.5380
+  avg_disapprovals_per_voter                 mean=1.3734  std=1.0987  min=0.0200  median=1.0150  max=3.7500
+  avg_elected_disapprovals_per_voter         mean=0.1681  std=0.1644  min=0.0000  median=0.1200  max=0.6600
+
+Rule: TaxMES  (n=146)
+--------------------------------------------------
+  committee_size                             mean=5.3356  std=3.0064  min=0.0000  median=6.0000  max=9.0000
+  elected_mean_net_score                     mean=51.7818  std=24.5849  min=10.0000  median=52.0000  max=93.6667
+  elected_min_net_score                      mean=47.3650  std=24.8466  min=10.0000  median=44.0000  max=92.0000
+  elected_max_net_score                      mean=56.4307  std=25.0842  min=10.0000  median=57.0000  max=98.0000
+  non_elected_mean_net_score                 mean=18.9191  std=22.7561  min=-17.5556  median=12.5000  max=68.1818
+  best_non_elected_score                     mean=32.4589  std=29.1579  min=-9.0000  median=20.0000  max=91.0000
+  mean_utility                               mean=215.6508  std=231.4217  min=0.0000  median=118.0450  max=789.8700
+  median_utility                             mean=225.2500  std=241.3508  min=0.0000  median=145.5000  max=843.0000
+  frac_zero_or_negative                      mean=0.2155  std=0.3015  min=0.0000  median=0.0650  max=1.0000
+  frac_negative                              mean=0.0360  std=0.0537  min=0.0000  median=0.0100  max=0.2200
+  gini_coefficient                           mean=0.1708  std=0.0878  min=0.0000  median=0.1817  max=0.5742
+  avg_disapprovals_per_voter                 mean=1.3734  std=1.0987  min=0.0200  median=1.0150  max=3.7500
+  avg_elected_disapprovals_per_voter         mean=0.1686  std=0.1624  min=0.0000  median=0.1250  max=0.6600
+
+
+--- Per-rule breakdown by p_disapprove ---
+
+p_disapprove = 0.01
+==================================================
+  Rule: PAV  (n=29)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=42.6000  std=26.7860  min=10.5000  median=37.2000  max=93.4000
+    elected_min_net_score                      mean=33.6207  std=29.9349  min=-1.0000  median=24.0000  max=91.0000
+    elected_max_net_score                      mean=56.8621  std=25.6288  min=13.0000  median=59.0000  max=98.0000
+    non_elected_mean_net_score                 mean=23.9379  std=20.8279  min=0.9000  median=13.3000  max=67.7000
+    best_non_elected_score                     mean=31.1724  std=26.3413  min=3.0000  median=21.0000  max=91.0000
+    mean_utility                               mean=268.3117  std=260.5452  min=11.4100  median=168.6200  max=872.6800
+    median_utility                             mean=269.3621  std=262.1773  min=10.0000  median=169.0000  max=843.0000
+    frac_zero_or_negative                      mean=0.0607  std=0.0802  min=0.0000  median=0.0200  max=0.2600
+    frac_negative                              mean=0.0097  std=0.0124  min=0.0000  median=0.0100  max=0.0400
+    gini_coefficient                           mean=0.1904  std=0.0888  min=0.0395  median=0.1865  max=0.3612
+    avg_disapprovals_per_voter                 mean=0.1210  std=0.0517  min=0.0200  median=0.1500  max=0.1600
+    avg_elected_disapprovals_per_voter         mean=0.0531  std=0.0327  min=0.0000  median=0.0600  max=0.1100
+
+  Rule: SeqPhragmen  (n=29)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=42.5862  std=26.7486  min=10.5000  median=37.2000  max=93.3000
+    elected_min_net_score                      mean=33.6207  std=29.7122  min=-1.0000  median=24.0000  max=91.0000
+    elected_max_net_score                      mean=56.8621  std=25.6288  min=13.0000  median=59.0000  max=98.0000
+    non_elected_mean_net_score                 mean=23.9517  std=20.8779  min=0.6000  median=13.4000  max=67.8000
+    best_non_elected_score                     mean=31.0690  std=26.5988  min=2.0000  median=21.0000  max=92.0000
+    mean_utility                               mean=267.9634  std=260.1662  min=11.4100  median=168.6200  max=870.8500
+    median_utility                             mean=268.8793  std=261.8312  min=10.0000  median=169.0000  max=842.0000
+    frac_zero_or_negative                      mean=0.0614  std=0.0804  min=0.0000  median=0.0100  max=0.2500
+    frac_negative                              mean=0.0079  std=0.0111  min=0.0000  median=0.0000  max=0.0400
+    gini_coefficient                           mean=0.1951  std=0.0939  min=0.0398  median=0.1918  max=0.3698
+    avg_disapprovals_per_voter                 mean=0.1210  std=0.0517  min=0.0200  median=0.1500  max=0.1600
+    avg_elected_disapprovals_per_voter         mean=0.0510  std=0.0318  min=0.0000  median=0.0600  max=0.1100
+
+  Rule: MES  (n=29)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=42.5517  std=26.7179  min=10.5000  median=37.4000  max=93.4000
+    elected_min_net_score                      mean=33.1034  std=29.3396  min=-1.0000  median=24.0000  max=91.0000
+    elected_max_net_score                      mean=56.8621  std=25.6288  min=13.0000  median=59.0000  max=98.0000
+    non_elected_mean_net_score                 mean=23.9862  std=20.9239  min=0.6000  median=13.7000  max=67.7000
+    best_non_elected_score                     mean=31.1379  std=26.5461  min=2.0000  median=21.0000  max=91.0000
+    mean_utility                               mean=267.6262  std=259.6779  min=11.4100  median=168.6200  max=872.6800
+    median_utility                             mean=269.1552  std=261.6891  min=10.0000  median=169.0000  max=843.0000
+    frac_zero_or_negative                      mean=0.0617  std=0.0803  min=0.0000  median=0.0200  max=0.2600
+    frac_negative                              mean=0.0097  std=0.0124  min=0.0000  median=0.0100  max=0.0400
+    gini_coefficient                           mean=0.1896  std=0.0908  min=0.0390  median=0.1865  max=0.3612
+    avg_disapprovals_per_voter                 mean=0.1210  std=0.0517  min=0.0200  median=0.1500  max=0.1600
+    avg_elected_disapprovals_per_voter         mean=0.0538  std=0.0319  min=0.0000  median=0.0600  max=0.1100
+
+  Rule: TaxPhragmen  (n=29)
+    committee_size                             mean=6.1034  std=2.7301  min=2.0000  median=7.0000  max=9.0000
+    elected_mean_net_score                     mean=52.4924  std=25.3077  min=13.0000  median=54.1111  max=93.5556
+    elected_min_net_score                      mean=47.9655  std=25.5545  min=11.0000  median=45.0000  max=91.0000
+    elected_max_net_score                      mean=56.8621  std=25.6288  min=13.0000  median=59.0000  max=98.0000
+    non_elected_mean_net_score                 mean=25.6891  std=20.7918  min=1.5556  median=19.4545  max=68.4545
+    best_non_elected_score                     mean=37.4138  std=28.1254  min=5.0000  median=27.0000  max=92.0000
+    mean_utility                               mean=240.6586  std=239.1213  min=3.3800  median=149.3200  max=788.0400
+    median_utility                             mean=248.4310  std=247.4815  min=0.0000  median=155.0000  max=842.0000
+    frac_zero_or_negative                      mean=0.1417  std=0.2099  min=0.0000  median=0.0300  max=0.7200
+    frac_negative                              mean=0.0048  std=0.0074  min=0.0000  median=0.0000  max=0.0300
+    gini_coefficient                           mean=0.2061  std=0.1184  min=0.0395  median=0.1865  max=0.5380
+    avg_disapprovals_per_voter                 mean=0.1210  std=0.0517  min=0.0200  median=0.1500  max=0.1600
+    avg_elected_disapprovals_per_voter         mean=0.0197  std=0.0168  min=0.0000  median=0.0200  max=0.0600
+
+  Rule: TaxMES  (n=29)
+    committee_size                             mean=6.1034  std=2.7038  min=2.0000  median=6.0000  max=9.0000
+    elected_mean_net_score                     mean=52.4363  std=25.4335  min=13.0000  median=54.2222  max=93.6667
+    elected_min_net_score                      mean=47.4483  std=26.4313  min=11.0000  median=45.0000  max=92.0000
+    elected_max_net_score                      mean=56.8621  std=25.6288  min=13.0000  median=59.0000  max=98.0000
+    non_elected_mean_net_score                 mean=25.6594  std=20.7630  min=1.5556  median=19.4545  max=68.1818
+    best_non_elected_score                     mean=37.2414  std=27.7497  min=5.0000  median=30.0000  max=91.0000
+    mean_utility                               mean=240.7121  std=239.5083  min=3.3800  median=146.5700  max=789.8700
+    median_utility                             mean=249.1897  std=247.3871  min=0.0000  median=155.0000  max=843.0000
+    frac_zero_or_negative                      mean=0.1459  std=0.2135  min=0.0000  median=0.0200  max=0.7200
+    frac_negative                              mean=0.0055  std=0.0078  min=0.0000  median=0.0000  max=0.0300
+    gini_coefficient                           mean=0.1998  std=0.1192  min=0.0392  median=0.1865  max=0.5742
+    avg_disapprovals_per_voter                 mean=0.1210  std=0.0517  min=0.0200  median=0.1500  max=0.1600
+    avg_elected_disapprovals_per_voter         mean=0.0210  std=0.0174  min=0.0000  median=0.0200  max=0.0600
+
+
+p_disapprove = 0.05
+==================================================
+  Rule: PAV  (n=29)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=40.4172  std=27.7445  min=6.6000  median=35.1000  max=92.9000
+    elected_min_net_score                      mean=30.6897  std=31.3176  min=-5.0000  median=23.0000  max=91.0000
+    elected_max_net_score                      mean=55.6207  std=26.4810  min=10.0000  median=57.0000  max=98.0000
+    non_elected_mean_net_score                 mean=21.0276  std=21.4587  min=-1.9000  median=9.9000  max=66.3000
+    best_non_elected_score                     mean=29.2414  std=26.7350  min=1.0000  median=17.0000  max=91.0000
+    mean_utility                               mean=256.4203  std=259.5831  min=4.9400  median=150.5600  max=863.4300
+    median_utility                             mean=261.2069  std=262.8432  min=4.0000  median=160.0000  max=838.0000
+    frac_zero_or_negative                      mean=0.0807  std=0.1053  min=0.0000  median=0.0300  max=0.3700
+    frac_negative                              mean=0.0424  std=0.0544  min=0.0000  median=0.0300  max=0.2100
+    gini_coefficient                           mean=0.1780  std=0.0710  min=0.0440  median=0.1843  max=0.3260
+    avg_disapprovals_per_voter                 mean=0.6303  std=0.1992  min=0.2500  median=0.7200  max=0.8100
+    avg_elected_disapprovals_per_voter         mean=0.2714  std=0.1295  min=0.0500  median=0.2900  max=0.4700
+
+  Rule: SeqPhragmen  (n=29)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=40.3552  std=27.7200  min=6.6000  median=35.1000  max=92.8000
+    elected_min_net_score                      mean=30.2759  std=31.3345  min=-5.0000  median=23.0000  max=91.0000
+    elected_max_net_score                      mean=55.6207  std=26.4810  min=10.0000  median=57.0000  max=98.0000
+    non_elected_mean_net_score                 mean=21.0897  std=21.4953  min=-2.2000  median=10.7000  max=66.4000
+    best_non_elected_score                     mean=29.2069  std=27.0402  min=1.0000  median=17.0000  max=92.0000
+    mean_utility                               mean=255.9045  std=259.1650  min=4.9400  median=150.5600  max=861.6000
+    median_utility                             mean=260.6379  std=262.5532  min=4.0000  median=160.0000  max=837.0000
+    frac_zero_or_negative                      mean=0.0821  std=0.1082  min=0.0000  median=0.0300  max=0.3800
+    frac_negative                              mean=0.0400  std=0.0519  min=0.0000  median=0.0200  max=0.1800
+    gini_coefficient                           mean=0.1780  std=0.0707  min=0.0443  median=0.1869  max=0.3260
+    avg_disapprovals_per_voter                 mean=0.6303  std=0.1992  min=0.2500  median=0.7200  max=0.8100
+    avg_elected_disapprovals_per_voter         mean=0.2741  std=0.1295  min=0.0500  median=0.3100  max=0.4600
+
+  Rule: MES  (n=29)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=40.3448  std=27.7028  min=6.6000  median=35.1000  max=92.9000
+    elected_min_net_score                      mean=30.1034  std=30.8526  min=-5.0000  median=23.0000  max=91.0000
+    elected_max_net_score                      mean=55.6207  std=26.4810  min=10.0000  median=57.0000  max=98.0000
+    non_elected_mean_net_score                 mean=21.1000  std=21.5129  min=-2.2000  median=10.7000  max=66.3000
+    best_non_elected_score                     mean=29.3448  std=26.8518  min=1.0000  median=17.0000  max=91.0000
+    mean_utility                               mean=255.8131  std=258.8431  min=4.9400  median=150.5600  max=863.4300
+    median_utility                             mean=260.7586  std=262.4439  min=4.0000  median=160.0000  max=838.0000
+    frac_zero_or_negative                      mean=0.0817  std=0.1059  min=0.0000  median=0.0300  max=0.3700
+    frac_negative                              mean=0.0417  std=0.0546  min=0.0000  median=0.0200  max=0.2100
+    gini_coefficient                           mean=0.1769  std=0.0719  min=0.0435  median=0.1828  max=0.3260
+    avg_disapprovals_per_voter                 mean=0.6303  std=0.1992  min=0.2500  median=0.7200  max=0.8100
+    avg_elected_disapprovals_per_voter         mean=0.2745  std=0.1312  min=0.0500  median=0.3000  max=0.4600
+
+  Rule: TaxPhragmen  (n=29)
+    committee_size                             mean=5.6552  std=2.7938  min=1.0000  median=6.0000  max=9.0000
+    elected_mean_net_score                     mean=51.1049  std=25.7945  min=10.0000  median=52.6250  max=93.0000
+    elected_min_net_score                      mean=47.1724  std=25.7197  min=10.0000  median=43.0000  max=91.0000
+    elected_max_net_score                      mean=55.6207  std=26.4810  min=10.0000  median=57.0000  max=98.0000
+    non_elected_mean_net_score                 mean=22.9799  std=21.4373  min=-1.8889  median=15.9091  max=66.8182
+    best_non_elected_score                     mean=35.7586  std=28.2320  min=5.0000  median=27.0000  max=92.0000
+    mean_utility                               mean=227.9148  std=237.6823  min=1.0000  median=125.4000  max=778.7900
+    median_utility                             mean=235.8103  std=242.9283  min=0.0000  median=152.0000  max=791.5000
+    frac_zero_or_negative                      mean=0.1731  std=0.2518  min=0.0000  median=0.0400  max=0.8600
+    frac_negative                              mean=0.0221  std=0.0247  min=0.0000  median=0.0200  max=0.0700
+    gini_coefficient                           mean=0.1737  std=0.0647  min=0.0435  median=0.1820  max=0.3099
+    avg_disapprovals_per_voter                 mean=0.6303  std=0.1992  min=0.2500  median=0.7200  max=0.8100
+    avg_elected_disapprovals_per_voter         mean=0.0952  std=0.0609  min=0.0200  median=0.0800  max=0.2200
+
+  Rule: TaxMES  (n=29)
+    committee_size                             mean=5.7241  std=2.8648  min=1.0000  median=6.0000  max=9.0000
+    elected_mean_net_score                     mean=51.1063  std=25.7419  min=10.0000  median=52.3750  max=93.1111
+    elected_min_net_score                      mean=47.0690  std=25.5440  min=10.0000  median=43.0000  max=91.0000
+    elected_max_net_score                      mean=55.6207  std=26.4810  min=10.0000  median=57.0000  max=98.0000
+    non_elected_mean_net_score                 mean=22.9046  std=21.3803  min=-1.8889  median=15.9091  max=66.7273
+    best_non_elected_score                     mean=35.6207  std=28.1392  min=5.0000  median=27.0000  max=91.0000
+    mean_utility                               mean=229.9076  std=238.3314  min=1.0000  median=125.4000  max=780.6200
+    median_utility                             mean=240.5517  std=247.7202  min=0.0000  median=152.0000  max=838.0000
+    frac_zero_or_negative                      mean=0.1738  std=0.2522  min=0.0000  median=0.0400  max=0.8600
+    frac_negative                              mean=0.0231  std=0.0269  min=0.0000  median=0.0100  max=0.0700
+    gini_coefficient                           mean=0.1708  std=0.0631  min=0.0446  median=0.1820  max=0.3099
+    avg_disapprovals_per_voter                 mean=0.6303  std=0.1992  min=0.2500  median=0.7200  max=0.8100
+    avg_elected_disapprovals_per_voter         mean=0.1007  std=0.0624  min=0.0200  median=0.0800  max=0.2300
+
+
+p_disapprove = 0.1
+==================================================
+  Rule: PAV  (n=30)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=37.3233  std=28.5147  min=2.8000  median=30.2000  max=92.4000
+    elected_min_net_score                      mean=26.8000  std=32.2527  min=-10.0000  median=16.0000  max=90.0000
+    elected_max_net_score                      mean=53.2333  std=27.0538  min=8.0000  median=56.0000  max=98.0000
+    non_elected_mean_net_score                 mean=17.4400  std=22.1908  min=-7.2000  median=9.3500  max=64.5000
+    best_non_elected_score                     mean=26.4333  std=27.2000  min=-3.0000  median=16.5000  max=91.0000
+    mean_utility                               mean=238.1817  std=255.4495  min=1.7800  median=124.9250  max=854.2800
+    median_utility                             mean=245.3000  std=261.0194  min=0.5000  median=145.5000  max=834.0000
+    frac_zero_or_negative                      mean=0.1130  std=0.1417  min=0.0000  median=0.0450  max=0.5000
+    frac_negative                              mean=0.0803  std=0.0944  min=0.0000  median=0.0400  max=0.3000
+    gini_coefficient                           mean=0.1893  std=0.0731  min=0.0489  median=0.1897  max=0.3515
+    avg_disapprovals_per_voter                 mean=1.2340  std=0.4001  min=0.5300  median=1.3350  max=1.6700
+    avg_elected_disapprovals_per_voter         mean=0.5340  std=0.2380  min=0.0800  median=0.5900  max=0.8600
+
+  Rule: SeqPhragmen  (n=30)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=37.3133  std=28.4980  min=2.8000  median=30.0000  max=92.3000
+    elected_min_net_score                      mean=26.8000  std=32.1531  min=-10.0000  median=16.0000  max=90.0000
+    elected_max_net_score                      mean=53.2333  std=27.0538  min=8.0000  median=56.0000  max=98.0000
+    non_elected_mean_net_score                 mean=17.4500  std=22.2167  min=-7.2000  median=9.2500  max=64.7000
+    best_non_elected_score                     mean=26.5000  std=27.4976  min=-3.0000  median=16.5000  max=92.0000
+    mean_utility                               mean=237.9573  std=255.0411  min=1.7800  median=124.9250  max=852.4500
+    median_utility                             mean=243.7500  std=259.6249  min=0.5000  median=145.5000  max=833.0000
+    frac_zero_or_negative                      mean=0.1143  std=0.1437  min=0.0000  median=0.0450  max=0.5000
+    frac_negative                              mean=0.0793  std=0.0952  min=0.0000  median=0.0350  max=0.3000
+    gini_coefficient                           mean=0.1935  std=0.0742  min=0.0490  median=0.2097  max=0.3405
+    avg_disapprovals_per_voter                 mean=1.2340  std=0.4001  min=0.5300  median=1.3350  max=1.6700
+    avg_elected_disapprovals_per_voter         mean=0.5300  std=0.2374  min=0.0800  median=0.6150  max=0.8500
+
+  Rule: MES  (n=30)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=37.3000  std=28.5094  min=2.8000  median=30.1000  max=92.5000
+    elected_min_net_score                      mean=26.3667  std=31.9282  min=-10.0000  median=16.0000  max=90.0000
+    elected_max_net_score                      mean=53.2333  std=27.0538  min=8.0000  median=56.0000  max=98.0000
+    non_elected_mean_net_score                 mean=17.4633  std=22.2069  min=-7.2000  median=9.4500  max=64.5000
+    best_non_elected_score                     mean=26.3333  std=27.0393  min=-3.0000  median=16.0000  max=91.0000
+    mean_utility                               mean=238.0447  std=255.2627  min=1.7800  median=124.9250  max=856.0900
+    median_utility                             mean=244.9333  std=260.8332  min=0.5000  median=145.5000  max=835.0000
+    frac_zero_or_negative                      mean=0.1143  std=0.1443  min=0.0000  median=0.0400  max=0.5000
+    frac_negative                              mean=0.0807  std=0.0960  min=0.0000  median=0.0300  max=0.3000
+    gini_coefficient                           mean=0.1875  std=0.0715  min=0.0472  median=0.1936  max=0.3338
+    avg_disapprovals_per_voter                 mean=1.2340  std=0.4001  min=0.5300  median=1.3350  max=1.6700
+    avg_elected_disapprovals_per_voter         mean=0.5330  std=0.2442  min=0.0800  median=0.6050  max=0.8600
+
+  Rule: TaxPhragmen  (n=30)
+    committee_size                             mean=5.2667  std=3.0731  min=0.0000  median=6.0000  max=9.0000
+    elected_mean_net_score                     mean=51.6168  std=24.6005  min=14.0000  median=50.4792  max=92.7778
+    elected_min_net_score                      mean=46.9643  std=24.9139  min=13.0000  median=43.0000  max=91.0000
+    elected_max_net_score                      mean=56.4286  std=25.0458  min=15.0000  median=56.5000  max=98.0000
+    non_elected_mean_net_score                 mean=19.5926  std=22.0462  min=-6.3889  median=12.8030  max=65.0000
+    best_non_elected_score                     mean=33.3000  std=28.9853  min=2.0000  median=22.5000  max=91.0000
+    mean_utility                               mean=212.3793  std=234.2872  min=0.0000  median=113.3800  max=775.0900
+    median_utility                             mean=221.2333  std=243.1665  min=0.0000  median=138.2500  max=835.0000
+    frac_zero_or_negative                      mean=0.2230  std=0.3119  min=0.0000  median=0.0900  max=1.0000
+    frac_negative                              mean=0.0380  std=0.0460  min=0.0000  median=0.0150  max=0.1500
+    gini_coefficient                           mean=0.1698  std=0.0830  min=0.0000  median=0.1797  max=0.3480
+    avg_disapprovals_per_voter                 mean=1.2340  std=0.4001  min=0.5300  median=1.3350  max=1.6700
+    avg_elected_disapprovals_per_voter         mean=0.1653  std=0.1072  min=0.0000  median=0.1500  max=0.3600
+
+  Rule: TaxMES  (n=30)
+    committee_size                             mean=5.2333  std=3.0590  min=0.0000  median=6.0000  max=9.0000
+    elected_mean_net_score                     mean=51.7419  std=24.6259  min=14.0000  median=50.8542  max=92.7778
+    elected_min_net_score                      mean=47.4286  std=24.9895  min=13.0000  median=46.5000  max=91.0000
+    elected_max_net_score                      mean=56.4286  std=25.0458  min=15.0000  median=56.5000  max=98.0000
+    non_elected_mean_net_score                 mean=19.5754  std=22.0075  min=-6.3889  median=12.8030  max=64.9091
+    best_non_elected_score                     mean=32.8667  std=28.6209  min=2.0000  median=22.5000  max=91.0000
+    mean_utility                               mean=212.3193  std=234.6572  min=0.0000  median=113.3800  max=775.0900
+    median_utility                             mean=221.6333  std=244.2607  min=0.0000  median=138.2500  max=835.0000
+    frac_zero_or_negative                      mean=0.2247  std=0.3112  min=0.0000  median=0.0900  max=1.0000
+    frac_negative                              mean=0.0380  std=0.0459  min=0.0000  median=0.0150  max=0.1500
+    gini_coefficient                           mean=0.1721  std=0.0840  min=0.0000  median=0.1836  max=0.3480
+    avg_disapprovals_per_voter                 mean=1.2340  std=0.4001  min=0.5300  median=1.3350  max=1.6700
+    avg_elected_disapprovals_per_voter         mean=0.1660  std=0.1057  min=0.0000  median=0.1500  max=0.3300
+
+
+p_disapprove = 0.15
+==================================================
+  Rule: PAV  (n=29)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=34.3207  std=30.2702  min=-2.5000  median=28.1000  max=92.1000
+    elected_min_net_score                      mean=22.1724  std=34.6905  min=-16.0000  median=16.0000  max=90.0000
+    elected_max_net_score                      mean=51.4483  std=28.4349  min=3.0000  median=54.0000  max=98.0000
+    non_elected_mean_net_score                 mean=12.6379  std=23.6071  min=-13.1000  median=1.1000  max=62.2000
+    best_non_elected_score                     mean=22.9655  std=29.1957  min=-8.0000  median=10.0000  max=90.0000
+    mean_utility                               mean=229.6134  std=252.2721  min=2.7400  median=115.4800  max=848.7900
+    median_utility                             mean=237.8966  std=258.4619  min=2.0000  median=145.0000  max=831.0000
+    frac_zero_or_negative                      mean=0.1269  std=0.1526  min=0.0000  median=0.0500  max=0.4400
+    frac_negative                              mean=0.1121  std=0.1304  min=0.0000  median=0.0500  max=0.3400
+    gini_coefficient                           mean=0.1840  std=0.0592  min=0.0514  median=0.1959  max=0.2885
+    avg_disapprovals_per_voter                 mean=2.0790  std=0.6302  min=0.9800  median=2.2500  max=2.7500
+    avg_elected_disapprovals_per_voter         mean=0.8810  std=0.3798  min=0.1300  median=0.9600  max=1.4300
+
+  Rule: SeqPhragmen  (n=29)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=34.2931  std=30.2332  min=-2.5000  median=28.1000  max=92.0000
+    elected_min_net_score                      mean=22.2069  std=34.4429  min=-16.0000  median=16.0000  max=90.0000
+    elected_max_net_score                      mean=51.4483  std=28.4349  min=3.0000  median=54.0000  max=98.0000
+    non_elected_mean_net_score                 mean=12.6655  std=23.6219  min=-13.1000  median=1.6000  max=62.2000
+    best_non_elected_score                     mean=23.0000  std=29.3294  min=-8.0000  median=10.0000  max=91.0000
+    mean_utility                               mean=229.3472  std=252.1445  min=1.0900  median=115.4800  max=846.9800
+    median_utility                             mean=237.6552  std=258.1931  min=0.0000  median=145.0000  max=830.0000
+    frac_zero_or_negative                      mean=0.1328  std=0.1610  min=0.0000  median=0.0500  max=0.5400
+    frac_negative                              mean=0.1141  std=0.1348  min=0.0000  median=0.0500  max=0.4000
+    gini_coefficient                           mean=0.1836  std=0.0596  min=0.0514  median=0.1966  max=0.2885
+    avg_disapprovals_per_voter                 mean=2.0790  std=0.6302  min=0.9800  median=2.2500  max=2.7500
+    avg_elected_disapprovals_per_voter         mean=0.8803  std=0.3790  min=0.1300  median=0.9600  max=1.3700
+
+  Rule: MES  (n=29)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=34.2690  std=30.2728  min=-2.5000  median=28.2000  max=92.1000
+    elected_min_net_score                      mean=21.8276  std=34.4985  min=-16.0000  median=16.0000  max=90.0000
+    elected_max_net_score                      mean=51.4483  std=28.4349  min=3.0000  median=54.0000  max=98.0000
+    non_elected_mean_net_score                 mean=12.6897  std=23.6079  min=-13.1000  median=1.8000  max=62.2000
+    best_non_elected_score                     mean=22.9655  std=28.9377  min=-8.0000  median=10.0000  max=90.0000
+    mean_utility                               mean=229.4503  std=252.1344  min=2.7400  median=115.4800  max=848.7900
+    median_utility                             mean=236.6379  std=258.1073  min=2.0000  median=145.0000  max=831.0000
+    frac_zero_or_negative                      mean=0.1276  std=0.1514  min=0.0000  median=0.0500  max=0.4400
+    frac_negative                              mean=0.1121  std=0.1320  min=0.0000  median=0.0500  max=0.3500
+    gini_coefficient                           mean=0.1816  std=0.0587  min=0.0500  median=0.1894  max=0.2885
+    avg_disapprovals_per_voter                 mean=2.0790  std=0.6302  min=0.9800  median=2.2500  max=2.7500
+    avg_elected_disapprovals_per_voter         mean=0.8821  std=0.3867  min=0.1300  median=0.9800  max=1.4300
+
+  Rule: TaxPhragmen  (n=29)
+    committee_size                             mean=5.0345  std=3.1451  min=0.0000  median=5.0000  max=9.0000
+    elected_mean_net_score                     mean=50.2366  std=25.4083  min=10.0000  median=48.5714  max=92.3333
+    elected_min_net_score                      mean=46.1481  std=25.3797  min=10.0000  median=44.0000  max=90.0000
+    elected_max_net_score                      mean=54.9259  std=26.2384  min=10.0000  median=55.0000  max=98.0000
+    non_elected_mean_net_score                 mean=15.0331  std=23.3449  min=-12.1111  median=6.9091  max=62.3636
+    best_non_elected_score                     mean=29.5862  std=30.2578  min=-4.0000  median=20.0000  max=90.0000
+    mean_utility                               mean=205.1521  std=232.1379  min=0.0000  median=105.2500  max=767.7900
+    median_utility                             mean=211.0517  std=241.6752  min=0.0000  median=145.0000  max=831.0000
+    frac_zero_or_negative                      mean=0.2438  std=0.3301  min=0.0000  median=0.1100  max=1.0000
+    frac_negative                              mean=0.0545  std=0.0621  min=0.0000  median=0.0200  max=0.1600
+    gini_coefficient                           mean=0.1643  std=0.0723  min=0.0000  median=0.1875  max=0.2941
+    avg_disapprovals_per_voter                 mean=2.0790  std=0.6302  min=0.9800  median=2.2500  max=2.7500
+    avg_elected_disapprovals_per_voter         mean=0.2559  std=0.1601  min=0.0000  median=0.2500  max=0.5200
+
+  Rule: TaxMES  (n=29)
+    committee_size                             mean=4.9655  std=3.1337  min=0.0000  median=5.0000  max=9.0000
+    elected_mean_net_score                     mean=50.3316  std=25.3235  min=10.0000  median=48.5714  max=92.3333
+    elected_min_net_score                      mean=46.1852  std=24.8039  min=10.0000  median=44.0000  max=90.0000
+    elected_max_net_score                      mean=54.9259  std=26.2384  min=10.0000  median=55.0000  max=98.0000
+    non_elected_mean_net_score                 mean=15.1209  std=23.4266  min=-12.1111  median=6.9091  max=62.3636
+    best_non_elected_score                     mean=29.7241  std=30.3937  min=-4.0000  median=20.0000  max=90.0000
+    mean_utility                               mean=203.8434  std=231.6524  min=0.0000  median=105.2500  max=767.7900
+    median_utility                             mean=211.4310  std=242.5377  min=0.0000  median=145.0000  max=831.0000
+    frac_zero_or_negative                      mean=0.2462  std=0.3301  min=0.0000  median=0.1100  max=1.0000
+    frac_negative                              mean=0.0528  std=0.0600  min=0.0000  median=0.0200  max=0.1600
+    gini_coefficient                           mean=0.1632  std=0.0720  min=0.0000  median=0.1875  max=0.2832
+    avg_disapprovals_per_voter                 mean=2.0790  std=0.6302  min=0.9800  median=2.2500  max=2.7500
+    avg_elected_disapprovals_per_voter         mean=0.2497  std=0.1527  min=0.0000  median=0.2500  max=0.5200
+
+
+p_disapprove = 0.2
+==================================================
+  Rule: PAV  (n=29)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=31.1828  std=31.7937  min=-7.0000  median=24.7000  max=91.7000
+    elected_min_net_score                      mean=18.5172  std=36.4991  min=-21.0000  median=10.0000  max=89.0000
+    elected_max_net_score                      mean=49.2069  std=29.7626  min=1.0000  median=52.0000  max=98.0000
+    non_elected_mean_net_score                 mean=8.4897  std=24.7701  min=-18.9000  median=-3.8000  max=60.5000
+    best_non_elected_score                     mean=19.3793  std=30.5736  min=-13.0000  median=7.0000  max=90.0000
+    mean_utility                               mean=220.7521  std=248.3776  min=0.9600  median=123.3400  max=841.5300
+    median_utility                             mean=230.0172  std=257.5227  min=0.0000  median=143.0000  max=828.0000
+    frac_zero_or_negative                      mean=0.1379  std=0.1556  min=0.0000  median=0.0700  max=0.5200
+    frac_negative                              mean=0.1234  std=0.1345  min=0.0000  median=0.0700  max=0.3900
+    gini_coefficient                           mean=0.1873  std=0.0575  min=0.0548  median=0.1933  max=0.2781
+    avg_disapprovals_per_voter                 mean=2.8076  std=0.8847  min=1.2900  median=3.0000  max=3.7500
+    avg_elected_disapprovals_per_voter         mean=1.1948  std=0.5313  min=0.1700  median=1.2800  max=1.9000
+
+  Rule: SeqPhragmen  (n=29)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=31.2138  std=31.7244  min=-7.0000  median=24.7000  max=91.6000
+    elected_min_net_score                      mean=18.4828  std=36.2675  min=-21.0000  median=10.0000  max=89.0000
+    elected_max_net_score                      mean=49.2069  std=29.7626  min=1.0000  median=52.0000  max=98.0000
+    non_elected_mean_net_score                 mean=8.4586  std=24.8558  min=-19.3000  median=-3.9000  max=60.5000
+    best_non_elected_score                     mean=19.0345  std=30.8504  min=-15.0000  median=7.0000  max=91.0000
+    mean_utility                               mean=220.3662  std=248.5272  min=1.1100  median=122.1400  max=839.7200
+    median_utility                             mean=229.0862  std=257.5540  min=1.0000  median=143.0000  max=827.0000
+    frac_zero_or_negative                      mean=0.1428  std=0.1606  min=0.0000  median=0.0700  max=0.4900
+    frac_negative                              mean=0.1286  std=0.1423  min=0.0000  median=0.0700  max=0.4200
+    gini_coefficient                           mean=0.1877  std=0.0584  min=0.0548  median=0.1964  max=0.2781
+    avg_disapprovals_per_voter                 mean=2.8076  std=0.8847  min=1.2900  median=3.0000  max=3.7500
+    avg_elected_disapprovals_per_voter         mean=1.1883  std=0.5266  min=0.1700  median=1.3000  max=1.8200
+
+  Rule: MES  (n=29)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=31.1621  std=31.7466  min=-7.0000  median=24.7000  max=91.8000
+    elected_min_net_score                      mean=18.1724  std=36.1683  min=-21.0000  median=10.0000  max=89.0000
+    elected_max_net_score                      mean=49.2069  std=29.7626  min=1.0000  median=52.0000  max=98.0000
+    non_elected_mean_net_score                 mean=8.5103  std=24.8481  min=-19.3000  median=-3.3000  max=60.5000
+    best_non_elected_score                     mean=19.1724  std=30.6746  min=-15.0000  median=7.0000  max=89.0000
+    mean_utility                               mean=220.3866  std=248.3104  min=0.9600  median=122.1400  max=843.3200
+    median_utility                             mean=227.7586  std=254.9050  min=0.0000  median=143.0000  max=829.0000
+    frac_zero_or_negative                      mean=0.1379  std=0.1556  min=0.0000  median=0.0700  max=0.5200
+    frac_negative                              mean=0.1221  std=0.1343  min=0.0000  median=0.0700  max=0.3900
+    gini_coefficient                           mean=0.1874  std=0.0601  min=0.0524  median=0.1931  max=0.2837
+    avg_disapprovals_per_voter                 mean=2.8076  std=0.8847  min=1.2900  median=3.0000  max=3.7500
+    avg_elected_disapprovals_per_voter         mean=1.1928  std=0.5326  min=0.1600  median=1.3100  max=1.9000
+
+  Rule: TaxPhragmen  (n=29)
+    committee_size                             mean=4.6897  std=3.2635  min=0.0000  median=5.0000  max=9.0000
+    elected_mean_net_score                     mean=53.4172  std=23.1432  min=13.0000  median=50.5000  max=92.1111
+    elected_min_net_score                      mean=48.6250  std=24.0322  min=13.0000  median=43.5000  max=90.0000
+    elected_max_net_score                      mean=58.5833  std=23.3255  min=13.0000  median=59.0000  max=98.0000
+    non_elected_mean_net_score                 mean=11.3187  std=24.5722  min=-17.5556  median=2.6364  max=61.0000
+    best_non_elected_score                     mean=26.8966  std=31.6322  min=-9.0000  median=16.0000  max=89.0000
+    mean_utility                               mean=192.8217  std=226.8465  min=0.0000  median=102.3700  max=764.1100
+    median_utility                             mean=202.0690  std=237.2083  min=0.0000  median=143.0000  max=829.0000
+    frac_zero_or_negative                      mean=0.2876  std=0.3729  min=0.0000  median=0.1200  max=1.0000
+    frac_negative                              mean=0.0603  std=0.0806  min=0.0000  median=0.0100  max=0.2300
+    gini_coefficient                           mean=0.1496  std=0.0890  min=0.0000  median=0.1651  max=0.2810
+    avg_disapprovals_per_voter                 mean=2.8076  std=0.8847  min=1.2900  median=3.0000  max=3.7500
+    avg_elected_disapprovals_per_voter         mean=0.3045  std=0.2070  min=0.0000  median=0.3000  max=0.6600
+
+  Rule: TaxMES  (n=29)
+    committee_size                             mean=4.6552  std=3.2213  min=0.0000  median=5.0000  max=9.0000
+    elected_mean_net_score                     mean=53.4855  std=23.1583  min=13.0000  median=51.0833  max=92.1111
+    elected_min_net_score                      mean=48.8750  std=23.9353  min=13.0000  median=43.5000  max=90.0000
+    elected_max_net_score                      mean=58.5833  std=23.3255  min=13.0000  median=59.0000  max=98.0000
+    non_elected_mean_net_score                 mean=11.3126  std=24.5802  min=-17.5556  median=2.6364  max=61.1667
+    best_non_elected_score                     mean=26.8276  std=31.5256  min=-9.0000  median=16.0000  max=89.0000
+    mean_utility                               mean=191.5866  std=225.5375  min=0.0000  median=102.3700  max=764.1100
+    median_utility                             mean=203.5690  std=238.6082  min=0.0000  median=143.0000  max=829.0000
+    frac_zero_or_negative                      mean=0.2869  std=0.3728  min=0.0000  median=0.1200  max=1.0000
+    frac_negative                              mean=0.0603  std=0.0796  min=0.0000  median=0.0100  max=0.2200
+    gini_coefficient                           mean=0.1480  std=0.0883  min=0.0000  median=0.1562  max=0.2810
+    avg_disapprovals_per_voter                 mean=2.8076  std=0.8847  min=1.2900  median=3.0000  max=3.7500
+    avg_elected_disapprovals_per_voter         mean=0.3055  std=0.2097  min=0.0000  median=0.3000  max=0.6600
+
+
+--- Per-rule breakdown by model type ---
+
+Model: Euclidean2D
+==================================================
+  Rule: PAV  (n=21)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=24.0905  std=17.9927  min=-4.9000  median=21.7000  max=53.2000
+    elected_min_net_score                      mean=14.4286  std=18.3073  min=-21.0000  median=13.0000  max=43.0000
+    elected_max_net_score                      mean=35.0000  std=20.2015  min=2.0000  median=31.0000  max=63.0000
+    non_elected_mean_net_score                 mean=12.0714  std=12.9109  min=-11.1000  median=11.7000  max=35.0000
+    best_non_elected_score                     mean=20.3333  std=15.9196  min=-6.0000  median=19.0000  max=45.0000
+    mean_utility                               mean=93.1595  std=97.5192  min=3.9900  median=51.6500  max=288.8000
+    median_utility                             mean=98.8095  std=115.3980  min=4.0000  median=39.5000  max=333.0000
+    frac_zero_or_negative                      mean=0.2110  std=0.1087  min=0.0600  median=0.1800  max=0.4200
+    frac_negative                              mean=0.1548  std=0.1152  min=0.0000  median=0.1500  max=0.3800
+    gini_coefficient                           mean=0.2755  std=0.0506  min=0.1828  median=0.2781  max=0.3612
+    avg_disapprovals_per_voter                 mean=1.5286  std=1.1186  min=0.1100  median=1.4500  max=3.7100
+    avg_elected_disapprovals_per_voter         mean=0.7057  std=0.5439  min=0.0300  median=0.7300  max=1.8000
+
+  Rule: SeqPhragmen  (n=21)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=24.0000  std=18.1105  min=-5.0000  median=22.1000  max=53.2000
+    elected_min_net_score                      mean=14.4286  std=18.3073  min=-21.0000  median=13.0000  max=43.0000
+    elected_max_net_score                      mean=35.0000  std=20.2015  min=2.0000  median=31.0000  max=63.0000
+    non_elected_mean_net_score                 mean=12.1619  std=12.7988  min=-11.0000  median=11.7000  max=35.0000
+    best_non_elected_score                     mean=20.8571  std=15.2882  min=-5.0000  median=19.0000  max=45.0000
+    mean_utility                               mean=93.1343  std=97.5690  min=3.9900  median=52.9300  max=288.8000
+    median_utility                             mean=98.6190  std=115.5419  min=4.0000  median=39.0000  max=333.0000
+    frac_zero_or_negative                      mean=0.2086  std=0.1084  min=0.0600  median=0.1800  max=0.4200
+    frac_negative                              mean=0.1538  std=0.1169  min=0.0000  median=0.1500  max=0.3800
+    gini_coefficient                           mean=0.2751  std=0.0509  min=0.1828  median=0.2781  max=0.3612
+    avg_disapprovals_per_voter                 mean=1.5286  std=1.1186  min=0.1100  median=1.4500  max=3.7100
+    avg_elected_disapprovals_per_voter         mean=0.7100  std=0.5449  min=0.0300  median=0.6500  max=1.8000
+
+  Rule: MES  (n=21)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=24.0286  std=18.1232  min=-5.0000  median=22.2000  max=53.2000
+    elected_min_net_score                      mean=14.4286  std=18.3073  min=-21.0000  median=13.0000  max=43.0000
+    elected_max_net_score                      mean=35.0000  std=20.2015  min=2.0000  median=31.0000  max=63.0000
+    non_elected_mean_net_score                 mean=12.1333  std=12.7875  min=-11.0000  median=11.6000  max=35.0000
+    best_non_elected_score                     mean=20.5714  std=15.1544  min=-5.0000  median=18.0000  max=45.0000
+    mean_utility                               mean=93.2914  std=97.6032  min=3.9900  median=53.3000  max=288.8000
+    median_utility                             mean=98.9286  std=115.6782  min=4.0000  median=39.0000  max=333.0000
+    frac_zero_or_negative                      mean=0.2129  std=0.1082  min=0.0600  median=0.1900  max=0.4200
+    frac_negative                              mean=0.1576  std=0.1170  min=0.0000  median=0.1500  max=0.3800
+    gini_coefficient                           mean=0.2737  std=0.0515  min=0.1828  median=0.2779  max=0.3612
+    avg_disapprovals_per_voter                 mean=1.5286  std=1.1186  min=0.1100  median=1.4500  max=3.7100
+    avg_elected_disapprovals_per_voter         mean=0.7176  std=0.5449  min=0.0300  median=0.7100  max=1.8000
+
+  Rule: TaxPhragmen  (n=21)
+    committee_size                             mean=4.4286  std=2.3785  min=0.0000  median=5.0000  max=8.0000
+    elected_mean_net_score                     mean=30.4845  std=15.6922  min=10.0000  median=31.1000  max=55.0000
+    elected_min_net_score                      mean=24.1500  std=11.2450  min=10.0000  median=24.0000  max=43.0000
+    elected_max_net_score                      mean=36.6500  std=19.2197  min=10.0000  median=37.5000  max=63.0000
+    non_elected_mean_net_score                 mean=14.5745  std=12.9642  min=-8.0000  median=13.3333  max=36.8333
+    best_non_elected_score                     mean=24.1905  std=14.7330  min=2.0000  median=21.0000  max=49.0000
+    mean_utility                               mean=70.5124  std=79.6662  min=0.0000  median=39.1500  max=246.3200
+    median_utility                             mean=80.0476  std=101.3742  min=0.0000  median=29.0000  max=291.0000
+    frac_zero_or_negative                      mean=0.3848  std=0.2782  min=0.0700  median=0.2900  max=1.0000
+    frac_negative                              mean=0.0824  std=0.0706  min=0.0000  median=0.0700  max=0.2300
+    gini_coefficient                           mean=0.2584  std=0.1024  min=0.0000  median=0.2609  max=0.5380
+    avg_disapprovals_per_voter                 mean=1.5286  std=1.1186  min=0.1100  median=1.4500  max=3.7100
+    avg_elected_disapprovals_per_voter         mean=0.1771  std=0.1653  min=0.0000  median=0.1400  max=0.5100
+
+  Rule: TaxMES  (n=21)
+    committee_size                             mean=4.1905  std=2.1822  min=0.0000  median=4.0000  max=7.0000
+    elected_mean_net_score                     mean=31.0495  std=16.2346  min=10.0000  median=31.1500  max=56.4286
+    elected_min_net_score                      mean=25.6500  std=12.6918  min=10.0000  median=24.0000  max=47.0000
+    elected_max_net_score                      mean=36.6500  std=19.2197  min=10.0000  median=37.5000  max=63.0000
+    non_elected_mean_net_score                 mean=14.6736  std=13.0684  min=-8.0000  median=13.3333  max=37.4615
+    best_non_elected_score                     mean=24.1905  std=14.6001  min=2.0000  median=20.0000  max=49.0000
+    mean_utility                               mean=67.8048  std=75.3852  min=0.0000  median=39.1500  max=226.0700
+    median_utility                             mean=77.3571  std=97.8588  min=0.0000  median=29.0000  max=281.0000
+    frac_zero_or_negative                      mean=0.3962  std=0.2736  min=0.0800  median=0.2900  max=1.0000
+    frac_negative                              mean=0.0819  std=0.0689  min=0.0000  median=0.0700  max=0.2200
+    gini_coefficient                           mean=0.2598  std=0.1074  min=0.0000  median=0.2640  max=0.5742
+    avg_disapprovals_per_voter                 mean=1.5286  std=1.1186  min=0.1100  median=1.4500  max=3.7100
+    avg_elected_disapprovals_per_voter         mean=0.1729  std=0.1596  min=0.0000  median=0.1500  max=0.5700
+
+
+Model: Impartial
+==================================================
+  Rule: PAV  (n=25)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=31.5120  std=26.3237  min=-7.0000  median=27.4000  max=73.2000
+    elected_min_net_score                      mean=26.4400  std=26.7521  min=-15.0000  median=25.0000  max=71.0000
+    elected_max_net_score                      mean=37.6000  std=26.1805  min=1.0000  median=31.0000  max=79.0000
+    non_elected_mean_net_score                 mean=24.3880  std=24.7991  min=-11.9000  median=19.2000  max=64.7000
+    best_non_elected_score                     mean=30.0400  std=25.4501  min=-8.0000  median=26.0000  max=70.0000
+    mean_utility                               mean=166.9952  std=190.7370  min=1.7800  median=75.4200  max=536.4200
+    median_utility                             mean=166.0200  std=190.2026  min=1.0000  median=81.5000  max=517.5000
+    frac_zero_or_negative                      mean=0.1320  std=0.1480  min=0.0000  median=0.0700  max=0.4000
+    frac_negative                              mean=0.0960  std=0.1239  min=0.0000  median=0.0300  max=0.3700
+    gini_coefficient                           mean=0.1955  std=0.0505  min=0.1038  median=0.1966  max=0.3078
+    avg_disapprovals_per_voter                 mean=1.3540  std=1.1189  min=0.0300  median=1.0200  max=3.7500
+    avg_elected_disapprovals_per_voter         mean=0.6428  std=0.5408  min=0.0000  median=0.4900  max=1.8200
+
+  Rule: SeqPhragmen  (n=25)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=31.3840  std=26.3302  min=-7.0000  median=27.4000  max=73.2000
+    elected_min_net_score                      mean=26.0000  std=26.5597  min=-15.0000  median=25.0000  max=71.0000
+    elected_max_net_score                      mean=37.6000  std=26.1805  min=1.0000  median=31.0000  max=79.0000
+    non_elected_mean_net_score                 mean=24.5160  std=24.7888  min=-11.9000  median=19.2000  max=64.7000
+    best_non_elected_score                     mean=30.0400  std=25.4501  min=-8.0000  median=26.0000  max=70.0000
+    mean_utility                               mean=166.3296  std=190.5449  min=1.7800  median=75.4200  max=536.4200
+    median_utility                             mean=165.5200  std=190.4267  min=1.0000  median=81.5000  max=517.5000
+    frac_zero_or_negative                      mean=0.1356  std=0.1564  min=0.0000  median=0.0600  max=0.4500
+    frac_negative                              mean=0.0956  std=0.1288  min=0.0000  median=0.0300  max=0.4100
+    gini_coefficient                           mean=0.2023  std=0.0609  min=0.1038  median=0.2102  max=0.3698
+    avg_disapprovals_per_voter                 mean=1.3540  std=1.1189  min=0.0300  median=1.0200  max=3.7500
+    avg_elected_disapprovals_per_voter         mean=0.6376  std=0.5445  min=0.0000  median=0.4900  max=1.8200
+
+  Rule: MES  (n=25)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=31.4440  std=26.2288  min=-7.0000  median=27.4000  max=72.6000
+    elected_min_net_score                      mean=25.7600  std=25.8090  min=-15.0000  median=25.0000  max=66.0000
+    elected_max_net_score                      mean=37.6000  std=26.1805  min=1.0000  median=31.0000  max=79.0000
+    non_elected_mean_net_score                 mean=24.4560  std=24.8958  min=-11.9000  median=19.2000  max=65.3000
+    best_non_elected_score                     mean=30.0400  std=25.4517  min=-8.0000  median=26.0000  max=71.0000
+    mean_utility                               mean=166.1636  std=189.3658  min=1.7800  median=75.4200  max=528.1600
+    median_utility                             mean=163.6600  std=188.3391  min=1.0000  median=81.5000  max=514.0000
+    frac_zero_or_negative                      mean=0.1324  std=0.1477  min=0.0000  median=0.0700  max=0.4000
+    frac_negative                              mean=0.0964  std=0.1236  min=0.0000  median=0.0300  max=0.3700
+    gini_coefficient                           mean=0.1924  std=0.0535  min=0.0950  median=0.1964  max=0.3078
+    avg_disapprovals_per_voter                 mean=1.3540  std=1.1189  min=0.0300  median=1.0200  max=3.7500
+    avg_elected_disapprovals_per_voter         mean=0.6376  std=0.5431  min=0.0000  median=0.4600  max=1.8200
+
+  Rule: TaxPhragmen  (n=25)
+    committee_size                             mean=5.0800  std=3.3902  min=0.0000  median=6.0000  max=9.0000
+    elected_mean_net_score                     mean=39.7833  std=22.4051  min=10.0000  median=33.1429  max=73.4444
+    elected_min_net_score                      mean=36.8095  std=21.5514  min=10.0000  median=31.0000  max=71.0000
+    elected_max_net_score                      mean=43.6190  std=24.1422  min=10.0000  median=36.0000  max=79.0000
+    non_elected_mean_net_score                 mean=25.8324  std=24.1402  min=-9.4500  median=21.2143  max=65.2727
+    best_non_elected_score                     mean=32.4800  std=23.6028  min=1.0000  median=27.0000  max=71.0000
+    mean_utility                               mean=140.6324  std=173.5101  min=0.0000  median=47.8300  max=486.0100
+    median_utility                             mean=143.4800  std=182.7546  min=0.0000  median=55.0000  max=511.0000
+    frac_zero_or_negative                      mean=0.3368  std=0.3987  min=0.0000  median=0.1000  max=1.0000
+    frac_negative                              mean=0.0308  std=0.0455  min=0.0000  median=0.0000  max=0.1500
+    gini_coefficient                           mean=0.1662  std=0.0930  min=0.0000  median=0.1755  max=0.3728
+    avg_disapprovals_per_voter                 mean=1.3540  std=1.1189  min=0.0300  median=1.0200  max=3.7500
+    avg_elected_disapprovals_per_voter         mean=0.1820  std=0.1900  min=0.0000  median=0.0900  max=0.5900
+
+  Rule: TaxMES  (n=25)
+    committee_size                             mean=5.1200  std=3.4317  min=0.0000  median=6.0000  max=9.0000
+    elected_mean_net_score                     mean=39.8188  std=22.3640  min=10.0000  median=33.5714  max=73.3333
+    elected_min_net_score                      mean=36.8095  std=21.2194  min=10.0000  median=31.0000  max=70.0000
+    elected_max_net_score                      mean=43.6190  std=24.1422  min=10.0000  median=36.0000  max=79.0000
+    non_elected_mean_net_score                 mean=25.7907  std=24.1285  min=-9.4500  median=21.2857  max=65.3636
+    best_non_elected_score                     mean=32.2000  std=23.3149  min=1.0000  median=27.0000  max=71.0000
+    mean_utility                               mean=141.7784  std=173.9492  min=0.0000  median=47.3000  max=484.6000
+    median_utility                             mean=145.4000  std=183.7475  min=0.0000  median=54.0000  max=511.0000
+    frac_zero_or_negative                      mean=0.3356  std=0.3986  min=0.0000  median=0.0900  max=1.0000
+    frac_negative                              mean=0.0304  std=0.0424  min=0.0000  median=0.0100  max=0.1500
+    gini_coefficient                           mean=0.1559  std=0.0817  min=0.0000  median=0.1833  max=0.2483
+    avg_disapprovals_per_voter                 mean=1.3540  std=1.1189  min=0.0300  median=1.0200  max=3.7500
+    avg_elected_disapprovals_per_voter         mean=0.1800  std=0.1857  min=0.0000  median=0.1000  max=0.5900
+
+
+Model: Resampling
+==================================================
+  Rule: PAV  (n=100)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=41.3310  std=30.5487  min=-6.9000  median=36.2500  max=93.4000
+    elected_min_net_score                      mean=28.8500  std=36.3205  min=-20.0000  median=14.0000  max=91.0000
+    elected_max_net_score                      mean=61.0300  std=25.4298  min=2.0000  median=65.5000  max=98.0000
+    non_elected_mean_net_score                 mean=15.7670  std=23.8912  min=-18.9000  median=7.5500  max=67.7000
+    best_non_elected_score                     mean=25.9500  std=30.4619  min=-13.0000  median=14.0000  max=91.0000
+    mean_utility                               mean=292.9205  std=271.6350  min=0.9600  median=178.9900  max=872.6800
+    median_utility                             mean=300.8950  std=276.0340  min=0.0000  median=179.5000  max=843.0000
+    frac_zero_or_negative                      mean=0.0744  std=0.1195  min=0.0000  median=0.0100  max=0.5200
+    frac_negative                              mean=0.0510  std=0.0874  min=0.0000  median=0.0100  max=0.3900
+    gini_coefficient                           mean=0.1646  std=0.0620  min=0.0395  median=0.1754  max=0.3006
+    avg_disapprovals_per_voter                 mean=1.3457  std=1.0980  min=0.0200  median=0.9900  max=3.7500
+    avg_elected_disapprovals_per_voter         mean=0.5474  std=0.5033  min=0.0000  median=0.3950  max=1.9000
+
+  Rule: SeqPhragmen  (n=100)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=41.3580  std=30.4606  min=-5.9000  median=36.2500  max=93.3000
+    elected_min_net_score                      mean=28.8400  std=36.1360  min=-20.0000  median=12.5000  max=91.0000
+    elected_max_net_score                      mean=61.0300  std=25.4298  min=2.0000  median=65.5000  max=98.0000
+    non_elected_mean_net_score                 mean=15.7400  std=23.9624  min=-19.3000  median=7.6000  max=67.8000
+    best_non_elected_score                     mean=25.7300  std=30.8914  min=-15.0000  median=14.0000  max=92.0000
+    mean_utility                               mean=292.5852  std=271.3506  min=1.0900  median=179.0950  max=870.8500
+    median_utility                             mean=299.9500  std=275.4947  min=0.0000  median=178.7500  max=842.0000
+    frac_zero_or_negative                      mean=0.0781  std=0.1251  min=0.0000  median=0.0100  max=0.5400
+    frac_negative                              mean=0.0519  std=0.0924  min=0.0000  median=0.0100  max=0.4200
+    gini_coefficient                           mean=0.1656  std=0.0629  min=0.0398  median=0.1767  max=0.2915
+    avg_disapprovals_per_voter                 mean=1.3457  std=1.0980  min=0.0200  median=0.9900  max=3.7500
+    avg_elected_disapprovals_per_voter         mean=0.5447  std=0.4980  min=0.0000  median=0.3950  max=1.8100
+
+  Rule: MES  (n=100)
+    committee_size                             mean=10.0000  std=0.0000  min=10.0000  median=10.0000  max=10.0000
+    elected_mean_net_score                     mean=41.2980  std=30.5042  min=-6.9000  median=36.1500  max=93.4000
+    elected_min_net_score                      mean=28.3700  std=36.0195  min=-20.0000  median=11.5000  max=91.0000
+    elected_max_net_score                      mean=61.0300  std=25.4298  min=2.0000  median=65.5000  max=98.0000
+    non_elected_mean_net_score                 mean=15.8000  std=23.9472  min=-19.3000  median=7.5500  max=67.7000
+    best_non_elected_score                     mean=25.8300  std=30.5601  min=-15.0000  median=14.5000  max=91.0000
+    mean_utility                               mean=292.5314  std=271.3349  min=0.9600  median=179.0350  max=872.6800
+    median_utility                             mean=300.1400  std=275.2776  min=0.0000  median=178.5000  max=843.0000
+    frac_zero_or_negative                      mean=0.0751  std=0.1201  min=0.0000  median=0.0100  max=0.5200
+    frac_negative                              mean=0.0498  std=0.0870  min=0.0000  median=0.0100  max=0.3900
+    gini_coefficient                           mean=0.1640  std=0.0629  min=0.0390  median=0.1754  max=0.3006
+    avg_disapprovals_per_voter                 mean=1.3457  std=1.0980  min=0.0200  median=0.9900  max=3.7500
+    avg_elected_disapprovals_per_voter         mean=0.5467  std=0.5035  min=0.0000  median=0.3850  max=1.9000
+
+  Rule: TaxPhragmen  (n=100)
+    committee_size                             mean=5.6100  std=3.0081  min=0.0000  median=6.0000  max=9.0000
+    elected_mean_net_score                     mean=58.7797  std=23.0903  min=10.0000  median=60.5625  max=93.5556
+    elected_min_net_score                      mean=54.4896  std=23.8433  min=10.0000  median=54.5000  max=91.0000
+    elected_max_net_score                      mean=63.3542  std=23.1753  min=10.0000  median=67.0000  max=98.0000
+    non_elected_mean_net_score                 mean=18.1150  std=23.8183  min=-17.5556  median=10.3487  max=68.4545
+    best_non_elected_score                     mean=34.3900  std=32.5899  min=-9.0000  median=18.0000  max=92.0000
+    mean_utility                               mean=265.0468  std=248.0013  min=0.0000  median=170.4350  max=788.0400
+    median_utility                             mean=273.9250  std=255.8359  min=0.0000  median=156.0000  max=842.0000
+    frac_zero_or_negative                      mean=0.1473  std=0.2535  min=0.0000  median=0.0150  max=1.0000
+    frac_negative                              mean=0.0275  std=0.0480  min=0.0000  median=0.0000  max=0.2200
+    gini_coefficient                           mean=0.1563  std=0.0730  min=0.0000  median=0.1698  max=0.4792
+    avg_disapprovals_per_voter                 mean=1.3457  std=1.0980  min=0.0200  median=0.9900  max=3.7500
+    avg_elected_disapprovals_per_voter         mean=0.1627  std=0.1588  min=0.0000  median=0.1200  max=0.6600
+
+  Rule: TaxMES  (n=100)
+    committee_size                             mean=5.6300  std=3.0072  min=0.0000  median=6.0000  max=9.0000
+    elected_mean_net_score                     mean=58.7180  std=23.1629  min=10.0000  median=60.5695  max=93.6667
+    elected_min_net_score                      mean=54.1979  std=24.2012  min=10.0000  median=54.5000  max=92.0000
+    elected_max_net_score                      mean=63.3542  std=23.1753  min=10.0000  median=67.0000  max=98.0000
+    non_elected_mean_net_score                 mean=18.0928  std=23.7987  min=-17.5556  median=10.2053  max=68.1818
+    best_non_elected_score                     mean=34.2600  std=32.4435  min=-9.0000  median=17.5000  max=91.0000
+    mean_utility                               mean=265.1666  std=247.9232  min=0.0000  median=170.4350  max=789.8700
+    median_utility                             mean=276.2700  std=257.5216  min=0.0000  median=156.0000  max=843.0000
+    frac_zero_or_negative                      mean=0.1476  std=0.2535  min=0.0000  median=0.0150  max=1.0000
+    frac_negative                              mean=0.0277  std=0.0480  min=0.0000  median=0.0000  max=0.2200
+    gini_coefficient                           mean=0.1558  std=0.0734  min=0.0000  median=0.1689  max=0.5012
+    avg_disapprovals_per_voter                 mean=1.3457  std=1.0980  min=0.0200  median=0.9900  max=3.7500
+    avg_elected_disapprovals_per_voter         mean=0.1648  std=0.1584  min=0.0000  median=0.1250  max=0.6600
+
+
+--- Hamming distance summary (synthetic, by p_disapprove) ---
+
+p_disapprove = 0.01
+  MES_vs_TaxMES                              mean=4.1724  std=2.6196  min=1.0000  max=8.0000
+  MES_vs_TaxPhragmen                         mean=4.7241  std=2.3739  min=1.0000  max=8.0000
+  PAV_vs_MES                                 mean=1.1034  std=1.2634  min=0.0000  max=4.0000
+  PAV_vs_SeqPhragmen                         mean=1.3103  std=1.3391  min=0.0000  max=4.0000
+  PAV_vs_TaxMES                              mean=4.2414  std=2.6139  min=1.0000  max=8.0000
+  PAV_vs_TaxPhragmen                         mean=4.4483  std=2.5577  min=1.0000  max=8.0000
+  SeqPhragmen_vs_MES                         mean=1.3103  std=1.4418  min=0.0000  max=4.0000
+  SeqPhragmen_vs_TaxMES                      mean=4.4483  std=2.4434  min=1.0000  max=8.0000
+  SeqPhragmen_vs_TaxPhragmen                 mean=4.3103  std=2.6336  min=1.0000  max=8.0000
+  TaxPhragmen_vs_TaxMES                      mean=1.5172  std=1.6393  min=0.0000  max=6.0000
+
+p_disapprove = 0.05
+  MES_vs_TaxMES                              mean=4.5517  std=2.8232  min=1.0000  max=10.0000
+  MES_vs_TaxPhragmen                         mean=4.7586  std=2.6002  min=1.0000  max=10.0000
+  PAV_vs_MES                                 mean=1.1034  std=1.2634  min=0.0000  max=4.0000
+  PAV_vs_SeqPhragmen                         mean=1.3103  std=1.3391  min=0.0000  max=4.0000
+  PAV_vs_TaxMES                              mean=4.6207  std=2.8336  min=1.0000  max=10.0000
+  PAV_vs_TaxPhragmen                         mean=4.6207  std=2.7440  min=1.0000  max=10.0000
+  SeqPhragmen_vs_MES                         mean=1.3103  std=1.4418  min=0.0000  max=4.0000
+  SeqPhragmen_vs_TaxMES                      mean=4.6207  std=2.7570  min=1.0000  max=10.0000
+  SeqPhragmen_vs_TaxPhragmen                 mean=4.6207  std=2.7178  min=1.0000  max=10.0000
+  TaxPhragmen_vs_TaxMES                      mean=0.8966  std=1.2348  min=0.0000  max=4.0000
+
+p_disapprove = 0.1
+  MES_vs_TaxMES                              mean=5.0333  std=2.9767  min=1.0000  max=10.0000
+  MES_vs_TaxPhragmen                         mean=5.1333  std=2.8736  min=1.0000  max=10.0000
+  PAV_vs_MES                                 mean=1.1333  std=1.2521  min=0.0000  max=4.0000
+  PAV_vs_SeqPhragmen                         mean=1.3333  std=1.3218  min=0.0000  max=4.0000
+  PAV_vs_TaxMES                              mean=5.1667  std=2.9016  min=1.0000  max=10.0000
+  PAV_vs_TaxPhragmen                         mean=5.2000  std=2.8454  min=1.0000  max=10.0000
+  SeqPhragmen_vs_MES                         mean=1.3333  std=1.4223  min=0.0000  max=4.0000
+  SeqPhragmen_vs_TaxMES                      mean=5.1000  std=2.8082  min=1.0000  max=10.0000
+  SeqPhragmen_vs_TaxPhragmen                 mean=5.1333  std=2.7510  min=1.0000  max=10.0000
+  TaxPhragmen_vs_TaxMES                      mean=0.7667  std=1.1651  min=0.0000  max=4.0000
+
+p_disapprove = 0.15
+  MES_vs_TaxMES                              mean=5.2414  std=2.9112  min=1.0000  max=10.0000
+  MES_vs_TaxPhragmen                         mean=5.4483  std=2.7462  min=1.0000  max=10.0000
+  PAV_vs_MES                                 mean=1.1034  std=1.2634  min=0.0000  max=4.0000
+  PAV_vs_SeqPhragmen                         mean=1.3103  std=1.3391  min=0.0000  max=4.0000
+  PAV_vs_TaxMES                              mean=5.4483  std=2.7070  min=1.0000  max=10.0000
+  PAV_vs_TaxPhragmen                         mean=5.3103  std=2.8171  min=1.0000  max=10.0000
+  SeqPhragmen_vs_MES                         mean=1.3103  std=1.4418  min=0.0000  max=4.0000
+  SeqPhragmen_vs_TaxMES                      mean=5.5862  std=2.6257  min=1.0000  max=10.0000
+  SeqPhragmen_vs_TaxPhragmen                 mean=5.3793  std=2.7828  min=1.0000  max=10.0000
+  TaxPhragmen_vs_TaxMES                      mean=0.5517  std=0.8696  min=0.0000  max=2.0000
+
+p_disapprove = 0.2
+  MES_vs_TaxMES                              mean=5.5517  std=3.0541  min=1.0000  max=10.0000
+  MES_vs_TaxPhragmen                         mean=5.7241  std=2.9868  min=1.0000  max=10.0000
+  PAV_vs_MES                                 mean=1.1034  std=1.2634  min=0.0000  max=4.0000
+  PAV_vs_SeqPhragmen                         mean=1.3103  std=1.3391  min=0.0000  max=4.0000
+  PAV_vs_TaxMES                              mean=5.6207  std=2.9449  min=1.0000  max=10.0000
+  PAV_vs_TaxPhragmen                         mean=5.6552  std=3.0033  min=1.0000  max=10.0000
+  SeqPhragmen_vs_MES                         mean=1.3103  std=1.4418  min=0.0000  max=4.0000
+  SeqPhragmen_vs_TaxMES                      mean=5.6897  std=2.9045  min=1.0000  max=10.0000
+  SeqPhragmen_vs_TaxPhragmen                 mean=5.5862  std=3.0416  min=1.0000  max=10.0000
+  TaxPhragmen_vs_TaxMES                      mean=0.5862  std=1.2961  min=0.0000  max=5.0000
