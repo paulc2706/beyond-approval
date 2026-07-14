@@ -116,7 +116,7 @@ def compute_realworld_metrics():
 
         #Per Rule Metrics
         for rule, committee in all_committees.items():
-            method = "Traditional" if rule in trad_committees else "Tax"
+            method = "Tax" if rule in tax_committees else ("AV" if rule == "AV" else "Traditional")
             row = {
                 "dataset": dataset,
                 "method": method,
@@ -149,7 +149,7 @@ def compute_realworld_metrics():
 
             #Hamming summary
             #Within traditional methods
-            for r1, r2 in [("PAV", "SeqPhragmen"), ("PAV", "MES"), ("SeqPhragmen", "MES")]:
+            for r1, r2 in [("PAV", "SeqPhragmen"), ("PAV", "MES"), ("SeqPhragmen", "MES"), ("AV", "PAV"), ("AV", "SeqPhragmen"), ("AV", "MES")]:
                 if r1 in trad_committees and r2 in trad_committees:
                     rows.append({
                         "dataset": dataset,
@@ -227,9 +227,7 @@ def compute_synthetic_metrics():
 
             results_df = pd.read_csv(results_csv, encoding="utf-8")
             all_committees = get_committees_from_results(results_df)
-            trad_committees = {r: c for r, c in all_committees.items() if
-                               r in ("PAV", "SeqPhragmen", "MES")}  # Fixed: "PAV" not "Pav"
-            tax_committees = {r: c for r, c in all_committees.items() if r in ("TaxPhragmen", "TaxMES")}
+
 
             # Load vote matrix
             if os.path.exists(votes_csv):
@@ -240,10 +238,16 @@ def compute_synthetic_metrics():
                 vote_matrix = None
                 net_scores = None
 
+            trad_committees = {r: c for r, c in all_committees.items() if
+                               r in ("PAV", "SeqPhragmen", "MES")}
+            tax_committees = {r: c for r, c in all_committees.items() if r in ("TaxPhragmen", "TaxMES")}
+            av_committees = {r: c for r, c in all_committees.items() if r == "AV"}
+            trad_and_av = {**trad_committees, **av_committees}
+
             # Hamming distances
-            hamming_trad = compute_hamming_matrix(trad_committees)
+            hamming_trad = compute_hamming_matrix(trad_and_av)
             hamming_tax = compute_hamming_matrix(tax_committees)
-            cross_hamming = compute_cross_hamming(trad_committees, tax_committees)
+            cross_hamming = compute_cross_hamming(trad_and_av, tax_committees)
 
             # Extract metadata from results
             meta = {}
@@ -253,7 +257,7 @@ def compute_synthetic_metrics():
 
             #Per rule metrics
             for rule, committee in all_committees.items():
-                method = "Traditional" if rule in trad_committees else "Tax"
+                method = "Tax" if rule in tax_committees else ("AV" if rule in av_committees else "Traditional")
                 row = {
                     "dataset": dataset,
                     "p_disapprove": p_val,
@@ -276,8 +280,8 @@ def compute_synthetic_metrics():
                 rows.append(row)
 
             #Hamming_cross
-            for r1, r2 in [("PAV", "SeqPhragmen"), ("PAV", "MES"), ("SeqPhragmen", "MES")]:
-                if r1 in trad_committees and r2 in trad_committees:
+            for r1, r2 in [("PAV", "SeqPhragmen"), ("PAV", "MES"), ("SeqPhragmen", "MES"), ("AV", "PAV"), ("AV", "SeqPhragmen"), ("AV", "MES")]:
+                if r1 in trad_and_av and r2 in trad_and_av:
                     hamming_row = {
                         "dataset": dataset,
                         "p_disapprove": p_val,

@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
+import math
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 from matplotlib.colors import LinearSegmentedColormap
@@ -21,6 +22,7 @@ syn_csv = os.path.join(metrics_dir, "metrics_synthetic.csv")
 
 #Color and ordering config
 rule_colors = {
+    "AV": "#757575",
     "PAV": "#2196F3",
     "SeqPhragmen": "#4CAF50",
     "MES": "#FF9800",
@@ -28,7 +30,7 @@ rule_colors = {
     "TaxMES": "#F44336",
 }
 
-rule_order = ["PAV", "SeqPhragmen", "MES", "TaxPhragmen", "TaxMES"]
+rule_order = ["AV", "PAV", "SeqPhragmen", "MES", "TaxPhragmen", "TaxMES"]
 trad_rules = ["PAV", "SeqPhragmen", "MES"]
 tax_rules = ["TaxPhragmen", "TaxMES"]
 
@@ -52,8 +54,8 @@ rw_all = pd.read_csv(rw_csv, encoding="utf-8")
 syn_all = pd.read_csv(syn_csv, encoding="utf-8")
 
 #Per rule subset excluding hamming rows
-rw = rw_all[rw_all["method"].isin(["Traditional", "Tax"])].copy()
-syn = syn_all[syn_all["method"].isin(["Traditional", "Tax"])].copy()
+rw = rw_all[rw_all["method"].isin(["Traditional", "AV", "Tax"])].copy()
+syn = syn_all[syn_all["method"].isin(["Traditional", "AV", "Tax"])].copy()
 
 #Hamming subsets
 rw_hamming_trad = rw_all[rw_all["method"] == "Hamming_traditional"].copy()
@@ -423,9 +425,11 @@ save(fig, "syn8_trad_hamming_vs_pd.png")
 
 
 #9 Net score, elected mean vs p_disapprove by model
-fig, axes = plt.subplots(1, n_models, figsize=(6 * n_models, 5), sharey=True)
-if n_models == 1:
-    axes = [axes]
+n_cols = 2
+n_rows = math.ceil((n_models + 1) / n_cols)  # +1 cell reserved for legend
+fig, axes = plt.subplots(n_rows, n_cols, figsize=(6 * n_cols, 5 * n_rows), sharey=True)
+axes = axes.flatten()
+
 for ax, model in zip(axes, sorted(models)):
     sub = syn[(syn["model"] == model)].dropna(subset=["elected_mean_net_score"])
     ns_df = sub.groupby(["p_disapprove", "rule"])["elected_mean_net_score"].mean().reset_index()
@@ -436,9 +440,16 @@ for ax, model in zip(axes, sorted(models)):
     ax.set_xlabel("p_disapprove")
     ax.set_ylabel("Mean Elected Net Score" if ax == axes[0] else "")
     ax.set_xticks(pd_values)
+
+# hide any unused axes cells, reuse the last one for the legend
+for ax in axes[n_models:]:
+    ax.axis("off")
+
 handles = [plt.Line2D([0], [0], marker="o", color="w", markerfacecolor=rule_colors[r], markersize=8, label=r) for r in rule_order]
-fig.legend(handles=handles, title="Rule", bbox_to_anchor=(1.01, 0.5), loc="center left")
+axes[n_models].legend(handles=handles, title="Rule", loc="center", frameon=False)
+
 fig.suptitle("Mean Elected Net Score vs. p_disapprove by Model - Synthetic Data", fontsize=13)
+plt.tight_layout()
 save(fig, "syn9_net_score_vs_pd_by_model.png")
 
 
@@ -498,6 +509,28 @@ fig.suptitle("Committee Size vs Disapproval Avoidance - Synthetic Data", fontsiz
 plt.tight_layout()
 save(fig, "syn11_size_vs_avoidance_by_p.png")
 
+#12 Mean Gini coefficient per rule -- Real-World, Synthetic and Combined
+gini_rw = rw[["rule", "gini_coefficient"]].assign(source="Real-World")
+gini_syn = syn[["rule", "gini_coefficient"]].assign(source="Synthetic")
+gini_combined = pd.concat([gini_rw, gini_syn], ignore_index=True).assign(source="Combined")
+gini_sources = pd.concat([gini_rw, gini_syn, gini_combined], ignore_index=True)
+
+gini_stats = gini_sources.dropna(subset=["gini_coefficient"]).groupby(["source", "rule"])["gini_coefficient"].agg(["mean", "std"]).reset_index()
+
+source_order = ["Real-World", "Synthetic", "Combined"]
+bar_width = 0.15
+x = np.arange(len(source_order))
+
+fig, ax = plt.subplots(figsize=(11, 5.5))
+for i, rule in enumerate(rule_order):
+    sub = gini_stats[gini_stats["rule"] == rule].set_index("source").reindex(source_order)
+    ax.bar(x + i * bar_width, sub["mean"], bar_width, yerr=sub["std"], capsize=3, label=rule, color=rule_colors[rule])
+ax.set_xticks(x + bar_width * (len(rule_order) - 1) / 2)
+ax.set_xticklabels(source_order)
+ax.set_ylabel("Mean Gini Coefficient")
+ax.set_title("Mean Gini Coefficient per Rule (± std) — Real-World, Synthetic, Combined")
+ax.legend(title="Rule", bbox_to_anchor=(1.01, 1), loc="upper left")
+save(fig, "combined1_gini_mean_per_rule.png")
 
 print(f"\nAll plots saved to: {plots_dir}")
 

@@ -2,5 +2,6 @@ Method,Rule,Committee_Index,Committee_Size,Selected_Candidates,dataset,Model,p,p
 Traditional,PAV,1,10,"[0, 1, 2, 3, 4, 5, 10, 14, 18, 19]",resampling_p0.3_phi0.75,Resampling,0.3,0.75,0.15,100,20
 Traditional,SeqPhragmen,1,10,"[0, 1, 2, 3, 4, 5, 10, 14, 18, 19]",resampling_p0.3_phi0.75,Resampling,0.3,0.75,0.15,100,20
 Traditional,MES,1,10,"[0, 1, 2, 3, 4, 5, 10, 14, 18, 19]",resampling_p0.3_phi0.75,Resampling,0.3,0.75,0.15,100,20
+Traditional,AV,1,10,"[0, 1, 2, 3, 4, 5, 14, 16, 18, 19]",resampling_p0.3_phi0.75,Resampling,0.3,0.75,0.15,100,20
 Tax,TaxPhragmen,1,6,"[0, 1, 2, 3, 4, 5]",resampling_p0.3_phi0.75,Resampling,0.3,0.75,0.15,100,20
 Tax,TaxMES,1,6,"[0, 1, 2, 3, 4, 5]",resampling_p0.3_phi0.75,Resampling,0.3,0.75,0.15,100,20

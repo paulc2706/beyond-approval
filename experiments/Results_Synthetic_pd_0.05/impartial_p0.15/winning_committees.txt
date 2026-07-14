@@ -15,6 +15,11 @@ SeqPhragmen:
 MES:
   Committee 1: [0, 1, 2, 4, 7, 8, 9, 10, 14, 16]
 
+AV:
+  Committee 1: [0, 1, 2, 3, 4, 7, 8, 9, 12, 14]
+  Committee 2: [0, 2, 3, 4, 7, 8, 9, 10, 12, 14]
+  Committee 3: [0, 2, 3, 4, 7, 8, 9, 12, 14, 16]
+
 --- Tax Methods ---
 
 TaxPhragmen: [7, 8, 9, 14]

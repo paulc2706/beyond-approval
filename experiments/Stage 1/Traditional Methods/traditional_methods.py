@@ -70,6 +70,11 @@ def run_methods(profile, committee_size):
     committees_mes = abcrules.compute_rule_x(profile, committeesize= committee_size)
     results["MES"] = [list(c) for c in committees_mes]
 
+    #AV (non-proportional baseline)
+    print(f"Computing AV...")
+    committees_av = abcrules.compute_av(profile, committeesize=committee_size)
+    results["AV"] = [list(c) for c in committees_av]
+
     return results
 
 def create_frequency_matrix(results, original_id_list):

@@ -11,8 +11,8 @@ output_path = os.path.join(metrics_dir, "metrics_overview.txt")
 rw_all = pd.read_csv(rw_csv, encoding="utf-8")
 syn_all = pd.read_csv(syn_csv, encoding="utf-8")
 
-rw = rw_all[rw_all["method"].isin(["Traditional", "Tax"])].copy()
-syn = syn_all[syn_all["method"].isin(["Traditional", "Tax"])].copy()
+rw = rw_all[rw_all["method"].isin(["Traditional", "AV", "Tax"])].copy()
+syn = syn_all[syn_all["method"].isin(["Traditional", "AV", "Tax"])].copy()
 
 metric_cols = [
     "committee_size",
@@ -24,7 +24,7 @@ metric_cols = [
     "avg_disapprovals_per_voter", "avg_elected_disapprovals_per_voter",
 ]
 
-rule_order = ["PAV", "SeqPhragmen", "MES", "TaxPhragmen", "TaxMES"]
+rule_order = ["AV", "PAV", "SeqPhragmen", "MES", "TaxPhragmen", "TaxMES"]
 
 lines = []
 
@@ -139,6 +139,25 @@ for p in sorted(syn_h["p_disapprove"].dropna().unique()):
         vals = sub_p[sub_p["rule"] == pair]["hamming_distance"]
         lines.append(f"  {pair:<42} mean={vals.mean():.4f}  std={vals.std():.4f}  min={vals.min():.4f}  max={vals.max():.4f}")
     lines.append("")
+
+gini_rw = rw[["rule", "gini_coefficient"]].assign(source="Real-World")
+gini_syn = syn[["rule", "gini_coefficient"]].assign(source="Synthetic")
+gini_combined = pd.concat([gini_rw, gini_syn], ignore_index=True).assign(source="Combined")
+
+lines.append("")
+lines.append("")
+lines.append("=" * 70)
+lines.append("GINI COEFFICIENT SUMMARY - MEAN PER RULE")
+lines.append("=" * 70)
+
+for label, sub_df in [("Real-World", gini_rw), ("Synthetic", gini_syn), ("Combined (Real-World + Synthetic)", gini_combined)]:
+    lines.append("")
+    lines.append(f"--- {label} ---")
+    for rule in rule_order:
+        vals = sub_df.loc[sub_df["rule"] == rule, "gini_coefficient"].dropna()
+        if len(vals) == 0:
+            continue
+        lines.append(f"  {rule:<15} mean={vals.mean():.4f}  std={vals.std():.4f}  min={vals.min():.4f}  median={vals.median():.4f}  max={vals.max():.4f}  n={len(vals)}")
 
 with open(output_path, "w", encoding="utf-8") as f:
     f.write("\n".join(lines))

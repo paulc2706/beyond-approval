@@ -2,3 +2,4 @@ Rule,Committee_Index,Committee_Size,Selected_Candidates
 PAV,1,10,"[0, 1, 2, 4, 5, 8, 11, 28, 29, 89]"
 SeqPhragmen,1,10,"[0, 1, 2, 4, 5, 8, 11, 28, 29, 89]"
 MES,1,10,"[0, 1, 2, 4, 5, 8, 11, 28, 29, 89]"
+AV,1,10,"[0, 1, 2, 5, 11, 21, 22, 27, 28, 29]"

@@ -3,5 +3,6 @@ Traditional,PAV,1,10,"[1, 2, 3, 7, 9, 10, 11, 12, 17, 18]",euclidean_r1.5,Euclid
 Traditional,PAV,2,10,"[2, 3, 5, 7, 9, 10, 11, 12, 17, 18]",euclidean_r1.5,Euclidean2D,1.5,0.2,100,20
 Traditional,SeqPhragmen,1,10,"[2, 5, 7, 9, 10, 11, 12, 13, 17, 18]",euclidean_r1.5,Euclidean2D,1.5,0.2,100,20
 Traditional,MES,1,10,"[2, 5, 7, 9, 10, 11, 12, 13, 17, 18]",euclidean_r1.5,Euclidean2D,1.5,0.2,100,20
+Traditional,AV,1,10,"[1, 2, 3, 7, 9, 11, 12, 14, 17, 18]",euclidean_r1.5,Euclidean2D,1.5,0.2,100,20
 Tax,TaxPhragmen,1,0,[],euclidean_r1.5,Euclidean2D,1.5,0.2,100,20
 Tax,TaxMES,1,0,[],euclidean_r1.5,Euclidean2D,1.5,0.2,100,20

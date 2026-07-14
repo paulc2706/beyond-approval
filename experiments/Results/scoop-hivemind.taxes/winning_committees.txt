@@ -11,3 +11,6 @@
 --- MES (1 winning committee(s) found) ---
   Committee 1: [3, 7, 28, 31, 37, 38, 39, 40, 46, 80]
 
+--- AV (1 winning committee(s) found) ---
+  Committee 1: [28, 29, 31, 32, 34, 37, 38, 39, 40, 46]
+

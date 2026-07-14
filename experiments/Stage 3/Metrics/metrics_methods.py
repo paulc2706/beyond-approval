@@ -46,6 +46,8 @@ def compute_cross_hamming(traditional_dict, tax_dict):
         ("MES", "TaxMES"),
         ("MES", "TaxPhragmen"),
         ("TaxPhragmen", "TaxMES"),  # within-tax
+        ("AV", "TaxMES"),
+        ("AV", "TaxPhragmen"),
     ]
     results = {}
     for a, b in pairs:
