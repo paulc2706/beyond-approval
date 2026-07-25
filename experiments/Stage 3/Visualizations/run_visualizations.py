@@ -532,5 +532,110 @@ ax.set_title("Mean Gini Coefficient per Rule (± std) — Real-World, Synthetic,
 ax.legend(title="Rule", bbox_to_anchor=(1.01, 1), loc="upper left")
 save(fig, "combined1_gini_mean_per_rule.png")
 
+
+
+
+#New plots with AV
+
+#AV1 Real World vs Synthetic Divergence (AV vs traditional rules)
+
+pairs = ["AV_vs_PAV", "AV_vs_SeqPhragmen", "AV_vs_MES"]
+pair_labels = ["AV vs. PAV", "AV vs. SeqPhragmen", "AV vs. MES"]
+
+rw_ham_dedup = rw_hamming_trad.drop_duplicates(subset=["dataset", "rule", "hamming_distance"])
+syn_ham_dedup = syn_hamming_trad.drop_duplicates(subset=["dataset", "p_disapprove", "rule", "hamming_distance"])
+
+rw_means = rw_ham_dedup[rw_ham_dedup["rule"].isin(pairs)].groupby("rule")["hamming_distance"].mean().reindex(pairs)
+syn_means = syn_ham_dedup[syn_ham_dedup["rule"].isin(pairs)].groupby("rule")["hamming_distance"].mean().reindex(pairs)
+
+fig, ax = plt.subplots(figsize=(8, 5))
+x = np.arange(len(pairs))
+width = 0.35
+ax.bar(x - width / 2, rw_means.values, width, label="Real-World (k=10)", color ="#455A64")
+ax.bar(x + width / 2, syn_means.values, width, label="Synthetic (k=10)", color ="#90A4AE")
+ax.set_xticks(x)
+ax.set_xticklabels(pair_labels)
+ax.set_ylabel("Mean Hamming Distance")
+ax.set_title("AV vs. Traditional Rules: Real-World vs. Synthetic Divergence")
+ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.12), ncol=2, frameon=False)
+fig.subplots_adjust(bottom=0.22)
+for i, (rv, sv) in enumerate(zip(rw_means.values, syn_means.values)):
+    ax.text(i - width / 2, rv + 0.05, f"{rv: .2f}", ha="center", fontsize=9)
+    ax.text(i + width / 2, sv + 0.05, f"{sv: .2f}", ha="center", fontsize=9)
+save(fig, "av1_realworld_vs_synthetic_divergence.png")
+
+
+# AV2: Per dataset rank consistency (Gini and Utility), Real World
+rw_pivot_gini = rw.pivot_table(index="dataset", columns="rule", values="gini_coefficient")[rule_order]
+rw_pivot_util = rw.pivot_table(index="dataset", columns="rule", values="mean_utility")[rule_order]
+
+gini_ranks = rw_pivot_gini.rank(axis=1, method="min", ascending=True)
+util_ranks = rw_pivot_util.rank(axis=1, method="min", ascending=False)
+
+fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+rng = np.random.default_rng(42)
+for ax, ranks, title in zip(axes, [gini_ranks, util_ranks], ["Gini Coefficient Rank\n(1 = most equitable)", "Mean Utility Rank\n(1 = highest utility)"],):
+    for rule in rule_order:
+        vals = ranks[rule].values
+        jitter = rng.normal(0, 0.05, size=len(vals))
+        ax.scatter([rule_order.index(rule) + 1 + j for j in jitter], vals, color=rule_colors[rule], alpha=0.7, s=45, edgecolor="white", linewidth=0.5)
+        ax.scatter(rule_order.index(rule) + 1, vals.mean(), color=rule_colors[rule], marker="D", s=110, edgecolor="black", linewidth=1.2, zorder=5)
+    ax.set_xticks(range(1, len(rule_order) + 1))
+    ax.set_xticklabels(rule_order, rotation=30, ha="right")
+    ax.set_yticks(range(1, 7))
+    ax.invert_yaxis()
+    ax.set_ylabel("Rank among 6 rules")
+    ax.set_title(title)
+fig.suptitle("Per-Dataset Rank Consistency Across 20 Real-World Datasets\n"
+             "(dots = individual datasets, diamons = mean rank", y = 0.99, fontsize=13)
+fig.tight_layout()
+save(fig, "av2_rank_consistency_realworld.png")
+
+
+# AV 3 AV advantage over traditional mean vs p_disapprove (Synthetic)
+trad_rules = ["PAV", "SeqPhragmen", "MES"]
+syn_grp = syn.groupby(["rule", "p_disapprove"])[["gini_coefficient", "mean_utility"]].mean().reset_index()
+
+trad_mean = syn_grp[syn_grp["rule"].isin(trad_rules)].groupby("p_disapprove")[["gini_coefficient", "mean_utility"]].mean()
+av_vals = syn_grp[syn_grp["rule"] == "AV"].set_index("p_disapprove")[["gini_coefficient", "mean_utility"]]
+
+diff_gini = av_vals["gini_coefficient"] - trad_mean["gini_coefficient"]
+diff_util = av_vals["mean_utility"] - trad_mean["mean_utility"]
+
+pct_util = (diff_util / trad_mean["mean_utility"]) * 100
+
+fig, axes = plt.subplots(1, 2, figsize=(11, 4.5))
+axes[0].axhline(0, color="gray", linewidth=1, linestyle="--")
+axes[0].plot(diff_gini.index, diff_gini.values, marker="o", color=rule_colors["AV"])
+axes[0].set_xticks([0.01, 0.05, 0.10, 0.15, 0.20])
+axes[0].set_title("AV − Mean(Traditional): Gini Coefficient")
+axes[0].set_xlabel("p_disapprove")
+axes[0].set_ylabel("Difference")
+
+axes[1].axhline(0, color="gray", linewidth=1, linestyle="--")
+axes[1].plot(pct_util.index, pct_util.values, marker="o", color=rule_colors["AV"])
+axes[1].set_xticks([0.01, 0.05, 0.10, 0.15, 0.20])
+axes[1].set_title("AV − Mean(Traditional): Mean Utility")
+axes[1].set_xlabel("p_disapprove")
+axes[1].set_ylabel("Difference (% of traditional mean)")
+
+fig.suptitle("AV's Advantage Over Traditional Rules is Negligible on Synthetic Data", y=1.02)
+save(fig, "av3_synthetic_null_advantage_vs_pd.png")
+
+
 print(f"\nAll plots saved to: {plots_dir}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
