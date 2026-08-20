@@ -59,7 +59,7 @@ def run_group_comparison(groups, alpha=0.05):
 
 def print_result(test_name, result):
     print(f"\n{test_name}")
-    print(f"  Levene's test: stat={result['levene_stat']:.3f}, p={result['levene_p']:.4f} -> "
+    print(f"  Levene's test: stat={result['levene_stat']:.3f}, p={result['levene_p']:.4g} -> "
           f"{'equal' if result['equal_variance'] else 'unequal'} variances")
     print(f"  {result['test']}: p={result['p_value']:.4g}")
     if result["posthoc"] is not None:

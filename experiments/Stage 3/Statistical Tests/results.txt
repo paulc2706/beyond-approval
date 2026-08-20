@@ -12,7 +12,7 @@ PAV_vs_SeqPhragmen SeqPhragmen_vs_TaxPhragmen     1.2    6.15 -4.95 0.521385 -9.
 SeqPhragmen_vs_MES SeqPhragmen_vs_TaxPhragmen     1.2    6.15 -4.95 0.521385 -9.493948 7.016610e-13 -2.733028
 
 realworld - Test_B_MES
-  Levene's test: stat=5.093, p=0.0092 -> unequal variances
+  Levene's test: stat=5.093, p=0.009229 -> unequal variances
   Welch ANOVA: p=3.4e-09
   Post-hoc (Games-Howell):
             A                  B  mean_A  mean_B  diff       se        T        df         pval   hedges
@@ -25,7 +25,7 @@ Synthetic data
 ==================================================
 
 synthetic_pd_0.01 - Test_A_SeqPhragmen
-  Levene's test: stat=8.754, p=0.0004 -> unequal variances
+  Levene's test: stat=8.754, p=0.000352 -> unequal variances
   Welch ANOVA: p=2.972e-06
   Post-hoc (Games-Howell):
                  A                          B   mean_A   mean_B  diff       se         T        df     pval    hedges
@@ -34,7 +34,7 @@ PAV_vs_SeqPhragmen SeqPhragmen_vs_TaxPhragmen 1.310345 4.310345  -3.0 0.548637 -
 SeqPhragmen_vs_MES SeqPhragmen_vs_TaxPhragmen 1.310345 4.310345  -3.0 0.557543 -5.380749 43.400656 0.000008 -1.394044
 
 synthetic_pd_0.01 - Test_B_MES
-  Levene's test: stat=6.427, p=0.0025 -> unequal variances
+  Levene's test: stat=6.427, p=0.002527 -> unequal variances
   Welch ANOVA: p=2.64e-06
   Post-hoc (Games-Howell):
             A                  B   mean_A   mean_B      diff       se         T        df     pval    hedges
@@ -43,7 +43,7 @@ MES_vs_TaxMES SeqPhragmen_vs_MES 4.172414 1.310345  2.862069 0.555253  5.154527 
    PAV_vs_MES SeqPhragmen_vs_MES 1.103448 1.310345 -0.206897 0.355977 -0.581207 55.049982 0.830708 -0.150579
 
 synthetic_pd_0.05 - Test_A_SeqPhragmen
-  Levene's test: stat=8.080, p=0.0006 -> unequal variances
+  Levene's test: stat=8.080, p=0.0006173 -> unequal variances
   Welch ANOVA: p=6.741e-07
   Post-hoc (Games-Howell):
                  A                          B   mean_A   mean_B      diff       se         T        df     pval    hedges
@@ -52,7 +52,7 @@ PAV_vs_SeqPhragmen SeqPhragmen_vs_TaxPhragmen 1.310345 4.620690 -3.310345 0.5626
 SeqPhragmen_vs_MES SeqPhragmen_vs_TaxPhragmen 1.310345 4.620690 -3.310345 0.571312 -5.794288 42.603319 0.000002 -1.501184
 
 synthetic_pd_0.05 - Test_B_MES
-  Levene's test: stat=7.802, p=0.0008 -> unequal variances
+  Levene's test: stat=7.802, p=0.0007803 -> unequal variances
   Welch ANOVA: p=8.94e-07
   Post-hoc (Games-Howell):
             A                  B   mean_A   mean_B      diff       se         T        df     pval    hedges
@@ -61,7 +61,7 @@ MES_vs_TaxMES SeqPhragmen_vs_MES 4.551724 1.310345  3.241379 0.588665  5.506324 
    PAV_vs_MES SeqPhragmen_vs_MES 1.103448 1.310345 -0.206897 0.355977 -0.581207 55.049982 0.830708 -0.150579
 
 synthetic_pd_0.1 - Test_A_SeqPhragmen
-  Levene's test: stat=8.246, p=0.0005 -> unequal variances
+  Levene's test: stat=8.246, p=0.0005255 -> unequal variances
   Welch ANOVA: p=1.765e-08
   Post-hoc (Games-Howell):
                  A                          B   mean_A   mean_B  diff       se         T        df         pval    hedges
@@ -70,7 +70,7 @@ PAV_vs_SeqPhragmen SeqPhragmen_vs_TaxPhragmen 1.333333 5.133333  -3.8 0.557224 -
 SeqPhragmen_vs_MES SeqPhragmen_vs_TaxPhragmen 1.333333 5.133333  -3.8 0.565414 -6.720734 43.470250 9.253648e-08 -1.712750
 
 synthetic_pd_0.1 - Test_B_MES
-  Levene's test: stat=9.475, p=0.0002 -> unequal variances
+  Levene's test: stat=9.475, p=0.0001894 -> unequal variances
   Welch ANOVA: p=8.759e-08
   Post-hoc (Games-Howell):
             A                  B   mean_A   mean_B  diff       se         T        df         pval    hedges
@@ -79,7 +79,7 @@ MES_vs_TaxMES SeqPhragmen_vs_MES 5.033333 1.333333   3.7 0.602326  6.142850 41.5
    PAV_vs_MES SeqPhragmen_vs_MES 1.133333 1.333333  -0.2 0.345967 -0.578089 57.082780 8.323332e-01 -0.147323
 
 synthetic_pd_0.15 - Test_A_SeqPhragmen
-  Levene's test: stat=8.699, p=0.0004 -> unequal variances
+  Levene's test: stat=8.699, p=0.0003687 -> unequal variances
   Welch ANOVA: p=7.362e-09
   Post-hoc (Games-Howell):
                  A                          B   mean_A   mean_B      diff       se         T        df         pval    hedges
@@ -88,7 +88,7 @@ PAV_vs_SeqPhragmen SeqPhragmen_vs_TaxPhragmen 1.310345 5.379310 -4.068966 0.5734
 SeqPhragmen_vs_MES SeqPhragmen_vs_TaxPhragmen 1.310345 5.379310 -4.068966 0.581990 -6.991469 42.022554 4.440477e-08 -1.811350
 
 synthetic_pd_0.15 - Test_B_MES
-  Levene's test: stat=11.633, p=0.0000 -> unequal variances
+  Levene's test: stat=11.633, p=3.471e-05 -> unequal variances
   Welch ANOVA: p=2.164e-08
   Post-hoc (Games-Howell):
             A                  B   mean_A   mean_B      diff       se         T        df         pval    hedges
@@ -97,7 +97,7 @@ MES_vs_TaxMES SeqPhragmen_vs_MES 5.241379 1.310345  3.931034 0.603272  6.516186 
    PAV_vs_MES SeqPhragmen_vs_MES 1.103448 1.310345 -0.206897 0.355977 -0.581207 55.049982 8.307078e-01 -0.150579
 
 synthetic_pd_0.2 - Test_A_SeqPhragmen
-  Levene's test: stat=12.475, p=0.0000 -> unequal variances
+  Levene's test: stat=12.475, p=1.804e-05 -> unequal variances
   Welch ANOVA: p=1.706e-08
   Post-hoc (Games-Howell):
                  A                          B   mean_A   mean_B      diff       se         T        df         pval    hedges
@@ -106,7 +106,7 @@ PAV_vs_SeqPhragmen SeqPhragmen_vs_TaxPhragmen 1.310345 5.586207 -4.275862 0.6171
 SeqPhragmen_vs_MES SeqPhragmen_vs_TaxPhragmen 1.310345 5.586207 -4.275862 0.625053 -6.840798 39.978753 9.324094e-08 -1.772314
 
 synthetic_pd_0.2 - Test_B_MES
-  Levene's test: stat=12.006, p=0.0000 -> unequal variances
+  Levene's test: stat=12.006, p=2.594e-05 -> unequal variances
   Welch ANOVA: p=1.007e-08
   Post-hoc (Games-Howell):
             A                  B   mean_A   mean_B      diff       se         T        df         pval    hedges
