@@ -147,32 +147,14 @@ def compute_realworld_metrics():
 
             rows.append(row)
 
-            #Hamming summary
-            #Within traditional methods
-            for r1, r2 in [("PAV", "SeqPhragmen"), ("PAV", "MES"), ("SeqPhragmen", "MES"), ("AV", "PAV"), ("AV", "SeqPhragmen"), ("AV", "MES")]:
-                if r1 in trad_committees and r2 in trad_committees:
-                    rows.append({
-                        "dataset": dataset,
-                        "method": "Hamming_traditional",
-                        "rule": f"{r1}_vs_{r2}",
-                        "committee_size": None,
-                        **{k: None for k in ["elected_mean_net_score", "elected_min_net_score", "elected_max_net_score",
-                                             "non_elected_mean_net_score", "best_non_elected_score",
-                                             "best_non_elected_candidate",
-                                             "mean_utility", "median_utility", "n_zero_or_negative",
-                                             "frac_zero_or_negative",
-                                             "n_negative", "frac_negative", "gini_coefficient",
-                                             "avg_disapprovals_per_voter", "avg_elected_disapprovals_per_voter"]},
-                        "hamming_distance": hamming_trad.loc[r1, r2],
-                    })
-
-
-            #Cross Hamming
-            for pair_label, dist in cross_hamming.items():
+        #Hamming summary
+        #Within traditional methods
+        for r1, r2 in [("PAV", "SeqPhragmen"), ("PAV", "MES"), ("SeqPhragmen", "MES"), ("AV", "PAV"), ("AV", "SeqPhragmen"), ("AV", "MES")]:
+            if r1 in trad_committees and r2 in trad_committees:
                 rows.append({
                     "dataset": dataset,
-                    "method": "Cross-Hamming",
-                    "rule": pair_label,
+                    "method": "Hamming_traditional",
+                    "rule": f"{r1}_vs_{r2}",
                     "committee_size": None,
                     **{k: None for k in ["elected_mean_net_score", "elected_min_net_score", "elected_max_net_score",
                                          "non_elected_mean_net_score", "best_non_elected_score",
@@ -181,8 +163,26 @@ def compute_realworld_metrics():
                                          "frac_zero_or_negative",
                                          "n_negative", "frac_negative", "gini_coefficient",
                                          "avg_disapprovals_per_voter", "avg_elected_disapprovals_per_voter"]},
-                    "hamming_distance": dist,
+                    "hamming_distance": hamming_trad.loc[r1, r2],
                 })
+
+
+        #Cross Hamming
+        for pair_label, dist in cross_hamming.items():
+            rows.append({
+                "dataset": dataset,
+                "method": "Cross-Hamming",
+                "rule": pair_label,
+                "committee_size": None,
+                **{k: None for k in ["elected_mean_net_score", "elected_min_net_score", "elected_max_net_score",
+                                     "non_elected_mean_net_score", "best_non_elected_score",
+                                     "best_non_elected_candidate",
+                                     "mean_utility", "median_utility", "n_zero_or_negative",
+                                     "frac_zero_or_negative",
+                                     "n_negative", "frac_negative", "gini_coefficient",
+                                     "avg_disapprovals_per_voter", "avg_elected_disapprovals_per_voter"]},
+                "hamming_distance": dist,
+            })
 
     df_out = pd.DataFrame(rows)
     out_path = os.path.join(output_dir, "metrics_real_world.csv")

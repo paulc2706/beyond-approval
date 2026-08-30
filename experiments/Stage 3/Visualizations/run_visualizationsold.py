@@ -287,14 +287,18 @@ pd_values = sorted(syn["p_disapprove"].unique())
 #1 Committee size compared to p_disapprove --> line plot per rule
 plt.close("all")
 fig, ax1 = plt.subplots(figsize=(9, 5))
-size_df = syn.groupby(["p_disapprove", "rule"])["committee_size"].agg(["mean", "std"]).reset_index()
-series1 = [("PAV / SeqPhragmen / MES", "PAV", "#2196F3")] + [(rule, rule, rule_colors[rule]) for rule in tax_rules]
-offsets1 = np.linspace(-0.006, 0.006, len(series1))
-for i, (label, rule, color) in enumerate(series1):
+size_df = syn.groupby(["p_disapprove", "rule"])["committee_size"].mean().reset_index()
+# Single reference line for all traditional methods
+trad_sub = size_df[size_df["rule"] == "PAV"]
+ax1.plot(trad_sub["p_disapprove"], trad_sub["committee_size"],
+         marker="o", label="PAV / SeqPhragmen / MES",
+         color="#2196F3", linewidth=2)
+# Tax methods
+for rule in tax_rules:
     sub = size_df[size_df["rule"] == rule]
-    (line,) = ax1.plot(sub["p_disapprove"], sub["mean"], marker="o", linewidth=2, label=label, color=color)
-    ax1.errorbar(sub["p_disapprove"] + offsets1[i], sub["mean"], yerr=sub["std"],
-                 fmt="none", color=line.get_color(), elinewidth=0.7, capthick=1.5, capsize=6, alpha=0.9)
+    ax1.plot(sub["p_disapprove"], sub["committee_size"],
+             marker="o", label=rule,
+             color=rule_colors[rule], linewidth=2)
 ax1.set_ylim(0, 11)
 ax1.set_title("Mean Committee Size vs. p_disapprove - Synthetic Data")
 ax1.set_xlabel("p_disapprove")
@@ -311,18 +315,15 @@ cross_colors = {
     "SeqPhragmen_vs_TaxPhragmen": "#4CAF50",
     "MES_vs_TaxMES": "#FF9800",
 }
-hdf = syn_hamming_cross.groupby(["p_disapprove", "rule"])["hamming_distance"].agg(["mean", "std"]).reset_index()
-offsets2 = np.linspace(-0.006, 0.006, len(cross_colors))
-for i, pair in enumerate(cross_colors):
+hdf = syn_hamming_cross.groupby(["p_disapprove", "rule"])["hamming_distance"].mean().reset_index()
+for pair in cross_colors:
     sub = hdf[hdf["rule"] == pair]
-    (line,) = ax.plot(sub["p_disapprove"], sub["mean"], marker="o", linewidth=2, label=pair, color=cross_colors[pair])
-    ax.errorbar(sub["p_disapprove"] + offsets2[i], sub["mean"], yerr=sub["std"],
-                fmt="none", color=line.get_color(), elinewidth=0.7, capthick=1.5, capsize=6, alpha=0.9)
+    ax.plot(sub["p_disapprove"], sub["hamming_distance"], marker="o", label=pair, color=cross_colors[pair], linewidth=2)
 ax.set_title("Cross-Hamming Distance vs. p_disapprove\n(Traditional vs. Tax Counterparts)")
 ax.set_xlabel("p_disapprove")
 ax.set_ylabel("Mean Hamming Distance")#
 ax.set_xticks(pd_values)
-ax.legend(title="Pair", loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=3, frameon=False)
+ax.legend(title="Pair")
 save(fig, "syn2_cross_hamming_vs_pd.png")
 
 
@@ -348,18 +349,15 @@ save(fig, "syn3_gini_vs_utility_by_model.png")
 
 #4 Gini coefficient vs p_disapprove --> line plot per rule
 fig, ax = plt.subplots(figsize=(9, 5))
-gini_df = syn.dropna(subset=["gini_coefficient"]).groupby(["p_disapprove", "rule"])["gini_coefficient"].agg(["mean", "std"]).reset_index()
-offsets4 = np.linspace(-0.008, 0.008, len(rule_order))
-for i, rule in enumerate(rule_order):
+gini_df = syn.dropna(subset=["gini_coefficient"]).groupby(["p_disapprove", "rule"])["gini_coefficient"].mean().reset_index()
+for rule in rule_order:
     sub = gini_df[gini_df["rule"] == rule]
-    (line,) = ax.plot(sub["p_disapprove"], sub["mean"], marker="o", linewidth=2, label=rule, color=rule_colors[rule])
-    ax.errorbar(sub["p_disapprove"] + offsets4[i], sub["mean"], yerr=sub["std"],
-                fmt="none", color=line.get_color(), elinewidth=0.7, capthick=1.5, capsize=6, alpha=0.9)
+    ax.plot(sub["p_disapprove"], sub["gini_coefficient"], marker="o", label=rule, color=rule_colors[rule], linewidth=2)
 ax.set_title("Mean Gini Coefficient vs. p_disapprove - Synthetic Data")
 ax.set_xlabel("p_disapprove")
 ax.set_ylabel("Gini Coefficient")
 ax.set_xticks(pd_values)
-ax.legend(title="Rule", loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=6, frameon=False)
+ax.legend(title="Rule")
 save(fig, "syn4_gini_vs_pd.png")
 
 
@@ -380,13 +378,10 @@ save(fig, "syn5_utility_boxplots_by_pd.png")
 
 #6 Fraction of voters with negative utility vs p_disapprove
 fig, ax = plt.subplots(figsize=(9, 5))
-neg_df = syn.dropna(subset=["frac_negative"]).groupby(["p_disapprove", "rule"])["frac_negative"].agg(["mean", "std"]).reset_index()
-offsets6 = np.linspace(-0.008, 0.008, len(rule_order))
-for i, rule in enumerate(rule_order):
+neg_df = syn.dropna(subset=["frac_negative"]).groupby(["p_disapprove", "rule"])["frac_negative"].mean().reset_index()
+for rule in rule_order:
     sub = neg_df[neg_df["rule"] == rule]
-    (line,) = ax.plot(sub["p_disapprove"], sub["mean"], marker="o", linewidth=2, label=rule, color=rule_colors[rule])
-    ax.errorbar(sub["p_disapprove"] + offsets6[i], sub["mean"], yerr=sub["std"],
-                fmt="none", color=line.get_color(), elinewidth=0.7, capthick=1.5, capsize=6, alpha=0.9)
+    ax.plot(sub["p_disapprove"], sub["frac_negative"], marker="o", label=rule, color=rule_colors[rule], linewidth=2)
 ax.set_title("Fraction of Voters with Negative Utility vs. p_disapprove")
 ax.set_xlabel("p_disapprove")
 ax.set_ylabel("Fraction of Voters")
@@ -398,13 +393,10 @@ save(fig, "syn6_neg_utility_vs_pd.png")
 
 #7 Disapproval avoidance vs p_disapprove
 fig, ax = plt.subplots(figsize=(9, 5))
-da_df = syn.dropna(subset=["avg_elected_disapprovals_per_voter"]).groupby(["p_disapprove", "rule"])["avg_elected_disapprovals_per_voter"].agg(["mean", "std"]).reset_index()
-offsets7 = np.linspace(-0.008, 0.008, len(rule_order))
-for i, rule in enumerate(rule_order):
+da_df = syn.dropna(subset=["avg_elected_disapprovals_per_voter"]).groupby(["p_disapprove", "rule"])["avg_elected_disapprovals_per_voter"].mean().reset_index()
+for rule in rule_order:
     sub = da_df[da_df["rule"] == rule]
-    (line,) = ax.plot(sub["p_disapprove"], sub["mean"], marker="o", linewidth=2, label=rule, color=rule_colors[rule])
-    ax.errorbar(sub["p_disapprove"] + offsets7[i], sub["mean"], yerr=sub["std"],
-                fmt="none", color=line.get_color(), elinewidth=0.7, capthick=1.5, capsize=6, alpha=0.9)
+    ax.plot(sub["p_disapprove"], sub["avg_elected_disapprovals_per_voter"], marker="o", label=rule, color=rule_colors[rule], linewidth=2)
 ax.set_title("Disapproval Avoidance vs. p_disapprove - Synthetic Data\n(Avg. Elected Candidates Disapproved per Voter)")
 ax.set_xlabel("p_disapprove")
 ax.set_ylabel("Avg. Disapproved Elected Candidates per Voter")
@@ -420,18 +412,15 @@ trad_colors = {
     "PAV_vs_MES": "#4CAF50",
     "SeqPhragmen_vs_MES": "#FF9800",
 }
-hdf_trad = syn_hamming_trad.groupby(["p_disapprove", "rule"])["hamming_distance"].agg(["mean", "std"]).reset_index()
-offsets8 = np.linspace(-0.006, 0.006, len(trad_colors))
-for i, pair in enumerate(trad_colors):
+hdf_trad = syn_hamming_trad.groupby(["p_disapprove", "rule"])["hamming_distance"].mean().reset_index()
+for pair in trad_colors:
     sub = hdf_trad[hdf_trad["rule"] == pair]
-    (line,) = ax.plot(sub["p_disapprove"], sub["mean"], marker="o", linewidth=2, label=pair, color=trad_colors[pair])
-    ax.errorbar(sub["p_disapprove"] + offsets8[i], sub["mean"], yerr=sub["std"],
-                fmt="none", color=line.get_color(), elinewidth=0.7, capthick=1.5, capsize=6, alpha=0.9)
+    ax.plot(sub["p_disapprove"], sub["hamming_distance"], marker="o", label=pair, color=trad_colors[pair], linewidth=2)
 ax.set_title("Within Traditional Methods Hamming Distance vs. p_disapprove - Synthetic Data")
 ax.set_xlabel("p_disapprove")
 ax.set_ylabel("Mean Hamming Distance")
 ax.set_xticks(pd_values)
-ax.legend(title="Pair", loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=3, frameon=False)
+ax.legend(title="Pair")
 save(fig, "syn8_trad_hamming_vs_pd.png")
 
 
@@ -443,13 +432,10 @@ axes = axes.flatten()
 
 for ax, model in zip(axes, sorted(models)):
     sub = syn[(syn["model"] == model)].dropna(subset=["elected_mean_net_score"])
-    ns_df = sub.groupby(["p_disapprove", "rule"])["elected_mean_net_score"].agg(["mean", "std"]).reset_index()
-    offsets9 = np.linspace(-0.008, 0.008, len(rule_order))
-    for i, rule in enumerate(rule_order):
+    ns_df = sub.groupby(["p_disapprove", "rule"])["elected_mean_net_score"].mean().reset_index()
+    for rule in rule_order:
         r = ns_df[ns_df["rule"] == rule]
-        (line,) = ax.plot(r["p_disapprove"], r["mean"], marker="o", linewidth=2, label=rule, color=rule_colors[rule])
-        ax.errorbar(r["p_disapprove"] + offsets9[i], r["mean"], yerr=r["std"],
-                    fmt="none", color=line.get_color(), elinewidth=0.7, capthick=1.5, capsize=6, alpha=0.9)
+        ax.plot(r["p_disapprove"], r["elected_mean_net_score"], marker="o", label=rule, color=rule_colors[rule], linewidth=2)
     ax.set_title(model)
     ax.set_xlabel("p_disapprove")
     ax.set_ylabel("Mean Elected Net Score" if ax == axes[0] else "")
@@ -559,25 +545,23 @@ pair_labels = ["AV vs. PAV", "AV vs. SeqPhragmen", "AV vs. MES"]
 rw_ham_dedup = rw_hamming_trad.drop_duplicates(subset=["dataset", "rule", "hamming_distance"])
 syn_ham_dedup = syn_hamming_trad.drop_duplicates(subset=["dataset", "p_disapprove", "rule", "hamming_distance"])
 
-rw_stats = rw_ham_dedup[rw_ham_dedup["rule"].isin(pairs)].groupby("rule")["hamming_distance"].agg(["mean", "std"]).reindex(pairs)
-syn_stats = syn_ham_dedup[syn_ham_dedup["rule"].isin(pairs)].groupby("rule")["hamming_distance"].agg(["mean", "std"]).reindex(pairs)
-rw_means, rw_std = rw_stats["mean"], rw_stats["std"]
-syn_means, syn_std = syn_stats["mean"], syn_stats["std"]
+rw_means = rw_ham_dedup[rw_ham_dedup["rule"].isin(pairs)].groupby("rule")["hamming_distance"].mean().reindex(pairs)
+syn_means = syn_ham_dedup[syn_ham_dedup["rule"].isin(pairs)].groupby("rule")["hamming_distance"].mean().reindex(pairs)
 
 fig, ax = plt.subplots(figsize=(8, 5))
 x = np.arange(len(pairs))
 width = 0.35
-ax.bar(x - width / 2, rw_means.values, width, yerr=rw_std.values, capsize=3, label="Real-World (k=10)", color="#455A64")
-ax.bar(x + width / 2, syn_means.values, width, yerr=syn_std.values, capsize=3, label="Synthetic (k=10)", color="#90A4AE")
+ax.bar(x - width / 2, rw_means.values, width, label="Real-World (k=10)", color ="#455A64")
+ax.bar(x + width / 2, syn_means.values, width, label="Synthetic (k=10)", color ="#90A4AE")
 ax.set_xticks(x)
 ax.set_xticklabels(pair_labels)
 ax.set_ylabel("Mean Hamming Distance")
 ax.set_title("AV vs. Traditional Rules: Real-World vs. Synthetic Divergence")
 ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.12), ncol=2, frameon=False)
 fig.subplots_adjust(bottom=0.22)
-for i, (rv, sv, rs, ss) in enumerate(zip(rw_means.values, syn_means.values, rw_std.values, syn_std.values)):
-    ax.text(i - width / 2, rv + rs + 0.05, f"{rv: .2f}", ha="center", fontsize=9)
-    ax.text(i + width / 2, sv + ss + 0.05, f"{sv: .2f}", ha="center", fontsize=9)
+for i, (rv, sv) in enumerate(zip(rw_means.values, syn_means.values)):
+    ax.text(i - width / 2, rv + 0.05, f"{rv: .2f}", ha="center", fontsize=9)
+    ax.text(i + width / 2, sv + 0.05, f"{sv: .2f}", ha="center", fontsize=9)
 save(fig, "av1_realworld_vs_synthetic_divergence.png")
 
 

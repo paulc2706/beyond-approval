@@ -426,21 +426,21 @@ Dataset: vtaiwan.uberx
 
 --- Hamming distance summary (real-world) ---
 
-  AV_vs_MES                                  mean=4.2000  std=1.8947  min=2.0000  median=4.0000  max=8.0000
-  AV_vs_PAV                                  mean=3.9000  std=2.2432  min=0.0000  median=4.0000  max=10.0000
-  AV_vs_SeqPhragmen                          mean=4.1000  std=2.2432  min=2.0000  median=4.0000  max=10.0000
-  AV_vs_TaxMES                               mean=5.8500  std=1.9126  min=3.0000  median=6.0000  max=9.0000
-  AV_vs_TaxPhragmen                          mean=5.9500  std=1.9179  min=3.0000  median=6.0000  max=10.0000
-  MES_vs_TaxMES                              mean=6.1500  std=2.2960  min=3.0000  median=6.0000  max=11.0000
-  MES_vs_TaxPhragmen                         mean=6.2500  std=2.0549  min=3.0000  median=6.0000  max=11.0000
-  PAV_vs_MES                                 mean=1.6000  std=1.3622  min=0.0000  median=2.0000  max=4.0000
-  PAV_vs_SeqPhragmen                         mean=1.2000  std=1.3322  min=0.0000  median=1.0000  max=4.0000
-  PAV_vs_TaxMES                              mean=6.1500  std=2.2064  min=3.0000  median=6.0000  max=11.0000
-  PAV_vs_TaxPhragmen                         mean=6.0500  std=2.1178  min=3.0000  median=6.0000  max=11.0000
-  SeqPhragmen_vs_MES                         mean=1.2000  std=1.3322  min=0.0000  median=1.0000  max=4.0000
-  SeqPhragmen_vs_TaxMES                      mean=6.2500  std=2.1508  min=3.0000  median=6.0000  max=11.0000
-  SeqPhragmen_vs_TaxPhragmen                 mean=6.1500  std=2.0647  min=3.0000  median=6.0000  max=11.0000
-  TaxPhragmen_vs_TaxMES                      mean=1.1000  std=0.8925  min=0.0000  median=1.0000  max=2.0000
+  AV_vs_MES                                  mean=4.2000  std=1.9358  min=2.0000  median=4.0000  max=8.0000
+  AV_vs_PAV                                  mean=3.9000  std=2.2919  min=0.0000  median=4.0000  max=10.0000
+  AV_vs_SeqPhragmen                          mean=4.1000  std=2.2919  min=2.0000  median=4.0000  max=10.0000
+  AV_vs_TaxMES                               mean=5.8500  std=1.9541  min=3.0000  median=6.0000  max=9.0000
+  AV_vs_TaxPhragmen                          mean=5.9500  std=1.9595  min=3.0000  median=6.0000  max=10.0000
+  MES_vs_TaxMES                              mean=6.1500  std=2.3458  min=3.0000  median=6.0000  max=11.0000
+  MES_vs_TaxPhragmen                         mean=6.2500  std=2.0995  min=3.0000  median=6.0000  max=11.0000
+  PAV_vs_MES                                 mean=1.6000  std=1.3917  min=0.0000  median=2.0000  max=4.0000
+  PAV_vs_SeqPhragmen                         mean=1.2000  std=1.3611  min=0.0000  median=1.0000  max=4.0000
+  PAV_vs_TaxMES                              mean=6.1500  std=2.2542  min=3.0000  median=6.0000  max=11.0000
+  PAV_vs_TaxPhragmen                         mean=6.0500  std=2.1637  min=3.0000  median=6.0000  max=11.0000
+  SeqPhragmen_vs_MES                         mean=1.2000  std=1.3611  min=0.0000  median=1.0000  max=4.0000
+  SeqPhragmen_vs_TaxMES                      mean=6.2500  std=2.1975  min=3.0000  median=6.0000  max=11.0000
+  SeqPhragmen_vs_TaxPhragmen                 mean=6.1500  std=2.1095  min=3.0000  median=6.0000  max=11.0000
+  TaxPhragmen_vs_TaxMES                      mean=1.1000  std=0.9119  min=0.0000  median=1.0000  max=2.0000
 
 
 ======================================================================

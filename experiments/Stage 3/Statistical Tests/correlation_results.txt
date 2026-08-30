@@ -1,0 +1,15 @@
+rule              n   pearson_r     p_value  spearman_rho     p_value
+AV              146      0.7973    2.22e-33        0.8358    2.51e-39
+PAV             146      0.7954    3.98e-33        0.8348    3.79e-39
+SeqPhragmen     146      0.7958    3.50e-33        0.8341    5.03e-39
+MES             146      0.7917    1.26e-32        0.8293    3.17e-38
+TaxPhragmen     146      0.6273    2.42e-17        0.6063    5.06e-16
+TaxMES          146      0.6238    4.06e-17        0.6011    1.05e-15
+
+check — avg_disapprovals_per_voter (all disapprovals, rule-independent):
+AV              146      0.8803    1.73e-48        0.9109    3.21e-57
+PAV             146      0.8803    1.73e-48        0.9109    3.21e-57
+SeqPhragmen     146      0.8803    1.73e-48        0.9109    3.21e-57
+MES             146      0.8803    1.73e-48        0.9109    3.21e-57
+TaxPhragmen     146      0.8803    1.73e-48        0.9109    3.21e-57
+TaxMES          146      0.8803    1.73e-48        0.9109    3.21e-57
