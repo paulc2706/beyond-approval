@@ -1,3 +1,4 @@
+check – avg_elected_disapprovals_per_voter (disapprovals among elected candidates, per rule):
 rule              n   pearson_r     p_value  spearman_rho     p_value
 AV              146      0.7973    2.22e-33        0.8358    2.51e-39
 PAV             146      0.7954    3.98e-33        0.8348    3.79e-39

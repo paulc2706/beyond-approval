@@ -96,7 +96,23 @@ def net_score_summary(net_scores, elected_committee):
     return result
 
 #Voter utility
+#"""
+def compute_voter_utilities(vote_matrix, elected_committee, net_scores=None):
+    #Per Voter Utility: count of elected candidates the voter approved - count of elected candidates the voter disapproved.
+    #net_scores kept as an unused parameter for call-site compatibility with run_metrics.py; no longer weights the utility.
+    elected_set = [c for c in elected_committee if c in vote_matrix.columns]
+    if not elected_set:
+        n = len(vote_matrix)
+        return pd.Series(np.zeros(n), index=vote_matrix.index)
 
+    votes_on_elected = vote_matrix[elected_set]
+
+    # utility[v] = sum over elected c of: vote[v,c]  (+1 approved, -1 disapproved, 0 indifferent)
+    utilities = votes_on_elected.values.sum(axis=1)
+    return pd.Series(utilities, index=vote_matrix.index)
+#"""
+
+"""
 def compute_voter_utilities(vote_matrix, elected_committee, net_scores):
     #Per Voter Utility: sum of net scores of elected candidates the voter approved - sum of net scores of elected candidates the voter disapproved.
     elected_set = [c for c in elected_committee if c in vote_matrix.columns]
@@ -110,6 +126,7 @@ def compute_voter_utilities(vote_matrix, elected_committee, net_scores):
     # utility[v] = sum over elected c of: vote[v,c] * net_score[c]
     utilities = votes_on_elected.values @ weights
     return pd.Series(utilities, index=vote_matrix.index)
+"""
 
 def voter_utility_metrics(utilities):
     #Aggreate voter utility statistics

@@ -111,13 +111,11 @@ fig, ax = plt.subplots(figsize=(9, 6))
 for rule in rule_order:
     sub = rw[rw["rule"] == rule].dropna(subset=["gini_coefficient", "mean_utility"])
     ax.scatter(sub["mean_utility"], sub["gini_coefficient"], label=rule, color=rule_colors[rule], alpha=0.75, s=60, edgecolors="white", linewidths=0.5)
-ax.set_xscale("log")
-ax.set_xlabel("Mean Voter Utility (log scale)")
+ax.set_xlabel("Mean Voter Utility")
 ax.set_ylabel("Gini Coefficient")
 ax.set_title("Equity vs. Efficiency - Real-World Datasets")
 ax.legend(title="Rule")
 save(fig, "rw3_gini_vs_utility.png")
-
 
 #4 Cross-Hamming distance (traditional vs tax counterparts)
 fig, ax = plt.subplots(figsize=(13, 5))
