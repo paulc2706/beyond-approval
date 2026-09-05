@@ -1,21 +1,23 @@
 import os
 import sys
 import traceback
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", "Stage 1", "Traditional Methods"))
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", "Stage 1", "Tax Methods"))
+from pathlib import Path
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "Real-world Simulations", "Traditional Methods"))
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "Real-world Simulations", "Tax Methods"))
 from traditional_methods import run_methods
 from tax_methods import run_tax_methods
 from synthetic_methods import load_synthetic_dataset, save_synthetic_results
 
-root_data_folder = r"C:\Users\paulc\Documents\bachelor-thesis\data\raw"
-root_output_folder = r"C:\Users\paulc\Documents\bachelor-thesis\experiments"
+root = Path(__file__).resolve().parents[1]
+root_data_folder = str(root / "Data" / "Synthetic Data")
+root_output_folder = str(root / "Results" / "Results Synthetic")
 Committee_Size = 10
 p_disapprove_values = [0.01, 0.05, 0.1, 0.15, 0.2]
 
 def run_all_methods():
     for p_val in p_disapprove_values:
-        data_folder = os.path.join(root_data_folder, f"Synthetic Data_pd_{p_val}")
-        output_folder = os.path.join(root_output_folder, f"Results_Synthetic_pd_{p_val}")
+        data_folder = os.path.join(root_data_folder, f"pd_{p_val}")
+        output_folder = os.path.join(root_output_folder, f"pd_{p_val}")
 
         if not os.path.exists(data_folder):
             print(f"Skipping, data folder not found: {data_folder}")

@@ -1,9 +1,5 @@
 import numpy as np
 import pandas as pd
-from itertools import combinations
-
-from networkx.algorithms import flow
-
 
 #Metric functions for analyzing trichotomous votes
 

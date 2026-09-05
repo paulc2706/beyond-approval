@@ -1,14 +1,16 @@
 import os
 import sys
 import traceback
+from pathlib import Path
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", "Traditional Methods"))
 
 from traditional_methods import load_profiles
 from tax_methods import *
 
-data_folder = r"C:\Users\paulc\Documents\bachelor-thesis\data\raw\openData-master"
-output_folder = r"C:\Users\paulc\Documents\bachelor-thesis\experiments\Results"
+root = Path(__file__).resolve().parents[2]
+data_folder = str(root / "data" / "Real-World" / "openData-master")
+output_folder = str(root / "Results" / "Results Real-World")
 committee_size = 10
 
 def run_batch_processing():
@@ -49,7 +51,7 @@ def run_batch_processing():
             for rule, selection in results.items():
                 print(f"  {rule}: {len(selection.selected)} candidates elected")
 
-            #Save Results
+            #Save Results Real-World
             txt_path = os.path.join(results_path, "tax_winning_committees.txt")
             csv_path = os.path.join(results_path, "tax_winning_committees.csv")
             save_tax_results(results, txt_path, csv_path)

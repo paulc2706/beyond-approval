@@ -1,11 +1,12 @@
 import os
 import sys
 import traceback
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", "Stage 1", "Traditional Methods"))
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", "Stage 1", "Tax Methods"))
+from pathlib import Path
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "Real-world Simulations", "Traditional Methods"))
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "Real-world Simulations", "Tax Methods"))
 from synthetic_methods import sample_resampling, sample_euclidean_threshold, sample_impartial, save_synthetic_dataset
 
-output_folder = r"C:\Users\paulc\Documents\bachelor-thesis\data\raw\Synthetic Data"
+output_folder = str(Path(__file__).resolve().parents[1] / "Data" / "Synthetic Data")
 
 NUM_Voters = 100
 NUM_Candidates = 20

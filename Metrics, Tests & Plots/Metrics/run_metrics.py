@@ -1,22 +1,22 @@
 import os
 import pandas as pd
-import numpy as np
+from pathlib import Path
 from metrics_methods import *
 
 #Metric computation for all datasets
 
 #Path setup
-root_dir = r"C:\Users\paulc\Documents\bachelor-thesis"
+root_dir = str(Path(__file__).resolve().parents[2])
 
-polis_data_dir = os.path.join(root_dir, "data", "raw", "openData-master")
-polis_results = os.path.join(root_dir, "experiments", "Results")
+polis_data_dir = os.path.join(root_dir, "Data", "Real-World", "openData-master")
+polis_results = os.path.join(root_dir, "Results", "Results Real-World")
 
-synthetic_data_dir = os.path.join(root_dir, "data", "raw")
-synthetic_results = os.path.join(root_dir, "experiments")
+synthetic_data_dir = os.path.join(root_dir, "Data", "Synthetic Data")
+synthetic_results = os.path.join(root_dir, "Results", "Results Synthetic")
 
 p_disapprove_values = [0.01, 0.05, 0.1, 0.15, 0.2]#
 
-output_dir = os.path.join(root_dir, "experiments", "Stage 3", "Metrics")
+output_dir = os.path.join(root_dir, "Metrics, Tests & Plots", "Metrics")
 os.makedirs(output_dir, exist_ok=True)
 
 
@@ -203,8 +203,8 @@ def compute_synthetic_metrics():
                    "avg_disapprovals_per_voter", "avg_elected_disapprovals_per_voter"]
 
     for p_val in p_disapprove_values:
-        results_folder = os.path.join(synthetic_results, f"Results_Synthetic_pd_{p_val}")
-        data_folder = os.path.join(synthetic_data_dir, f"Synthetic Data_pd_{p_val}")
+        results_folder = os.path.join(synthetic_results, f"pd_{p_val}")
+        data_folder = os.path.join(synthetic_data_dir, f"pd_{p_val}")
 
         if not os.path.exists(results_folder):
             print(f"Skipping, results folder not found: {results_folder}")

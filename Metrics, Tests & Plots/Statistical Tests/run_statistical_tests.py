@@ -1,10 +1,11 @@
 import os
+from pathlib import Path
 from statistical_tests_methods import *
 
 #Paths
-root_dir = r"C:\Users\paulc\Documents\bachelor-thesis"
-metrics_dir = os.path.join(root_dir, "experiments", "Stage 3", "Metrics")
-stats_dir = os.path.join(root_dir, "experiments", "Stage 3", "Statistical Tests")
+root_dir = str(Path(__file__).resolve().parents[2])
+metrics_dir = os.path.join(root_dir, "Metrics, Tests & Plots", "Metrics")
+stats_dir = os.path.join(root_dir, "Metrics, Tests & Plots", "Statistical Tests")
 real_world_csv = os.path.join(metrics_dir, "metrics_real_world.csv")
 synthetic_csv = os.path.join(metrics_dir, "metrics_synthetic.csv")
 

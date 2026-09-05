@@ -1,8 +1,9 @@
 import os
 import pandas as pd
+from pathlib import Path
 
-root_dir = r"C:\Users\paulc\Documents\bachelor-thesis"
-metrics_dir = os.path.join(root_dir, "experiments", "Stage 3", "Metrics")
+root_dir = str(Path(__file__).resolve().parents[2])
+metrics_dir = os.path.join(root_dir, "Metrics, Tests & Plots", "Metrics")
 
 rw_csv = os.path.join(metrics_dir, "metrics_real_world.csv")
 syn_csv = os.path.join(metrics_dir, "metrics_synthetic.csv")

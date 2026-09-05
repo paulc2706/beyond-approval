@@ -1,10 +1,12 @@
 import os
 from traditional_methods import *
 import traceback
+from pathlib import Path
 
 #Folder Configuration
-data_folder = r"C:\Users\paulc\Documents\bachelor-thesis\data\raw\openData-master"
-output_folder = r"C:\Users\paulc\Documents\bachelor-thesis\experiments\Results"
+root = Path(__file__).resolve().parents[2]
+data_folder = str(root / "Data" / "Real-World" / "openData-master")
+output_folder = str(root / "Results" / "Results Real-World")
 
 #Committee size
 committee_size = 10

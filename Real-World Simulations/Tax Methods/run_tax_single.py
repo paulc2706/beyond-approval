@@ -1,5 +1,7 @@
+from pathlib import Path
+test_file = str(Path(__file__).resolve().parents[2] / "Data" / "Real-World" / "openData-master" / "american-assembly.bowling-green" / "participants-votes.csv")
+
 if __name__ == "__main__":
-    test_file = r"C:\Users\paulc\Documents\bachelor-thesis\data\raw\openData-master\american-assembly.bowling-green\participants-votes.csv"
     committee_size = 10
 
     profile, df_raw, reverse_map = load_profiles(test_file)

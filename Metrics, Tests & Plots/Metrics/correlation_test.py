@@ -1,8 +1,9 @@
 import pandas as pd
 from scipy import stats
+from pathlib import Path
 
-metrics_dir = r"C:\Users\paulc\Documents\bachelor-thesis\experiments\Stage 3\Metrics"
-df = pd.read_csv(f"{metrics_dir}\\metrics_synthetic.csv")
+metrics_dir = Path(__file__).resolve().parents[2] / "Metrics, Tests & Plots" / "Metrics"
+df = pd.read_csv(metrics_dir / "metrics_synthetic.csv")
 
 syn = df[df["method"].isin(["Traditional", "AV", "Tax"])].copy()
 rule_order = ["AV", "PAV", "SeqPhragmen", "MES", "TaxPhragmen", "TaxMES"]

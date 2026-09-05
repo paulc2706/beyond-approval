@@ -6,8 +6,6 @@ from trivoting.rules import tax_method_of_equal_shares, tax_sequential_phragmen
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", "Traditional Methods"))
 
-from traditional_methods import load_profiles
-
 def compute_candidate_stats(df_votes):
     candidate_cols = [col for col in df_votes.columns if col.isdigit()]
     stats = {}
@@ -84,33 +82,3 @@ def save_tax_results(results, output_txt_path, output_csv_path):
     df.to_csv(output_csv_path, index=False)
     print(f"Tax results CSV saved to: {output_csv_path}")
 
-if __name__ == "__main__":
-    test_file = r"C:\Users\paulc\Documents\bachelor-thesis\data\raw\openData-master\american-assembly.bowling-green\participants-votes.csv"
-    committee_size = 10
-
-    profile, df_raw, reverse_map = load_profiles(test_file)
-
-    #Test Stats
-    stats = compute_candidate_stats(df_raw)
-
-    print(f"Total Candidates: {len(stats)}")
-    print(f"\nFirst 5 candidates:")
-    for c_id, s in list(stats.items())[:5]:
-        print(f"  Candidate {c_id}: approvals={s["approvals"]}, disapprovals={s["disapprovals"]}")
-
-    candidates_with_disapprovals = sum(1 for s in stats.values() if s["disapprovals"] > 0)
-    print(f"\nCandidates with at least one disapproval: {candidates_with_disapprovals}/{len(stats)}")
-
-    #Build Tri-profiles
-    tri_profile, alternatives = build_trichotomous_profile(df_raw)
-    print(f"\nTrichotomous profile built: {len(tri_profile)} voters, {len(alternatives)} alternatives")
-
-    #Run tax-methods
-    results = run_tax_methods(tri_profile, committee_size)
-
-    #Print results
-    for rule, selection in results.items():
-        elected = sorted([str(a) for a in selection.selected])
-        print(f"\n{rule}: {elected}")
-
-    save_tax_results(results, "./test_tax_results.txt", "./test_tax_results.csv")

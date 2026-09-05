@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import pandas as pd
 import numpy as np
 import math
@@ -12,9 +13,9 @@ import seaborn as sns
 #This file generates all metric visualizations for real-world and synthetic datasets
 #Configuration
 
-root_dir = r"C:\Users\paulc\Documents\bachelor-thesis"
-metrics_dir = os.path.join(root_dir, "experiments", "Stage 3", "Metrics")
-plots_dir = os.path.join(root_dir, "experiments", "Stage 3", "Visualizations", "Plots")
+root_dir = str(Path(__file__).resolve().parents[2])
+metrics_dir = os.path.join(root_dir, "Metrics, Tests & Plots", "Metrics")
+plots_dir = os.path.join(root_dir, "Metrics, Tests & Plots", "Visualizations", "Plots")
 os.makedirs(plots_dir, exist_ok=True)
 
 rw_csv = os.path.join(metrics_dir, "metrics_real_world.csv")

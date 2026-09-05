@@ -68,7 +68,7 @@ def sample_euclidean_threshold(num_voters, num_candidates, radius, p_disapprove,
     return profile, tri_profile, votes
 
 def save_synthetic_dataset(votes, params, output_path):
-    #Saves the raw votes as a csv in the same format as the real data --> Columns = candidate IDs, values 1, -1, 0
+    #Saves the Real-World votes as a csv in the same format as the real data --> Columns = candidate IDs, values 1, -1, 0
     os.makedirs(output_path, exist_ok=True)
     num_candidates = votes.shape[1]
     df = pd.DataFrame(votes, columns=[str(c) for c in range(num_candidates)])
