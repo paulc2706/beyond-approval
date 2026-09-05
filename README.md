@@ -49,13 +49,13 @@ pip install -r requirements.txt
 ## Project layout
 
 ```text
-Data/
+data/
   Real-World/openData-master/        Polis export datasets (one folder per dataset)
   Synthetic Data/pd_<value>/          Synthetic datasets, one folder per disapproval
                                        probability, sampler-named subfolders inside
 Results/
-  Results Real-World/                 Simulation output, mirrors Data/Real-World structure
-  Results Synthetic/pd_<value>/       Simulation output, mirrors Data/Synthetic Data structure
+  Results Real-World/                 Simulation output, mirrors data/Real-World structure
+  Results Synthetic/pd_<value>/       Simulation output, mirrors data/Synthetic Data structure
 
 Real-world Simulations/
   Traditional Methods/                PAV, seq-Phragmen, MES, AV
@@ -96,28 +96,28 @@ flowchart LR
 ### 1. Real-world simulations
 `Real-world Simulations/`
 
-| Script | Does |
-|---|---|
-| `Traditional Methods/run_sim_batch.py` | Runs PAV / seq-Phragmen / MES / AV on every dataset under `Data/Real-World/openData-master/`, writes to `Results/Results Real-World/<dataset>/` |
-| `Tax Methods/run_tax_batch.py` | Same, for TaxPhragmen / TaxMES |
-| `run_sim_single.py` / `run_tax_single.py` | Runs a single hardcoded dataset (`american-assembly.bowling-green`) for quick manual testing |
+| Script | Does                                                                                                                                            |
+|---|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Traditional Methods/run_sim_batch.py` | Runs PAV / seq-Phragmen / MES / AV on every dataset under `data/Real-World/openData-master/`, writes to `Results/Results Real-World/<dataset>/` |
+| `Tax Methods/run_tax_batch.py` | Same, for TaxPhragmen / TaxMES                                                                                                                  |
+| `run_sim_single.py` / `run_tax_single.py` | Runs a single hardcoded dataset (`american-assembly.bowling-green`) for quick manual testing                                                    |
 
 ### 2. Synthetic data + simulations
 `Synthetic Simulations/`
 
 - `run_synthetic_sampling.py` generates synthetic profiles (resampling, impartial culture,
-  Euclidean threshold models) into `Data/Synthetic Data/`.
+  Euclidean threshold models) into `data/Synthetic Data/`.
 
   > [!CAUTION]
   > `P_Disapprove` at the top of the file is a single hardcoded constant, **not a loop**. To
   > generate the datasets for the next `pd` level (0.01, 0.05, 0.1, 0.15, 0.2), manually edit
   > `P_Disapprove` and rerun the script. Output is **not** namespaced by `pd` value — it always
-  > writes to the same sampler-named subfolders under `Data/Synthetic Data/` — so move the batch
+  > writes to the same sampler-named subfolders under `data/Synthetic Data/` — so move the batch
   > you just generated into its `pd_<value>` folder **before** rerunning with a new
   > `P_Disapprove`, otherwise the next run silently overwrites it.
 
 - `run_synthetic_experiments.py` runs all traditional and tax methods over every `pd_<value>`
-  folder found under `Data/Synthetic Data/`, writing to `Results/Results Synthetic/pd_<value>/`
+  folder found under `data/Synthetic Data/`, writing to `Results/Results Synthetic/pd_<value>/`
 
 ### 3. Metrics
 `Metrics, Tests & Plots/Metrics/`
@@ -147,7 +147,7 @@ flowchart LR
 
 ## Data attribution
 
-The real-world datasets under `Data/Real-World/openData-master/` are Polis conversation exports
+The real-world datasets under `data/Real-World/openData-master/` are Polis conversation exports
 published by the [Computational Democracy Project](https://compdemocracy.org/), licensed under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
