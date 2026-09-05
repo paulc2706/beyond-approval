@@ -1,4 +1,4 @@
-# Disapproval-Extended ABC Voting Rules — Simulation Pipeline
+# Disapproval-Extended ABC Voting Rules — Simulations
 
 *Code accompanying a Bachelor's thesis on disapproval-extended approval-based committee (ABC) voting rules.*
 
