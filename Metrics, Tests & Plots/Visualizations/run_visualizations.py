@@ -224,7 +224,7 @@ def save_heatmap(mat, title, fname, directory=None):
             Patch(facecolor="none", edgecolor="#4CAF50", lw=2, label="Within Traditional"),
             Patch(facecolor="none", edgecolor="#F44336", lw=2, label="Within Tax"),
         ],
-        loc="upper right", bbox_to_anchor=(1.0, -0.12), ncol=2, fontsize=8, frameon=False,
+        loc="upper left", bbox_to_anchor=(1.3, 1.0), fontsize=8, frameon=False,
     )
     out_dir = directory if directory is not None else plots_dir
     path = os.path.join(out_dir, fname)
